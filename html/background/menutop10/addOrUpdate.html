@@ -1,0 +1,61 @@
+
+<style>
+    .modal-dialog{
+        width: 60%;
+    }
+    /*单选多选换行对齐开始*/
+    .checkbox-inline + .checkbox-inline {
+        margin-left: 0;
+    }
+    .radio-inline + .radio-inline, .checkbox-inline + .checkbox-inline {
+        margin-left: 0;
+    }
+    /*单选多选换行对齐结束*/
+    .span_required{
+        color: red;
+    }
+    .ztree_selectInput{
+        display:none;
+        position: fixed;
+        width: 180px;
+        height: 200px;
+        overflow: auto;
+        background-color: #FFFEF4;
+        z-index: 99999;
+    }
+
+</style>
+<div id="div_container" class="row div_father" style="overflow-y: auto;">
+    <div class="pm-body clearfix">
+        <div class="tab-content">
+            <div class="pmb-block tab-pane active" id="basicInfo_div">
+                <form id="form_addOrUpdate" class="form-horizontal">
+                    <div class="card">
+                        <div class="card-body card-padding">
+                            <div class="form-group">
+                                <label for="starttime" class="col-sm-2 control-label">开始时间</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <input id="starttime" class="datainp wicon" type="text"  name="starttime" placeholder="开始时间" readonly>
+                                    </div>
+                                </div>
+                                <label for="endtime" class="col-sm-2 control-label">结束时间</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <input id="endtime" class="datainp wicon" type="text"  name="endtime" placeholder="结束时间" readonly>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <input type="hidden" name="ip" id="ip">
+                    <input type="hidden" name="recentOperator" id="recentOperator">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

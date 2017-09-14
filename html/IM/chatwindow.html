@@ -1,0 +1,289 @@
+<head>
+    <!--    IM聊天工具linkCSS   -->
+    <link rel="stylesheet" type="text/css" href="IM/css/sprite.css"/>
+    <link rel="stylesheet" type="text/css" href="IM/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="IM/css/iScroll.css"/>
+    <!--<link rel="stylesheet" type="text/css" href="IM/css/iconfont.css"/>-->
+    <!--<link rel="stylesheet" type="text/css" href="IM/css/sco.message.css"/>-->
+    <!--<link rel="stylesheet" type="text/css" href="../css/bootstrap-tagsinput.css"/>-->
+    <link rel="stylesheet" type="text/css" href="IM/css/media.css"/>
+</head>
+
+<div class="col-lg-6 chat_group_window rlist" data-window-type="chat" data-chat-with="" data-chat-type="null">
+
+    <div class="receiver">
+        <img class="toimg" src="../img/profile-pics/2.jpg" style="width: 40px;height: 40px">
+        <span class="name cNickName"></span>
+        <span class="isTyping" data-status="isTyping"></span>
+
+        <span class="img video right" data-voip="video"></span>
+        <span class="img audio right" data-voip="audio"></span>
+        <span class="group_set right" data-gruopid="null"></span>
+        <span class="chart_status" style="background-color: rgba(255,160,0,0.18);display: none;z-index: 1001"></span>
+    </div>
+    <div class="chatting">
+        <!--<div class="chats iScroll" style="display: none">-->
+        <!--<div class="historyTime"></div>-->
+        <!--<div class="oneTextR" data-msgid="80099B72EA2B8B194BA90D93F6285628|7">-->
+        <!--<p></p>-->
+        <!--<img class="fromimg" src="../img/profile-pics/2.jpg" class="left" style="width: 40px;height: 40px">-->
+        <!--<div id="" class="dialog">-->
+        <!--<span class="sjx"></span>-->
+        <!--<pre class="contentText"></pre>-->
+        <!--</div>-->
+        <!--<i class="msgBack">撤回</i>-->
+        <!--</div>-->
+        <!--</div>-->
+    </div>
+    <div class="inputText">
+        <span class="img expression" id="expression"></span>
+        <span class="img picture" data-send="pic" id="picture"></span>
+        <span class="img file" data-send="file" id="file"></span>
+        <!--<span class="img burnmsg" data-firemsg="false"></span>-->
+        <!--<span class="img photograph" data-takepic="1"></span>-->
+        <button class="sendB right" data-button="send_msg" onclick="sendMessage()">发送</button>
+        <div class="inputSend">
+            <!--<textarea class="col-lg-10 char_input" data-chat-input="chatinput" spellcheck="false"></textarea>-->
+            <div class="col-lg-10 char_input" contenteditable="true" data-chat-input="chatinput"></div>
+        </div>
+        <ul class="atMsg">
+        </ul>
+    </div>
+</div>
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 rlist " style="display: none;">
+    <div class="receiver">
+    </div>
+    <div class="videoPhone">
+        <img src="IM/img/toux.png" alt=""/>
+        <p class="name"></p>
+        <p></p>
+        <span></span>
+        <span></span>
+        <div>
+            <button class="talkBtn"><span class="contact talk "></span>与他沟通(IM)</button>
+            <div>
+                <button class="conversationBtn"><span class="contact conversation "></span>音频通话</button>
+                <button class="videoBtn"><span class="contact video "></span>视频通话</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="callmsg_alert col-lg-3">
+    <!--<div class="audioAline">
+        <div class="imgDiv">
+            <img src="img/voipcall.png">
+        </div>
+        <div class="audioDiv">
+            <p class="name">系统</p><span class="color6060">777邀请你加入群组朝阳群众</span>
+            <div class="audioBtn"><button>接受</button>
+                <button>拒绝</button>
+            </div>
+        </div>
+    </div>-->
+
+</div>
+
+<div class="video_view" data-video-with="0" data-call-state="1" data-call-type="1">
+    <p class="video_drop"></p>
+    <video class="video_long_distance" data-video="distance" autoplay></video>
+    <video class="video_local" data-video="local" autoplay muted></video>
+    <p class="video_bottom"><span class="hangup" data-btn="cancelVideo">取消</span></p>
+</div>
+
+
+<div class="modal fade" id="firemsg" role="dialog" aria-labelledby="gridSystemModalLabel">
+    <!-- data-backdrop="static"  禁止点击背景关闭模态窗事件 -->
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                阅后即焚消息，关闭窗口此消息永久消失
+            </div>
+            <div class="modal-body">
+                阅后即焚消息
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<div class="emoji_div" id="eMoji">
+    <div class="arrow"></div>
+    <div class="popover-content" style="max-height: 120px; font-size:18px; overflow-y: auto">
+    </div>
+</div>
+
+<div id="takePic">
+    <video width="300" height="300" id="picshow" autoplay="" src=""></video>
+    <button id="snap"></button>
+    <span id="snapCancle">取消</span>
+
+</div>
+<div class="hide">
+    <input type="file" name="sendPic" id="sendPic" value="" multiple="multiple"/>
+    <input type="file" name="sendFile" id="sendFile" value="" multiple="multiple"/>
+    <audio src="../js/dist/ring.mp3" id="im_ring"></audio>
+    <audio src="../js/dist/ringback.wav" id="call_ring" loop="-1"></audio>
+    <pre style="display: none;" id="temporary"></pre>
+</div>
+<script src="../js/dist/base64.min.js"></script>
+<script>
+    var $chart_status = $('.chart_status');
+    function showChart_Status(message) {
+//        var o = $chart_status.text();
+        $chart_status.css('display', 'block');
+        $chart_status.html(message);
+        setTimeout(function () {
+            $chart_status.css('display', 'none');
+            $chart_status.html('');
+        }, 5000)
+    }
+
+    $(document).on('click','.expression',  function (e) {//表情展示
+        var s = $('#eMoji');
+        s.css('top', e.pageY - 270);
+        s.css('left', e.pageX - 450);
+        s.show();
+        $(document).one('click', function (e) {
+            s.hide();
+        })
+    });
+    function sendMessage() {
+        var d = IM.chat_window;
+        var msgid = new Date().getTime();
+        var ht = d.find('[data-chat-input="chatinput"]').html();
+        var temporary = $('#temporary');
+        temporary.html(ht);
+        temporary.find('img[imtype="content_emoji"]').each(function (e) {
+            var emoji_value_unicode = $(this).attr('emoji_value_unicode');
+            $(this).replaceWith(emoji_value_unicode);
+        });
+        var value = IM.DO_pre_replace_content_to_db(temporary.html());
+        var receiver = d.attr("data-chat-with").toString();
+        var ob = {
+            "content": ht,
+            "isSender": true,
+            "senderName": IM.nickName,
+            "msgType": "1",
+            "chatWindow": IM.currentChat
+        };
+        IM.EV_sendTextMsg(msgid, value, receiver, false, null, ob);
+    }
+
+    $( '.char_input').on('keypress', function (e) {
+        if (e.keyCode == 10) {
+            var temporary = $('#temporary');
+            var s = $(this).parents('.chat_group_window');
+            var receiver = s.attr("data-chat-with").toString();
+            var msgid = new Date().getTime();
+            temporary.html($(this).html());
+            temporary.find('img[imtype="content_emoji"]').each(function (e) {
+                var emoji_value_unicode = $(this).attr('emoji_value_unicode');
+                $(this).replaceWith(emoji_value_unicode);
+            });
+            var value = IM.DO_pre_replace_content_to_db(temporary.html());
+            var ob = {
+                "content": $(this).html(),
+                "isSender": true,
+                "senderName": IM.nickName,
+                "msgType": "1",
+                "chatWindow": IM.currentChat
+            };
+            IM.EV_sendTextMsg(msgid, value, receiver, false, null, ob);
+        }
+        ;
+    });
+//    $(document).on("click", '[data-send="pic"]', function () {
+//        $('#sendPic').click();
+//    });
+    $('#picture').on("click", function () {
+        $('#sendPic').click();
+    });
+    $('#file').on("click", function () {
+        $('#sendFile').click();
+    });
+    $('#sendPic').on("change" , function (e) {
+        for (var i = 0; i < e.target.files.length; i++) {
+            var files = e.target.files[i];
+            var msgid = new Date().getTime();
+            var type = files.type.indexOf("image") > -1 ? "4" : "7";
+            IM.EV_sendfile(msgid, files, type, IM.chat_window.attr("data-chat-with").toString(), false);
+        }
+        $(this).val("");
+    });
+    $('#sendFile').on("change", function (e) {
+        for (var i = 0; i < e.target.files.length; i++) {
+            var files = e.target.files[i];
+            var msgid = new Date().getTime();
+            var type = "7";
+            IM.EV_sendfile(msgid, files, type, IM.chat_window.attr("data-chat-with").toString(), false);
+        }
+        $(this).val("");
+    });
+    $("[data-voip='video']").on("click", function (e) {
+        var chats = IM.chat_window.attr("data-chat-with");
+        var distance = $('[data-video="distance"]')[0];
+        var local = $('[data-video="local"]')[0];
+        RL_YTX.setCallView(distance, local);
+        IM.currentCallWith = $('[data-video-with]');
+        IM.currentCallWith.attr('data-video-with', chats);
+        IM.sendVoipCall(chats, 1);
+        $('[data-call-type="1"]').show();
+    });
+    $("[data-voip='audio']").on("click",  function (e) {
+        var chats = IM.chat_window.attr("data-chat-with");
+        IM.currentCallWith = $('[data-call-with="' + chats + '"]');
+        IM.createAudioView(chats, true, 0);
+        IM.sendVoipCall(chats, 0);
+    });
+    // console.log("取消语音呼叫");
+//    $(document).on("click", '[data-btn="cancelVoip"]', function (e) {
+//        IM.cancelVoipCall();
+//    });
+    function cancelvoip() {
+        IM.cancelVoipCall();
+    }
+    // console.log("挂断");
+    $(document).on("click", '[data-btn="shutdownVoip"]', function (e) {
+        IM.cancelVoipCall();
+
+    });
+    $(document).on("click", '[data-btn="acceptVoip"]', function (e) {
+        // console.log("接受");
+        IM.acceptCall();
+    });
+    $(document).on("click", '[data-btn="refuseVoip"]', function (e) {
+        // console.log("拒接");
+        IM.refuseCall();
+    });
+    $('[data-btn="cancelVideo"]').on("click", function (e) {
+        IM.cancelVoipCall();
+    });
+    $(document).on('click', '.dialog', function (e) { //点击消息后 撤回按钮出现 与SDK无关事件
+        $(this).siblings('.msgBack').toggle();
+    });
+    $(document).on('click', '.msgBack', function (e) { //消息撤回
+        var _this = $(this).parent('.oneTextR');
+        var msgId = _this.attr('data-msgid');
+        IM.EV_msgBack(msgId, function (e) {
+            var html = '<div class="historyTime">你撤回了一条消息</div>';
+            _this.replaceWith(html);
+        });
+    });
+
+    $(document).on('focus', '[data-chat-type="c"] [data-chat-input="chatinput"]', function (e) { //正在输入状态
+        IM.DO_notice(1);
+    });
+    $(document).on('blur', '[data-chat-type="c"] [data-chat-input="chatinput"]', function (e) { //正在输入状态
+        IM.DO_notice(0);
+    });
+    function chosEm(e) {
+        var unified = $(e).attr('data-emoji-unified');
+        var unicode = $(e).attr('data-emoji-unicode');
+        IM.choseEmoji(unified, unicode);
+    }
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,37 @@
+
+<div class="card">
+    <div class="card-body card-padding">
+        <div class="row">
+            <div class="form-group col-sm-2">
+                <div class="fg-line">
+                    <input type="text" id="homename" class="input-sm form-control fg-input"  placeholder="请输入养老院名称">
+
+                </div>
+            </div>
+            <div class="form-group col-sm-2">
+                <div class="fg-line">
+                    <input type="text" id="homearea" class="input-sm form-control fg-input" placeholder="请输入养老院所属区">
+                </div>
+            </div>
+            <div class="form-group col-sm-2">
+                <div class="fg-line">
+                    <input type="text" id="homeaddress" class="input-sm form-control fg-input" placeholder="请输入养老院地址">
+                </div>
+            </div>
+            <div class="form-group col-sm-1">
+                <button class="btn bgm-lightblue btn-icon-text waves-effect" onclick="serachhomeInfo();"><i class="zmdi zmdi-search zmdi-hc-fw"></i> 查询</button>
+            </div>
+            <div class="form-group col-sm-5">
+                <button id="btn_GasHis" class="btn bgm-amber btn-icon-text waves-effect pull-right"><i class="zmdi zmdi-plus zmdi-hc-fw" ></i> 新增</button>
+            </div>
+
+        </div>
+        <div class="row">
+            <table id="main_table1" class="table table-striped">
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="oldmanhome/hometable.js"></script>

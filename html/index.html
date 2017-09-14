@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>吉林首页</title>
+
+    <!-- Vendor CSS -->
+    <link href="../vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
+    <link href="../vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.css" rel="stylesheet">
+    <link href="../vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
+    <link href="../vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link href="../css/app.min.1.css" rel="stylesheet">
+    <link href="../css/app.min.2.css" rel="stylesheet">
+    <style>
+        .container-fullindex{
+            margin:0 30px;
+        }
+        .color-block {
+            height: 60px;
+            color: rgba(255,255,255,0.9);
+            text-align: center;
+            padding: 15px 0;
+            border-radius: 2px;
+            margin-bottom: 25px;
+        }
+
+        .color-block span {
+            display: block;
+        }
+
+        .color-block .color {
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        .color-block .code {
+            margin: 5px 0;
+        }
+
+        .color-block .less {
+            font-size: 11px;
+        }
+    </style>
+</head>
+<body>
+<header id="header" class="clearfix" data-current-skin="blue">
+    <ul class="header-inner">
+        <li class="logo hidden-xs">
+            <a href="index.html">吉林省粮食平台</a>
+        </li>
+
+        <li class="pull-right">
+            <ul class="top-menu">
+                <li id="top-search">
+                    <a href=""><i class="tm-icon zmdi zmdi-search"></i></a>
+                </li>
+                <li class="dropdown">
+                    <a data-toggle="dropdown" href="">
+                        <i class="tm-icon zmdi zmdi-notifications"></i>
+                        <i class="tmn-counts">9</i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg pull-right">
+                        <div class="listview" id="notifications">
+                            <div class="lv-header">
+                                系统通知
+                                <ul class="actions">
+                                    <li class="dropdown">
+                                        <a href="" data-clear="notification">
+                                            <i class="zmdi zmdi-check-all"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="lv-body">
+                                <a class="lv-item" href="">
+                                    <div class="media">
+                                        <div class="pull-left">
+                                            <img class="lv-img-sm" src="../img/profile-pics/1.jpg" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="lv-title">评估员A</div>
+                                            <small class="lv-small">老人信息已更新</small>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <a class="lv-footer" href="">查看全部</a>
+                        </div>
+
+                    </div>
+                </li>
+                <li class="dropdown hidden-xs">
+                    <a data-toggle="dropdown" href="">
+                        <i class="tm-icon zmdi zmdi-view-list-alt"></i>
+                        <i class="tmn-counts">2</i>
+                    </a>
+                    <div class="dropdown-menu pull-right dropdown-menu-lg">
+                        <div class="listview">
+                            <div class="lv-header">
+                                Tasks
+                            </div>
+                            <div class="lv-body">
+                                <div class="lv-item">
+                                    <div class="lv-title m-b-5">老人A评估进度</div>
+
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="95"
+                                             aria-valuemin="0" aria-valuemax="100" style="width: 95%">
+                                            <span class="sr-only">95%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a class="lv-footer" href="">查看全部</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a data-toggle="dropdown" href=""><i class="tm-icon zmdi zmdi-more-vert"></i></a>
+                    <ul class="dropdown-menu dm-icon pull-right">
+                        <li class="skin-switch hidden-xs">
+                            <span class="ss-skin bgm-lightblue" data-skin="lightblue"></span>
+                            <span class="ss-skin bgm-bluegray" data-skin="bluegray"></span>
+                            <span class="ss-skin bgm-cyan" data-skin="cyan"></span>
+                            <span class="ss-skin bgm-teal" data-skin="teal"></span>
+                            <span class="ss-skin bgm-orange" data-skin="orange"></span>
+                        </li>
+                        <li class="divider hidden-xs"></li>
+                        <li class="hidden-xs">
+                            <a data-action="fullscreen" href=""><i class="zmdi zmdi-fullscreen"></i> 全屏</a>
+                        </li>
+                        <li>
+                            <a data-action="clear-localstorage" href=""><i class="zmdi zmdi-delete"></i> 清除Storage</a>
+                        </li>
+                        <li>
+                            <a data-action="clear-loginout" href=""><i class="zmdi zmdi-power"></i> 退出系统</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+
+    <!-- Top Search Content -->
+    <div id="top-search-wrap">
+        <div class="tsw-inner">
+            <i id="top-search-close" class="zmdi zmdi-arrow-left"></i>
+            <input type="text">
+        </div>
+    </div>
+</header>
+
+<section id="main" data-layout="layout-1">
+
+    <section id="content">
+        <div class="container-fullindex">
+            <div class="row">
+                <div class="col-sm-2 col-xs-3">
+                    <div class="z-depth-2-top color-block bgm-red">
+                        <a href="home.html"><span class="f-18"><i class="tm-icon zmdi zmdi-notifications"></i> 地理信息系统</span></a>
+                    </div>
+                </div>
+                <div class="col-sm-2 col-xs-3">
+                    <div class="z-depth-2-top color-block bgm-yellow">
+                        <span class="f-18"><i class="tm-icon zmdi zmdi-notifications"></i> 收储可视化系统</span>
+                    </div>
+                </div>
+                <div class="col-sm-2 col-xs-3">
+                    <div class="z-depth-2-top color-block bgm-green">
+                        <span class="f-18"><i class="tm-icon zmdi zmdi-notifications"></i> 储备粮监管</span>
+                    </div>
+                </div>
+                <div class="col-sm-2 col-xs-3">
+                    <div class="z-depth-2-top color-block bgm-blue">
+                        <span class="f-18"><i class="tm-icon zmdi zmdi-notifications"></i> 粮食仓储管理</span>
+                    </div>
+                </div>
+                <div class="col-sm-2 col-xs-3">
+                    <div class="z-depth-2-top color-block bgm-red">
+                        <span class="f-18"><i class="tm-icon zmdi zmdi-notifications"></i> 应急保障系统</span>
+                    </div>
+                </div>
+                <div class="col-sm-2 col-xs-3">
+                    <div class="z-depth-2-top color-block bgm-red">
+                        <span class="f-18"><i class="tm-icon zmdi zmdi-notifications"></i> 粮食信用评估</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2 col-xs-3">
+                    <div class="z-depth-2-top color-block bgm-red">
+                        <span class="f-18"><i class="tm-icon zmdi zmdi-notifications"></i> 粮食财会管理</span>
+                    </div>
+                </div>
+                <div class="col-sm-2 col-xs-3">
+                    <div class="z-depth-2-top color-block bgm-indigo">
+                        <span class="f-18"><i class="tm-icon zmdi zmdi-notifications"></i> 安全生产管理</span>
+                    </div>
+                </div>
+                <div class="col-sm-2 col-xs-3">
+                    <div class="z-depth-2-top color-block bgm-teal">
+                        <span class="f-18"><i class="tm-icon zmdi zmdi-notifications"></i> 数据中心</span>
+                    </div>
+                </div>
+                <div class="col-sm-2 col-xs-3">
+                    <div class="z-depth-2-top color-block bgm-amber">
+                        <span class="f-18"><i class="tm-icon zmdi zmdi-notifications"></i> 运行维护</span>
+                    </div>
+                </div>
+                <div class="col-sm-2 col-xs-3">
+                    <div class="z-depth-2-top color-block bgm-orange">
+                        <span class="f-18"><i class="tm-icon zmdi zmdi-notifications"></i> 权限分配</span>
+                    </div>
+                </div>
+                <div class="col-sm-2 col-xs-3">
+                    <div class="z-depth-2-top color-block bgm-lightgreen">
+                        <span class="f-18"><i class="tm-icon zmdi zmdi-notifications"></i> 版本控制</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-9 col-sm-9">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6">
+                            <div id="site-visits" class="dash-widget-item bgm-teal">
+                                <div class="dash-widget-header">
+                                    <div class="p-20">
+                                        <div class="dash-widget-visits"></div>
+                                    </div>
+
+                                    <div class="dash-widget-title f-18">全省近7年库存统计（吨）</div>
+
+                                </div>
+
+                                <div class="p-20">
+                                    <h3 class="m-0 f-400 ">2017年</h3>
+
+                                    <small>库存总量</small>
+                                    <h3 class="m-0 f-400">312908吨</h3>
+
+                                    <br/>
+
+                                    <small>自有仓容</small>
+                                    <h3 class="m-0 f-400">867923吨</h3>
+
+                                    <br/>
+
+                                    <small>对接仓容</small>
+                                    <h3 class="m-0 f-400">465780吨</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6">
+                            <div id="pie-charts" class="dash-widget-item">
+                                <div class="bgm-lightgreen">
+                                    <div class="dash-widget-header">
+                                        <div class="dash-widget-title f-18">全省总仓容</div>
+                                    </div>
+
+                                    <div class="clearfix"></div>
+
+                                    <div class="text-center p-20 m-t-25">
+                                        <div class="easy-pie main-pie" data-percent="75">
+                                            <div class="percent">45</div>
+                                            <div class="pie-title">全省库存占比</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="p-t-20 p-b-20 text-center">
+                                    <div class="easy-pie sub-pie-1" data-percent="56">
+                                        <div class="percent">56</div>
+                                        <div class="pie-title">自有仓容</div>
+                                    </div>
+                                    <div class="easy-pie sub-pie-2" data-percent="84">
+                                        <div class="percent">84</div>
+                                        <div class="pie-title">设计仓容</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6">
+                            <div class="card">
+                                <div class="card-header ch-alt m-b-20">
+                                    <h2>通知通告 </h2>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="listview">
+                                        <a class="lv-item" href="">
+                                            <div class="media">
+                                                <div class="pull-left">
+                                                    <img class="lv-img-sm" src="../img/profile-pics/1.jpg" alt="">
+                                                </div>
+                                                <div class="media-body">
+                                                    <div class="lv-title">调研：轮台县棉花单产提升，后期天气影响采</div>
+                                                    <small class="lv-small">管理员发布于2017-07-07</small>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="lv-item" href="">
+                                            <div class="media">
+                                                <div class="pull-left">
+                                                    <img class="lv-img-sm" src="../img/profile-pics/2.jpg" alt="">
+                                                </div>
+                                                <div class="media-body">
+                                                    <div class="lv-title">张务锋同志在全国粮食行业“深化改革</div>
+                                                    <small class="lv-small">管理员发布于2017-07-07</small>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="lv-item" href="">
+                                            <div class="media">
+                                                <div class="pull-left">
+                                                    <img class="lv-img-sm" src="../img/profile-pics/3.jpg" alt="">
+                                                </div>
+                                                <div class="media-body">
+                                                    <div class="lv-title">8月24日巢湖市市级储备稻谷竞价销售交易</div>
+                                                    <small class="lv-small">管理员发布于2017-07-07</small>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="lv-item" href="">
+                                            <div class="media">
+                                                <div class="pull-left">
+                                                    <img class="lv-img-sm" src="../img/profile-pics/4.jpg" alt="">
+                                                </div>
+                                                <div class="media-body">
+                                                    <div class="lv-title">江苏省与西藏拉萨市召开对口援助座</div>
+                                                    <small class="lv-small">管理员发布于2017-07-07</small>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="lv-item" href="">
+                                            <div class="media">
+                                                <div class="pull-left">
+                                                    <img class="lv-img-sm" src="../img/profile-pics/4.jpg" alt="">
+                                                </div>
+                                                <div class="media-body">
+                                                    <div class="lv-title">江苏省与西藏拉萨市召开对口援助座</div>
+                                                    <small class="lv-small">管理员发布于2017-07-07</small>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="lv-footer" href="">了解更多</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h2>粮食品种库存统计</h2>
+                                </div>
+
+                                <div class="card-body card-padding">
+                                    <div id="pie-chart" class="flot-chart-pie" style="height:100px;"></div>
+                                    <div class="flc-pie hidden-xs"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h2>粮食性质库存统计</h2>
+                                </div>
+
+                                <div class="card-body card-padding">
+                                    <div id="pie-chart1" class="flot-chart-pie" style="height:100px;"></div>
+                                    <div class="flc-pie hidden-xs"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h2>粮食等级库存统计</h2>
+                                </div>
+
+                                <div class="card-body card-padding">
+                                    <div id="pie-chart2" class="flot-chart-pie" style="height:100px;"></div>
+                                    <div class="flc-pie hidden-xs"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-3">
+                    <div >
+                        <div id="weather">
+                            <iframe src="http://58.214.246.30:3698/weather2/weathernew.html" frameborder="0" scrolling="no" width="100%" height="650"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <!-- Recent Items -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>全省各区县库存实时分布</h2>
+                        </div>
+
+                        <div class="card-body m-t-0">
+                            <table class="table table-inner table-vmiddle">
+                                <thead>
+                                <tr>
+                                    <th>区县</th>
+                                    <th>总仓容(吨)</th>
+                                    <th>实时库存(吨)</th>
+                                    <th>更新时间</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>吉林市</td>
+                                    <td>111111</td>
+                                    <td class="f-500 c-cyan">112211</td>
+                                    <td>2017-08-08 12:12:12</td>
+                                </tr>
+                                <tr>
+                                    <td>吉林市</td>
+                                    <td>111111</td>
+                                    <td class="f-500 c-cyan">112211</td>
+                                    <td>2017-08-08 12:12:12</td>
+                                </tr>
+                                <tr>
+                                    <td>吉林市</td>
+                                    <td>111111</td>
+                                    <td class="f-500 c-cyan">112211</td>
+                                    <td>2017-08-08 12:12:12</td>
+                                </tr>
+                                <tr>
+                                    <td>吉林市</td>
+                                    <td>111111</td>
+                                    <td class="f-500 c-cyan">112211</td>
+                                    <td>2017-08-08 12:12:12</td>
+                                </tr>
+                                <tr>
+                                    <td>吉林市</td>
+                                    <td>111111</td>
+                                    <td class="f-500 c-cyan">112211</td>
+                                    <td>2017-08-08 12:12:12</td>
+                                </tr>
+                                <tr>
+                                    <td>吉林市</td>
+                                    <td>111111</td>
+                                    <td class="f-500 c-cyan">112211</td>
+                                    <td>2017-08-08 12:12:12</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="recent-items-chart" class="flot-chart"></div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+</section>
+
+<!-- Page Loader -->
+<div class="page-loader">
+    <div class="preloader pls-blue">
+        <svg class="pl-circular" viewBox="25 25 50 50">
+            <circle class="plc-path" cx="50" cy="50" r="20" />
+        </svg>
+
+        <p>Please wait...</p>
+    </div>
+</div>
+
+<!-- Older IE warning message -->
+<!--[if lt IE 9]>
+<div class="ie-warning">
+    <h1 class="c-white">Warning!!</h1>
+    <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
+    <div class="iew-container">
+        <ul class="iew-download">
+            <li>
+                <a href="http://www.google.com/chrome/">
+                    <img src="img/browsers/chrome.png" alt="">
+                    <div>Chrome</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.mozilla.org/en-US/firefox/new/">
+                    <img src="img/browsers/firefox.png" alt="">
+                    <div>Firefox</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.opera.com">
+                    <img src="img/browsers/opera.png" alt="">
+                    <div>Opera</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.apple.com/safari/">
+                    <img src="img/browsers/safari.png" alt="">
+                    <div>Safari</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                    <img src="img/browsers/ie.png" alt="">
+                    <div>IE (New)</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <p>Sorry for the inconvenience!</p>
+</div>
+<![endif]-->
+
+<!-- Javascript Libraries -->
+<script src="../vendors/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<script src="../vendors/bower_components/flot/jquery.flot.js"></script>
+<script src="../vendors/bower_components/flot/jquery.flot.resize.js"></script>
+<script src="../vendors/bower_components/flot/jquery.flot.pie.js"></script>
+<script src="../vendors/bower_components/flot.curvedlines/curvedLines.js"></script>
+<script src="../vendors/sparklines/jquery.sparkline.min.js"></script>
+<script src="../vendors/bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
+
+<script src="../vendors/bower_components/moment/min/moment.min.js"></script>
+<script src="../vendors/bower_components/Waves/dist/waves.min.js"></script>
+<script src="../vendors/bootstrap-growl/bootstrap-growl.min.js"></script>
+<script src="../vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.min.js"></script>
+<script src="../vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+
+<!-- Placeholder for IE9 -->
+<!--[if IE 9 ]>
+<script src="../vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
+<![endif]-->
+
+<script src="../js/flot-charts/curved-line-chart.js"></script>
+<script src="../js/flot-charts/line-chart.js"></script>
+<script src="../js/flot-charts/pie-chart.js"></script>
+<script src="../js/charts.js"></script>
+<script src="../js/functions.js"></script>
+
+
+</body>
+</html>

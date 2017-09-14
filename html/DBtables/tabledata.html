@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据</title>
+    <script src="../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
+
+    <script src="../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link href="../../vendors/bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+
+    <script type="text/javascript" src="../../vendors/bootstrap-table/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="../../vendors/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+    <link href="../../vendors/bootstrap-table/bootstrap-table.min.css">
+
+    <script src="../../vendors/bootstrap-dialog/bootstrap-dialog.min.js"></script>
+    <link href="../../vendors/bootstrap-dialog/bootstrap-dialog.min.css">
+    <!-- CSS -->
+    <link href="../../css/app.min.1.css" rel="stylesheet">
+    <link href="../../css/app.min.2.css" rel="stylesheet">
+
+    <link href="../../vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
+    <link href="../../vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.css" rel="stylesheet">
+    <link href="../../vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css"
+          rel="stylesheet">
+    <link href="../../vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css"
+          rel="stylesheet">
+    <link href="../../vendors/bootgrid/jquery.bootgrid.min.css" rel="stylesheet">
+    <link href="../../css/bootstrap-editable.css">
+    <link href="../../vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.min.css">
+    <style>
+        #btn_del{
+            margin-left: 20px;
+        }
+        #btn_sub{
+            margin-left: 40px;
+        }
+        .search{
+            margin-left: 40px;
+        }
+        .columns-right{
+            margin-right: -500px;
+        }
+        #toolbar{
+            margin-right: 150px;
+        }
+        .popover-content div{
+            margin-top: 5px;
+            display: inline;
+        }
+        .popover-content button{
+            margin-left: 5px;
+        }
+
+    </style>
+
+</head>
+<body>
+<header id="header-2" class="clearfix" data-current-skin="blue">
+    <ul class="header-inner">
+        <li class="logo hidden-xs">
+            <a id="title" href="javascript:void(0)" onclick="location.reload()"></a>
+
+        </li>
+    </ul>
+</header>
+
+<section id="main">
+    <section id="content">
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <span id="errorspan" style="display: none">数据出错！请联系管理员</span>
+                    <div id="toolbar">
+                        <div class="form-group col-sm-2">
+                            <button id="btn_add" class="btn btn-primary waves-effect"><i class="zmdi zmdi-plus zmdi-hc-fw"></i>新增行</button>
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <button id="btn_del" class="btn btn-danger waves-effect"><i class="zmdi zmdi-minus zmdi-hc-fw"></i>删除行</button>
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <button id="btn_sub" class="btn btn-info waves-effect"><i class="zmdi zmdi-check zmdi-hc-fw"></i>提交新数据</button>
+                        </div>
+                        <!--<select class="form-control">-->
+                            <!--<option value="basic">当前数据</option>-->
+                            <!--<option value="all">全部数据</option>-->
+                            <!--<option value="selected">选中数据</option>-->
+                        <!--</select>-->
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table id="main_table"></table>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</section>
+
+<footer id="footer" style="height:10px;position:absolute;bottom:5px;left:0px;
+    padding-top: 0px;">
+    版权所有：无锡中科智远科技有限公司@2017
+</footer>
+<!-- Page Loader -->
+<div class="page-loader">
+    <div class="preloader pls-blue">
+        <svg class="pl-circular" viewBox="25 25 50 50">
+            <circle class="plc-path" cx="50" cy="50" r="20" />
+        </svg>
+
+        <p>Please wait...</p>
+    </div>
+</div>
+<!-- Older IE warning message -->
+<!--[if lt IE 9]>
+<div class="ie-warning">
+    <h1 class="c-white">Warning!!</h1>
+    <p>系统只支持360急速、chrome44版本浏览器</p>
+    <div class="iew-container">
+        <ul class="iew-download">
+            <li>
+                <a href="http://www.google.com/chrome/">
+                    <img src="../../img/browsers/chrome.png" alt="">
+                    <div>Chrome</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.mozilla.org/en-US/firefox/new/">
+                    <img src="../../img/browsers/firefox.png" alt="">
+                    <div>Firefox</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.opera.com">
+                    <img src="../../img/browsers/opera.png" alt="">
+                    <div>Opera</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.apple.com/safari/">
+                    <img src="../../img/browsers/safari.png" alt="">
+                    <div>Safari</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                    <img src="../../img/browsers/ie.png" alt="">
+                    <div>IE (New)</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <p>Sorry for the inconvenience!</p>
+</div>
+<![endif]-->
+<script src="../../js/bootstrap-editable.js"></script>
+<script src="../../js/bootstrap-table-editable.js"></script>
+<script type="text/javascript" src="../../vendors/bootstrap-growl/bootstrap-growl.min.js"></script>
+<script type="text/javascript" src="../../vendors/bootstrap-table/bootstrap-table-export.js"></script>
+<script type="text/javascript" src="../../vendors/bootstrap-table/tableExport.js"></script>
+<script src="tabledata.js"></script>
+<script src="../../js/common.js"></script>
+<script src="../../js/functions.js"></script>
+<!-- Javascript Libraries -->
+<script src="../../vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="../../vendors/bower_components/Waves/dist/waves.min.js"></script>
+<script src="../../vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.min.js"></script>
+<!--<script src="../../vendors/bootgrid/jquery.bootgrid.updated.min.js"></script>-->
+
+<!-- Placeholder for IE9 -->
+<!--[if IE 9 ]>
+<script src="../../vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
+<![endif]-->
+
+</body>
+
+</html>

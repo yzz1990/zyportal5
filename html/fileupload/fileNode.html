@@ -1,0 +1,201 @@
+<style>
+.pv-main{
+    border-radius: 50%;
+    width: 130px;
+    position: absolute;
+    height: 130px;
+    bottom: -50px;
+    left: 50%;
+    margin-left: -65px;
+    -webkit-transition: all;
+    -o-transition: all;
+    transition: all;
+    -webkit-transition-duration: 300ms;
+    transition-duration: 300ms;
+}
+/*@keyframes dese{
+    0% { transform: rotate(-12deg); } !* 添加旋转角度，以下类似 *!
+    20% { transform: rotate(8deg); }
+    30% { transform: rotate(6deg); }
+    40% { transform: rotate(3deg); }
+    55% { transform: rotate(0deg); }
+    70% { transform: rotate(-4deg); }
+    80% { transform: rotate(7deg); }
+    90% { transform: rotate(-8deg); }
+}
+.filenone{
+    -webkit-animation: dese .75s linear infinite;
+    -moz-animation: dese .75s linear infinite;
+    -ms-animation: dese .75s linear infinite;
+    -o-animation: dese .75s linear infinite;
+    animation: dese .75s linear infinite;
+}*/
+.choose{
+    color:#333;
+    }
+.choose:hover{
+    color: #2196f3;
+}
+    .mychose{
+        color: #2196f3;
+    }
+.file-box {
+    float: left;
+    width: 24.5%;
+    height: 31%;
+    margin-top: 0.5%;
+}
+.myfile {
+    height: 100%;
+    border: 1px solid #e7eaec;
+    padding: 0;
+    background-color: #ffffff;
+    position: relative;
+    margin-bottom: 2%;
+    margin-left: 5%;
+}
+
+.myfile .icon, .myfile .image {
+    height: 59.5%;
+    overflow: hidden;
+}
+.myfile .file-name {
+    height: 40.3%;
+    padding: 5%;
+    background-color: #f8f8f8;
+    border-top: 1px solid #e7eaec;
+}
+.file-name small {
+    color: #676a6c;
+}
+.myfile .icon {
+    padding: 7.7% 5%;
+    text-align: center;
+}
+.myfile .icon i {
+    font-size: 70px;
+    color: #dadada;
+}
+/*.dotting {
+    display: inline-block; width: 10px; min-height: 2px;
+    padding-right: 2px;
+    border-left: 2px solid currentColor; border-right: 2px solid currentColor;
+    background-color: currentColor; background-clip: content-box;
+    box-sizing: border-box;
+    animation: dot 4s infinite step-start both;
+
+}
+.dotting:before { content: '...'; } !* IE8 *!
+.dotting::before { content: ''; }
+:root .dotting { margin-left: 2px; padding-left: 2px; } !* IE9+ *!
+
+@keyframes dot {
+    25% { border-color: transparent; background-color: transparent; }          !* 0个点 *!
+    50% { border-right-color: transparent; background-color: transparent; }    !* 1个点 *!
+    75% { border-right-color: transparent; }                                   !* 2个点 *!
+}*/
+#covered {
+    position:absolute;
+    width:100%;
+    height:100%;
+    background-color:Black;
+    opacity:0.3;
+    z-index: 888;
+    text-align: center;
+    padding-top: 80%;
+}
+    #cssupload{
+        border: 1px solid #d8d4d4;
+        width: 22%;
+        float: left;
+        display: inline-block;
+        border-radius: 3px;
+    }
+    #cssmycard{
+        border-radius: 3px;
+        border-bottom:1px solid #d8d4d4;
+    }
+    #cssmytree{
+        height: 90%;
+        overflow: auto;
+    }
+    #csschoose{
+        float: left;
+        width: 80%;
+        padding-top: 1%;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    #cssmyupload{
+        float: right;padding-top: 1%;
+    }
+    #myfile{
+        width: 100%;
+        height: 100%;
+        margin: 0;
+    }
+    #cssmyfile{
+        width: 100%;
+        height: 90%;
+        border-radius: 3px;
+        float: left;
+        overflow:auto;
+    }
+</style>
+<div class="card">
+    <div class="card-body card-padding" style="overflow: hidden;">
+           <div class="col-sm-13 upload" id="cssupload"  >
+               <div  style="height: 100%;">
+                   <div class="card-header ch-alt" id="cssmycard" >
+                       <h2 style="font-weight: bold"><i class="zmdi zmdi-storage zmdi-hc-fw"></i>文件目录</h2>
+                       <ul class="actions">
+                           <li class="dropdown">
+                               <a href="" data-toggle="dropdown" aria-expanded="false">
+                                   <i class="zmdi zmdi-more-vert"></i>
+                               </a>
+                               <ul class="dropdown-menu dropdown-menu-right">
+                                   <li>
+                                       <a href="javascript:void(0);" onclick="createNode()"><i class="zmdi zmdi-plus zmdi-hc-fw"></i>新建目录</a>
+                                   </li>
+                                   <li>
+                                       <a href="javascript:void(0);" onclick="delNode()"><i class="zmdi zmdi-delete zmdi-hc-fw"></i>删除目录</a>
+                                   </li>
+                                   <li>
+                                       <a href="javascript:void(0);" onclick="editNode()"><i class="zmdi zmdi-edit zmdi-hc-fw"></i>编辑目录</a>
+                                   </li>
+                               </ul>
+                           </li>
+                       </ul>
+                   </div>
+                   <div id="cssmytree"  >
+                       <ul id="fileTree" class="ztree"></ul>
+                                    </div>
+               </div>
+           </div>
+        <div  style="width: 77%;float: right;" class="upload">
+            <div  style="width: 100%;height: 10%;float: left">
+             <div id="csschoose">
+                 <a href="javascript:void(0);" class="choose" onclick="reloadFiles('img')"><i class="zmdi zmdi-image-alt zmdi-hc-fw"></i><span>图片</span></a>
+                 &nbsp;&nbsp;
+                 <a href="javascript:void(0);" class="choose" onclick="reloadFiles('video')"><i class="zmdi zmdi-caret-right-circle zmdi-hc-fw"></i><span>视频</span></a>
+                 &nbsp;&nbsp;
+                 <a href="javascript:void(0);" class="choose" onclick="reloadFiles('music')"><i class="zmdi zmdi-audio zmdi-hc-fw"></i><span>音乐</span></a>
+                 &nbsp;&nbsp;
+                 <a href="javascript:void(0);" class="choose" onclick="reloadFiles('office')"><i class="zmdi zmdi-file zmdi-hc-fw"></i><span>office文档</span></a>
+                 &nbsp;&nbsp;
+                 <a href="javascript:void(0);" class="choose" onclick="reloadFiles('others')"><i class="zmdi zmdi-folder-outline zmdi-hc-fw"></i><span>其他</span></a>
+             </div>
+
+                <div id="cssmyupload" >
+                    <button  class="btn btn-default btn-icon-text waves-effect pull-right" onclick="openUpload();"><i class="zmdi zmdi-upload zmdi-hc-fw"></i>文件上传</button>
+                </div>
+            </div>
+            <div id="cssmyfile" >
+<div class="row"  id="myfile">
+    </div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="fileupload/fileupload.js"></script>

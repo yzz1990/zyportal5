@@ -1,0 +1,83 @@
+
+<style>
+    .modal-dialog{
+        width: 60%;
+    }
+    /*单选多选换行对齐开始*/
+    .checkbox-inline + .checkbox-inline {
+        margin-left: 0;
+    }
+    .radio-inline + .radio-inline, .checkbox-inline + .checkbox-inline {
+        margin-left: 0;
+    }
+
+</style>
+<div id="div_container" class="row div_father" style="">
+    <div class="pm-body clearfix">
+        <div class="tab-content">
+            <div class="pmb-block tab-pane active" id="basicInfo_div">
+                <form id="form_addOrUpdate" class="form-horizontal">
+                    <div class="card">
+                        <div class="card-body card-padding">
+                            <div class="form-group">
+                                <label for="form_name" class="col-sm-2 control-label"><span class="span_required">*</span>角色名称</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <input name="name" type="text" class="form-control input-sm" id="form_name" placeholder="角色名称">
+                                    </div>
+                                </div>
+                                <label for="form_identification" class="col-sm-2 control-label"><span class="span_required">*</span>标识</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <input name="identification" type="text" class="form-control input-sm" id="form_identification" placeholder="标识">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="form_sort" class="col-sm-2 control-label"><span class="span_required">*</span>排序</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <input name="sort" type="text" class="form-control input-sm" id="form_sort" placeholder="排序">
+                                    </div>
+                                </div>
+                                <label  class="col-sm-2 control-label">是否启用</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <label class="radio radio-inline m-r-20">
+                                            <input type="radio" name="status" value="1" checked class="form_status" onclick="form_statushideClick(this);">
+                                            <i class="input-helper"></i>是
+                                        </label>
+                                        <label class="radio radio-inline m-r-20">
+                                            <input type="radio" name="status" value="0"  class="form_status" onclick="form_statushideClick(this);">
+                                            <i class="input-helper"></i>否
+                                        </label>
+                                        <input type="hidden" id="form_statushide" value="1">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="form_description" class="col-sm-2 control-label">描述</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <input name="description" type="text" class="form-control input-sm" id="form_description" placeholder="描述">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="background/role/addOrUpdate.js"></script>
+
+
+

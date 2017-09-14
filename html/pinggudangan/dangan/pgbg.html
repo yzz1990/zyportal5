@@ -1,0 +1,190 @@
+<style>
+    .print {
+        position: absolute;
+        right: 15px;
+        top: 20px;
+    }
+    #table_pdk th,#table_pdk td{
+        text-align: center;
+        vertical-align: middle;
+    }
+    #table_pdk .tdw1{
+        width: 6%;
+    }
+    #div_pdk p{
+        margin-top: 10px;
+        padding-left: 20px;
+        color: #FF6600;
+    }
+    #myPrintArea #myPrintArea_tab1 tr td:first-child{
+        text-align: right;
+    }
+    #myPrintArea #myPrintArea_tab2 tr td{
+        border: none;
+    }
+</style>
+<div id="myPrintArea" style="height: 550px;overflow-y: auto;">
+        <div class="block-header">
+            <h1 class="text-center"><strong>评估报告</strong></h1>
+            <button onclick="pdjgPrint()"  class="btn bgm-lightblue btn-icon-text waves-effect print">
+                <i class="zmdi zmdi-print zmdi-hc-fw"></i>打印
+            </button>
+        </div>
+        <table id="myPrintArea_tab1" class="table table-bordered" style="border: 1px solid #f0f0f0;">
+            <colgroup>
+                <col width="20%" />
+                <col width="65%" />
+                <col width="15%" />
+            </colgroup>
+            <tr>
+                <td>评估编号</td>
+                <td>&nbsp;</td>
+                <td rowspan="5" style="text-align: center;vertical-align:middle;padding-right: 10px;">
+                    <img  src="./pinggudangan/photo.png" style="width:100%;height: 100%;"/>
+                </td>
+            </tr>
+            <tr>
+                <td>评估日期</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>评估原因</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>姓名</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>性别</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>出生日期</td>
+                <td colspan="2">&nbsp;</td>
+            </tr>
+            <tr>
+                <td>评估机构</td>
+                <td colspan="2">&nbsp;</td>
+            </tr>
+            <tr>
+                <td>执行评估员</td>
+                <td colspan="2">&nbsp;</td>
+            </tr>
+            <tr>
+                <td>一级指标分级</td>
+                <td colspan="2">&nbsp;</td>
+            </tr>
+            <tr>
+                <td>老年人能力初步等级</td>
+                <td colspan="2">&nbsp;</td>
+            </tr>
+            <tr>
+                <td>评估日期</td>
+                <td colspan="2">&nbsp;</td>
+            </tr>
+            <tr>
+                <td>等级变更条款</td>
+                <td colspan="2">&nbsp;</td>
+            </tr>
+            <tr>
+                <td>老年人能力最终等级</td>
+                <td colspan="2">&nbsp;</td>
+            </tr>
+            <tr>
+                <td>护理等级</td>
+                <td colspan="2">&nbsp;</td>
+            </tr>
+        </table>
+        <table id="myPrintArea_tab2" class="table table-bordered signature" style="border: 1px solid #f0f0f0;">
+            <colgroup>
+                <col width="60%" />
+                <col width="40%" />
+            </colgroup>
+            <tr >
+                <td >
+                    <div class="field" style="float: left;width: 150px;text-align: right;" >
+                        评估员签名&nbsp;&nbsp;
+                    </div>
+                    <div style="float: left;text-decoration: underline;">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <div class="ud" style="float: left;"><strong>&nbsp;&nbsp;、&nbsp;&nbsp;</strong></div>
+                    <div style="float: left;text-decoration: underline;">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                </td>
+                <td >
+                    <div class="field" style="float: left;">日期&nbsp;&nbsp;</div>
+                    <div style="float: left;text-decoration: underline;">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <div class="field" style="float: left;">年</div>
+                    <div style="float: left;text-decoration: underline;">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <div class="field" style="float: left;">月</div>
+                    <div style="float: left;text-decoration: underline;">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <div class="field" style="float: left;">日</div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="field" style="float: left;width: 150px;text-align: right;" >评估员机构签章&nbsp;&nbsp;</div>
+                    <div style="float: left;text-decoration: underline;">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                </td>
+                <td>
+                    <div class="field" style="float: left;">日期&nbsp;&nbsp;</div>
+                    <div style="float: left;text-decoration: underline;">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <div class="field" style="float: left;">年</div>
+                    <div style="float: left;text-decoration: underline;">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <div class="field" style="float: left;">月</div>
+                    <div style="float: left;text-decoration: underline;">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <div class="field" style="float: left;">日</div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="field" style="float: left;width: 150px;text-align: right;" >信息提供人签章&nbsp;&nbsp;</div>
+                    <div style="float: left;text-decoration: underline;">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                </td>
+                <td>
+                    <div class="field" style="float: left;">日期&nbsp;&nbsp;</div>
+                    <div style="float: left;text-decoration: underline;">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <div class="field" style="float: left;">年</div>
+                    <div style="float: left;text-decoration: underline;">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <div class="field" style="float: left;">月</div>
+                    <div style="float: left;text-decoration: underline;">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <div class="field" style="float: left;">日</div>
+                </td>
+            </tr>
+        </table>
+        <table id="myPrintArea_tab3" class="table table-bordered" style="border: 1px solid #f0f0f0;">
+            <tr>
+                <td>
+                    <p>&nbsp;&nbsp;注：老年人能力评估结果判定卡使用时，一般根据日常生活活动能力进行初步定位，锁定目标区域，然后根据其他三项能力在判定卡上同一颜色区域定位查找相应的能力等级。以下为几种特殊情况：</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）当日常生活活动为0，精神认知、感知觉与沟通有一项为1及以上，或者社会参与为2或以上，判定为轻度失能。</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）当日常生活活动为1时，后三项有一项为0或1，判定为轻度失能；后三项均为2及以上或一项为3，则判定为中度失能。</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（3）当日常生活活动为2时，后三项全部为2以上或某一项为3，判定为重度失能，否则为中度失能。</p>
+                </td>
+            </tr>
+        </table>
+</div>

@@ -1,0 +1,238 @@
+<style>
+    .special{
+        background-color: white;
+        border-bottom: solid 1px #a8a8a8
+    }
+
+</style>
+<div class="card" id="profile-main" style="margin-bottom: 0;">
+    <div class="pm-overview c-overflow mCustomScrollbar _mCS_3 mCS-autoHide" style="overflow: visible;">
+        <div class="ms-menu">
+            <div class="ms-block">
+                <a class="btn btn-primary btn-block waves-effect"><span id="sel_title">在线用户</span></a>
+            </div>
+            <div class="listview lv-user m-t-20" id="onlinelist">
+
+            </div>
+        </div>
+    </div>
+    <div class="pm-body clearfix">
+        <div class="card">
+            <div class="card-body card-padding">
+                <div class="row" id="mainEchart" style="overflow: auto">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    /**
+     * 1、根据在线用户管理的gps信息，在地图上标出 并闪烁
+     * 2、js定时去抓取在线数量
+     * 3、tip标出具体的用户信息
+     * 4、最新登录的5个 光晕比较亮
+     * 5、在用户登录时记录gps，用h5获取，但是要用户接受打开位置的请求，如果拒绝，我们可以根据归属地获取城市中心的gps数据 保存为用户的位置在用户表、实时在线redis中增加字段保留当前城市的gps，如果获取到具体的用户位置 则update掉城市的gps
+     * @type {Array}
+     */
+    var data = [];
+    var mapCentr = [];
+    var $list = $('#onlinelist');
+    $(document).ready(function () {
+        $("#mainEchart").height(clientHeight - 185);
+        $("#card").height(clientHeight - 135);
+        loadData();
+        //每1分钟去更新一次在线人数
+        setInterval("loadData()", "60000");
+    });
+
+    function loadData() {
+        var result = [];
+        getData_async(
+            'post',
+            '/sys/sysRedis/getOnlineUserList',
+            null,
+            'json',
+            function (obj) {
+                $list.empty();
+                var vlist = [];
+                var tempDate = obj.data.rows;
+                var currentime = new Date().getTime();
+                $.each(tempDate, function (index, cell) {
+                    var lng = cell.lng == '' ? 116.408868 : cell.lng;
+                    var lat = cell.lat == '' ? 39.911393 : cell.lat;
+                    var time = currentime - cell.updateDate;
+                    var coordinates;
+                    if (time <= 1000 * 60 * 5) {
+                        coordinates = [parseFloat(lng), parseFloat(lat), 200];
+                    } else if (time <= 1000 * 60 * 10) {
+                        coordinates = [parseFloat(lng), parseFloat(lat), 170];
+                    } else if (time <= 1000 * 60 * 15) {
+                        coordinates = [parseFloat(lng), parseFloat(lat), 150];
+                    } else if (time <= 1000 * 60 * 20) {
+                        coordinates = [parseFloat(lng), parseFloat(lat), 120];
+                    } else {
+                        coordinates = [parseFloat(lng), parseFloat(lat), 100];
+                    }
+                    cell.name = cell.realname;
+                    cell.value = coordinates;
+                    var cell2 = {'name': cell.realname, 'time': cell.updateDate};
+                    vlist.push(cell2);
+                    data.push(cell);
+                })
+                listview(vlist);
+            },
+            function (obj) {
+                showtoastr("inverse", '未知错误');
+                return false;
+            }
+        );
+        refreshEchart();
+    }
+    function listview(obj) {
+        for (var i = 0; i < obj.length; i++) {
+            var unixTimestamp = new Date(parseInt(obj[i].time));
+            var commonTime = unixTimestamp.toLocaleString();
+            var insertHtml = '<div class="lv-item media special">' +
+                '<div class="lv-avatar pull-left" style="background-color:#1aa3d7">' + (i + 1) + '</div>' +
+                '<div class="media-body">' +
+                '<div class="lv-title">' + obj[i].name + '</div>' +
+                '<div class="lv-small">登录时间：' + commonTime + '</div>' +
+                '</div>' +
+                '</div>';
+            $list.append(insertHtml);
+        }
+    }
+
+
+    var chart = echarts.init(document.getElementById('mainEchart'));
+    //option
+    option = {
+        backgroundColor: '#404a59',
+        animation: true,
+        animationDuration: 1000,
+        animationEasing: 'cubicInOut',
+        animationDurationUpdate: 1000,
+        animationEasingUpdate: 'cubicInOut',
+        title: [{
+            text: '用户实时在线分布图',
+            subtext: '在线用户的坐标位置',
+            left: 'left',
+            textStyle: {
+                color: '#fff',
+                fontSize: 20
+            }
+        }],
+        toolbox: {
+            iconStyle: {
+                normal: {
+                    borderColor: '#fff'
+                },
+                emphasis: {
+                    borderColor: '#b1e4ff'
+                }
+            },
+            feature: {
+                restore: {
+                    title: '刷新'
+                },
+                saveAsImage: {
+                    type: 'jpeg',
+                }
+            },
+            right: '2%'
+        },
+        legend: {
+            orient: 'vertical',
+            y: 'bottom',
+            x: 'left',
+            data: ['在线'],
+            textStyle: {
+                color: '#fff'
+            }
+        },
+        geo: {
+            map: 'china',
+            left: 'auto',
+            right: 'auto',
+            center: [95.569774, 36.312287],
+            zoom: 1.3,
+            label: {
+                emphasis: {
+                    show: false
+                }
+            },
+            roam: true,
+            itemStyle: {
+                normal: {
+                    borderColor: 'rgba(100,149,237,1)',
+                    borderWidth: 1.5,
+                    areaColor: '#323c48',
+                },
+                emphasis: {
+                    areaColor: '#2a333d'
+                }
+            }
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter: function (params, ticket, callback) {
+                var unixTimestamp = new Date(parseInt(params.data.updateDate));
+                var commonTime = unixTimestamp.toLocaleString();
+                return "信息" + "<br />" +
+                    "用户名：" + params.name + "<br />" +
+                    "在线：" + params.seriesName + "<br />" +
+                    "更新时间：" + commonTime + "<br />" +
+                    "组织：" + params.data.organizeName + "<br />" +
+                    "IP：" + params.data.ip + "<br />" +
+                    "电话：" + params.data.tel + "<br />" +
+                    "位置：" + params.data.location + "<br />" +
+                    "坐标：" + params.data.value + "<br />";
+            }
+        },
+        series: [{
+            type: 'effectScatter',
+            name: '在线',
+            legendHoverLink: true,
+            coordinateSystem: 'geo',
+            data: data,
+            symbolSize: function (val) {
+                return val[2] / 10;
+            },
+            showEffectOn: 'render',
+            rippleEffect: {
+                brushType: 'stroke'
+            },
+            hoverAnimation: true,
+            label: {
+                normal: {
+                    formatter: '{b}',
+                    position: 'right',
+                    show: true
+                }
+            },
+            itemStyle: {
+                normal: {
+                    color: '#f4e925',
+                    shadowBlur: 10,
+                    shadowColor: '#333'
+                }
+            },
+            zlevel: 1
+        }]
+    };
+    chart.setOption(option);
+    window.onresize = chart.resize;
+    function refreshEchart() {
+        if (!chart) {
+            return;
+        }
+        //更新数据
+//        echarts.dispose(document.getElementById('mainEchart'));
+//        var option = chart.getOption();
+//        option.series[0].data = thisdata;
+//        var thischart = echarts.init(document.getElementById('mainEchart'));
+//        thischart.setOption(option);
+    }
+</script>

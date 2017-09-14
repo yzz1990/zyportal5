@@ -1,0 +1,38 @@
+
+<style>
+    .modal-dialog{
+        width: 60%;
+    }
+    /*单选多选换行对齐开始*/
+    .checkbox-inline + .checkbox-inline {
+        margin-left: 0;
+    }
+    .radio-inline + .radio-inline, .checkbox-inline + .checkbox-inline {
+        margin-left: 0;
+    }
+
+</style>
+<div id="div_container" class="row div_father" style="overflow-y: auto;">
+    <div class="pm-body clearfix">
+        <div class="tab-content">
+            <div class="pmb-block tab-pane active" id="basicInfo_div">
+                <form id="form_addOrUpdate" class="form-horizontal">
+                    <div class="card">
+                        <div class="card-body card-padding">
+                            <div class="form-group">
+                                <label for="addTagName" class="col-sm-3 col-sm-offset-3 control-label">请输入分组名称：</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <input name="addTagName" type="text" class="form-control input-sm" id="addTagName" placeholder="分组名称">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

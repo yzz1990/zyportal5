@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>主题活动</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!-- head 中 -->
+    <link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">
+    <style>
+        .swiper-container {
+            background-color: black;
+            width: 100%;
+        }
+        .swiper-container img {
+            display: block;
+            width: 100%;
+        }
+        .title{
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        #author{
+            margin-right: 20px;
+            padding-right: 20px;
+            text-align:right;
+            color:#999;
+        }
+        .read{
+            margin-left: 20px;
+            margin-right: 20px;
+            text-indent: 2em;
+            background:#e3e3e3 ;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .read span{
+            font-size: 14px;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body ontouchstart>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <!--D:\X-20170428-YL-0001 老人能力评估系统\03研发文件\10、源代码\webclient\zyportal5\img\headers\sm-->
+        <div class="swiper-slide"><img src="../../../img/headers/sm/1.png" /></div>
+        <div class="swiper-slide"><img src="../../../img/headers/sm/2.png" /></div>
+        <div class="swiper-slide"><img src="../../../img/headers/sm/3.png" /></div>
+        <div class="swiper-slide"><img src="../../../img/headers/sm/4.png" /></div>
+        <div class="swiper-slide"><img src="../../../img/headers/sm/5.png" /></div>
+        <div class="swiper-slide"><img src="../../../img/headers/sm/6.png" /></div>
+        <div class="swiper-slide"><img src="../../../img/headers/sm/7.png" /></div>
+        <div class="swiper-slide"><img src="../../../img/headers/sm/8.png" /></div>
+        <div class="swiper-slide"><img src="../../../img/headers/sm/9.png" /></div>
+    </div>
+    <div class="swiper-pagination"></div>
+</div>
+
+<div id="list" class="demos-content-padded">
+    <div class="title">“河长制”主题活动</div><br/>
+    <div id="author">作者：xxx</div>
+    <div class="read">
+        导读:<span>在活动中，教师和学生向过往行人发放“河长制”宣传单、清理沿江垃圾、讲解保护母亲河的重要性。学院专家还现场讲解。</span>
+    </div>
+    <div class="weui-media-box">
+        <p class="weui-media-box">
+            “河长制”，即由中国各级党政主要负责人担任“河长”，负责组织领导相应河湖的管理和保护工作。“河长制”工作的主要任务包括六个方面。
+            2016年10月11日，中共中央总书记、国家主席、中央军委主席、中央全面深化改革领导小组组长习近平主持召开中央全面深化改革领导小组第28次会议，
+            审议通过了《关于全面推行河长制的意见》。[1] 2016年12月，中国中共中央办公厅、国务院办公厅印发了《关于全面推行河长制的意见》，
+            并发出通知，要求各地区各部门结合实际认真贯彻落实。[2]
+        </p>
+        <p class="weui-media-box">
+            “河长制”，即由中国各级党政主要负责人担任“河长”，负责组织领导相应河湖的管理和保护工作。“河长制”工作的主要任务包括六个方面。
+            2016年10月11日，中共中央总书记、国家主席、中央军委主席、中央全面深化改革领导小组组长习近平主持召开中央全面深化改革领导小组第28次会议，
+            审议通过了《关于全面推行河长制的意见》。[1] 2016年12月，中国中共中央办公厅、国务院办公厅印发了《关于全面推行河长制的意见》，
+            并发出通知，要求各地区各部门结合实际认真贯彻落实。[2]
+        </p>
+    </div>
+</div>
+</body>
+
+<script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+<!-- 如果使用了某些拓展插件还需要额外的JS -->
+<script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/city-picker.min.js"></script>
+<script src="../js/swiper.js"></script>
+<script>
+    $(".swiper-container").swiper({
+        loop: true,
+        autoplay: 3000
+    });
+</script>
+</html>

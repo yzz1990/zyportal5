@@ -1,0 +1,150 @@
+<div class="card">
+    <div class="card-body">
+        <ul class="tab-nav tn-justified tn-icon" role="tablist">
+            <li role="presentation" class="active">
+                <a class="col-sx-4" href="#tab-1" aria-controls="tab-1" role="tab" data-toggle="tab">
+                    IM开发者账号参数
+                </a>
+            </li>
+            <li role="presentation">
+                <a class="col-xs-4" href="#tab-2" aria-controls="tab-2" role="tab" data-toggle="tab">
+                    IM聊天参数
+                </a>
+            </li>
+            <li role="presentation">
+                <a class="col-xs-4" href="#tab-3" aria-controls="tab-3" role="tab" data-toggle="tab">
+                    其他
+                </a>
+            </li>
+        </ul>
+
+        <div class="tab-content p-20">
+            <div role="tabpanel" class="tab-pane animated fadeIn in active" id="tab-1">
+                <div class="card-header">
+                    <h2>
+                        <small id="titleSmall">当前使用的开发者账号信息</small>
+                    </h2>
+                </div>
+                <div class="card-body card-padding">
+                    <form role="form" id="from" action="" method="post">
+                        <div class="form-group fg-line">
+                            <div class="form-group fg-line" style="display: none">
+                                <label>ID</label>
+                                <input type="text" class="form-control input-sm" id="id" name="id"
+                                       placeholder="id">
+                            </div>
+                            <div class="form-group fg-line">
+                                <label>ACCOUNT SID</label>
+                                <input type="text" class="form-control input-sm" id="accountSid" name="accountSid"
+                                       placeholder="account Sid">
+                            </div>
+                            <div class="form-group fg-line">
+                                <label>AUTH TOKEN</label>
+                                <input type="text" class="form-control input-sm" id="authToken" name="authToken"
+                                       placeholder="auth Token">
+                            </div>
+                            <label>APP ID</label>
+                            <input type="text" class="form-control input-sm" id="appId" name="appId" placeholder="app id">
+                        </div>
+                        <div class="form-group fg-line">
+                            <label>APP TOKEN</label>
+                            <input type="text" class="form-control input-sm" id="appToken" name="appToken"
+                                   placeholder="app token">
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="form-group fg-line">
+                                    <label>SERVER IP</label>
+                                    <input type="text" class="form-control input-sm" id="serverIp" name="serverIp"
+                                           placeholder="server ip">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group fg-line">
+                                    <label>SERVER PORT</label>
+                                    <input type="text" class="form-control input-sm" id="serverPort" name="serverPort"
+                                           placeholder="server Port">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group fg-line">
+                                    <label>SOFT VERSION</label>
+                                    <input type="text" class="form-control input-sm" id="softversion" name="softversion"
+                                           placeholder="soft version">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group fg-line">
+                            <label>BASE URL</label>
+                            <input type="text" class="form-control input-sm" id="baseurl" name="baseurl"
+                                   placeholder="base url">
+                        </div>
+                        <!--<div class="col-sm-2">-->
+                        <!--<div class="checkbox">-->
+                        <!--<label>-->
+                        <!--<input type="checkbox" value="">-->
+                        <!--<i class="input-helper"></i>-->
+                        <!--立即启用-->
+                        <!--</label>-->
+                        <!--</div>-->
+                        <!--</div>-->
+                        <div class="col-sm-4" style="margin-top: 20px">
+                            <button type="button" id="subbut" class="btn bgm-lightblue btn-icon-text waves-effect"><i
+                                    class="zmdi zmdi-wrench zmdi-hc-fw"></i>确定
+                            </button>
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+            <div role="tabpanel" class="tab-pane animated fadeIn" id="tab-2">
+
+            </div>
+
+            <div role="tabpanel" class="tab-pane animated fadeIn" id="tab-3">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".card").height(clientHeight - 160);
+        initdata();
+    })
+    function initdata() {
+        getData(
+            'post',
+            '/social/getDevelopAccount',
+            null,
+            'json',
+            function (obj) {
+                $('#id').val(obj.data.id);
+                $('#accountSid').val(obj.data.accountSid);
+                $('#authToken').val(obj.data.authToken);
+                $('#appId').val(obj.data.appId);
+                $('#appToken').val(obj.data.appToken);
+                $('#serverIp').val(obj.data.serverIp);
+                $('#serverPort').val(obj.data.serverPort);
+                $('#softversion').val(obj.data.softversion);
+                $('#baseurl').val(obj.data.baseurl);
+            }
+        )
+    }
+    $('#subbut').click(function () {
+        var $data = $('#from').serialize();
+        getData(
+            'post',
+            '/social/updateDevelopAccount',
+            $data,
+            'json',
+            function (obj) {
+                showtoastr("inverse", obj.desc);
+            }
+        )
+    });
+</script>

@@ -1,0 +1,94 @@
+<style>
+    .modal-dialog{
+        width: 60%;
+    }
+    /*单选多选换行对齐开始*/
+    .checkbox-inline + .checkbox-inline {
+        margin-left: 0;
+    }
+    .radio-inline + .radio-inline, .checkbox-inline + .checkbox-inline {
+        margin-left: 0;
+    }
+    .red{
+        color:red;
+    }
+</style>
+<div id="div_container" class="row div_father" style="overflow-y: auto;">
+    <div class="pm-body clearfix">
+        <div class="tab-content">
+            <div class="pmb-block tab-pane active" id="basicInfo_div">
+                <form id="form_addOrUpdate" class="form-horizontal">
+                    <div class="card">
+                        <div class="card-body card-padding">
+                            <div class="form-group">
+                                <label for="account" class="col-sm-2 control-label">账号</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <input name="account" type="text" class="form-control input-sm" id="account" placeholder="账号">
+                                    </div>
+                                </div>
+                                <label for="password" class="col-sm-3 control-label">密码</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <input name="password" type="password" class="form-control input-sm" id="password" placeholder="密码">
+                                    </div>
+                                </div>
+                                <div>
+                                    <i class="glyphicon glyphicon-eye-open" onclick="openEye('password',this)"></i>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="name" class="col-sm-2 control-label"><span class="red">*</span>名称</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <input name="name" type="text" class="form-control input-sm" id="name" placeholder="名称">
+                                    </div>
+                                </div>
+                                <label for="typecode" class="col-sm-3 control-label">类型</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <select id="typecode" class="selectpicker" data-live-search="true">
+                                            <option value="订阅号">订阅号</option>
+                                            <option value="服务号">服务号</option>
+                                            <option value="企业号">企业号</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="appid" class="col-sm-2 control-label"><span class="red">*</span>开发者账号</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <input name="appid" type="password" class="form-control input-sm" id="appid" placeholder="开发者账号">
+                                    </div>
+                                </div>
+                                <div class="col-sm-1">
+                                    <i class="glyphicon glyphicon-eye-open" onclick="openEye('appid',this)"></i>
+                                </div>
+                                <label for="appsecret" class="col-sm-2 control-label"><span class="red">*</span>开发者密码</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <input name="appsecret" type="password" class="form-control input-sm" id="appsecret" placeholder="开发者密码">
+                                    </div>
+                                </div>
+                                <div>
+                                    <i class="glyphicon glyphicon-eye-open" onclick="openEye('appsecret',this)"></i>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="iplist" class="col-sm-2 control-label">ip白名单</label>
+                                <div class="col-sm-3" >
+                                    <div class="fg-line">
+                                        <input name="iplist" type="text" class="form-control input-sm" id="iplist" placeholder="ip白名单">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="WeChatPlatform/gzhgl/addOrUpdate.js"></script>

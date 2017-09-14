@@ -1,0 +1,107 @@
+<style>
+    .print {
+        position: absolute;
+        right: 15px;
+        top: 20px;
+    }
+    #table_pdk th,#table_pdk td{
+        text-align: center;
+        vertical-align: middle;
+    }
+    #table_pdk .tdw1{
+        width: 6%;
+    }
+    #div_pdk p{
+        margin-top: 10px;
+        padding-left: 20px;
+        color: #FF6600;
+    }
+    #myPrintArea #myPrintArea_tab1 tr td:first-child{
+        text-align: right;
+    }
+    #myPrintArea #myPrintArea_tab2 tr td{
+        border: none;
+    }
+</style>
+<div id="myPrintArea" style="height: 550px;overflow-y: scroll;">
+    <div class="block-header">
+        <h1 class="text-center"><strong>老人基本信息</strong></h1>
+        <button onclick="pdjgPrint()"  class="btn bgm-lightblue btn-icon-text waves-effect print">
+            <i class="zmdi zmdi-print zmdi-hc-fw"></i>打印
+        </button>
+    </div>
+    <table id="myPrintArea_tab1" class="table table-bordered" style="border: 1px solid #f0f0f0;">
+        <colgroup>
+            <col width="20%" />
+            <col width="65%" />
+            <col width="15%" />
+        </colgroup>
+        <tr>
+            <td>姓名</td>
+            <td>&nbsp;</td>
+            <td rowspan="5" style="text-align: center;vertical-align:middle;padding-right: 10px;">
+                <img  src="./pinggudangan/photo.png" style="width:100%;height: 100%;"/>
+            </td>
+        </tr>
+        <tr>
+            <td>性别</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>宗教信仰</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>身份证号</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>文化程度</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>户籍地址</td>
+            <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+            <td>常住地址</td>
+            <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+            <td>居住状况</td>
+            <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+            <td>经济来源</td>
+            <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+            <td>医疗费用支付方式</td>
+            <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+            <td>婚宴状况</td>
+            <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+            <td>出生日期</td>
+            <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+            <td>社保卡号</td>
+            <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+            <td>民族</td>
+            <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+            <td>联系人姓名</td>
+            <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+            <td>联系人电话</td>
+            <td colspan="2">&nbsp;</td>
+        </tr>
+    </table>
+</div>

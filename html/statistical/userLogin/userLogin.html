@@ -1,0 +1,75 @@
+<style>
+    .zzycol{
+        width: 28%;
+        padding-right: 0px;
+        padding-left: 0px;
+        float: right;
+        font-weight: bold;
+    }
+    .mydate{
+        margin-right: 0px;
+        width: 70%;
+    }
+    .radio{
+        position: relative;
+        display: block;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .myrow{
+     padding-left: 5%;
+    }
+    .radio + .radio {
+        margin-top: 0px;
+    }
+    .col-sm-2{
+        width: 14%;
+    }
+    .dateSearch{
+        margin-right: 3%;
+    }
+
+
+</style>
+<div class="card">
+    <div class="card-body card-padding ">
+        <div class="row myrow">
+         <div class="form-group col-sm-2 radio"  style="font-weight: bold;">
+            <label class="myrname" style="font-weight: bold">
+                <input type="radio" value="" name="lgp"  onclick="loginUser('user')" id="olUser">
+                <i class="input-helper"  ></i>
+                当前登录用户
+            </label>
+
+        </div>
+            <div class="form-group col-sm-2 radio" >
+                <label class="rname" style="font-weight: bold">
+                    <input type="radio" value="" name="lgp" onclick="loginUser('all')" id="allUserLog">
+                    <i class="input-helper"></i>
+                   所有用户
+                </label>
+
+            </div>
+            <i data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="查询时间区域内当前用户或所有用户每日登录次数" title="" data-original-title="提示" class="zmdi zmdi-help-outline zmdi-hc-fw tip-all-right"></i>
+
+            <div class="form-group col-sm-1 dateSearch" style="float: right;">
+                <button class="btn bgm-lightblue btn-icon-text waves-effect"  onclick="searchpa()" ><i class="zmdi zmdi-search zmdi-hc-fw"></i>查询</button>
+            </div>
+            <div class="form-group col-sm-3 zzycol">
+                结束时间：
+                <input id="endDate" class="datainp wicon mydate" type="text" name="endtime" placeholder="结束时间" readonly="">
+            </div>
+            <div class="form-group col-sm-3 zzycol ">
+                开始时间：
+                <input id="startDate" class="datainp wicon mydate" type="text" name="starttime" placeholder="开始日期" readonly="">
+            </div>
+        </div>
+           <div class="row" id="treegridrow" >
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="statistical/userLogin/userLogin.js"></script>

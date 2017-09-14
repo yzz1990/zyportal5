@@ -1,0 +1,39 @@
+<div class="card">
+    <div class="card-body card-padding">
+        <div class="rows">
+            <div class="form-group col-sm-2" >
+                <select id="wxgzh" class="selectpicker" data-live-search="true" onchange="getWeChatId()">
+
+                </select>
+            </div>
+            <div class="form-group col-sm-2" >
+                <select id="type" class="selectpicker" data-live-search="true" onchange="getType()">
+                    <option value="-1">请选择发送类型</option>
+                    <option value="0">客服消息</option>
+                    <option value="1">群发消息</option>
+                </select>
+            </div>
+            <div class="form-group col-sm-2" >
+                <select id="msgtype" class="selectpicker" data-live-search="true" onchange="getMsgtype()">
+                    <option value="">请选择消息类型</option>
+                    <option value="文本消息">文本消息</option>
+                    <option value="图片消息">图片消息</option>
+                    <option value="图文消息">图文消息</option>
+                    <option value="语音消息">语音消息</option>
+                    <option value="视频消息">视频消息</option>
+                    <option value="音乐消息">音乐消息</option>
+                </select>
+            </div>
+            <div class="form-group col-sm-1">
+                <button class="btn bgm-lightblue btn-icon-text waves-effect" onclick="serachInfo()"><i class="zmdi zmdi-search zmdi-hc-fw"></i>查询</button>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row">
+            <table id="main_table1" class="table table-striped" >
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="WeChatPlatform/messageHistory/messageHistory.js"></script>

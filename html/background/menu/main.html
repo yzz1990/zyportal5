@@ -1,0 +1,376 @@
+
+<div class="card">
+    <div class="card-body card-padding">
+        <div class="rows">
+
+            <div class="form-group col-sm-1">
+                <button id="add" class="btn bgm-amber btn-icon-text waves-effect"><i class="zmdi zmdi-plus zmdi-hc-fw" ></i>添加</button>
+
+            </div>
+            <div class="form-group col-sm-1">
+                <button id="edit" class="btn bgm-lightblue btn-icon-text waves-effect"><i class="zmdi zmdi-edit zmdi-hc-fw"></i>编辑</button>
+            </div>
+            <div class="form-group col-sm-1">
+                <button id="del" class="btn btn-danger btn-icon-text waves-effect"><i class="zmdi zmdi-search zmdi-hc-fw"></i>删除</button>
+            </div>
+            <div class="form-group col-sm-2" >
+                <div class="fg-line">
+                    <input type="text" class="input-sm form-control fg-input" id="qxm"  placeholder="请输入权限名">
+                </div>
+            </div>
+            <div class="form-group col-sm-1">
+                <button class="btn bgm-lightblue btn-icon-text waves-effect" id="seachPos"><i class="zmdi zmdi-search zmdi-hc-fw"></i>查询</button>
+            </div>
+            <div style="float:right;">
+                <i data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="当前选中行为新添加节点的父节点" title="" data-original-title="提示" class="zmdi zmdi-help-outline zmdi-hc-fw"></i>
+            </div>
+            <div class="clearfix"></div>
+            <div class="row" id="treegridrow" style="overflow-y: auto;">
+                <table id="tb" class="table-hover">
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+
+
+    $(document).ready(function(){
+        $("#treegridrow").height(clientHeight - 240);
+        var formName='form_addOrUpdate';
+        var modelName='权限';
+        var addOrUpdateUrl='background/menu/addOrUpdate.html';
+        var queryUrl='/system/menu/getMenuAll';
+        var addUrl='/system/menu/add';
+        var editUrl='/system/menu/update';
+        var delUrl='/system/menu/del';
+        loadData();
+
+        var statusJson={
+            '1':'是',
+            '0': '否'
+        }
+
+        var menuType={
+            '0':'菜单',
+            '1': '操作',
+            '2': '前台展示菜单',
+            '3': '前台展示操作',
+            '4': '一级菜单',
+            '5': '二级菜单',
+            '6': '三级菜单'
+        }
+        var seachIndex=0;
+        var oldqxm='';
+        var count=0;
+        $('#seachPos').click(function(){
+            var qxm=$('#qxm').val();
+            if(!qxm||qxm.length==0){
+                $('#treegridrow').animate({
+                    scrollTop: 0
+                }, 200);
+                return;
+            }
+            if(qxm!=oldqxm){
+                seachIndex=0;
+                count=0;
+            }
+            oldqxm=qxm;
+            var index=0;
+            $('#tb tr').each(function(idx,it){
+                var $td=$(it).find('td').first();
+                var tdhtml=$td.html();
+                if(!tdhtml){
+                    return true;
+                }
+                var itOfIndex=tdhtml.indexOf(qxm);
+                if(idx>seachIndex&&itOfIndex>-1){
+                    $('#treegridrow .select_stamp').each(function(){
+                        var xx=$(this).html();
+                        $(this).replaceWith(xx);
+                    });
+                    $td.html(tdhtml.substring(0,itOfIndex)+"<span class='select_stamp'>"+qxm+"</span>"+tdhtml.substring(itOfIndex+qxm.length))
+                    seachIndex=idx;index++;count++;
+                    $('#treegridrow').animate({
+                        scrollTop: 41*idx-4
+                    }, 200);
+                    return false;
+                }
+            })
+            if(index==0){
+                seachIndex=0;
+                $('#treegridrow .select_stamp').each(function(){
+                    var xx=$(this).html();
+                    $(this).replaceWith(xx);
+                });
+                if(count!=0){
+                    showtoastr('inverse','没有更多了');
+                    $('#seachPos').click();
+                }else{
+                    showtoastr('inverse','未找到权限名');
+                }
+            }
+        })
+        $('#qxm').keydown(function(e) {
+            if (e.keyCode == 13) {
+                $('#seachPos').click();
+            }
+        });
+        function loadData(){
+            $('#tb').html('');
+            $('#tb').treegridData({
+                id: 'id',
+                parentColumn: 'parentId',
+                type: "POST", //请求数据的ajax类型
+                url: cors+queryUrl,   //请求数据的ajax的url
+                ajaxParams: {}, //请求数据的ajax的data属性
+                expandColumn: null,//在哪一列上面显示展开按钮
+                bordered: true,  //是否显示边框
+                expandAll: true,  //是否全部展开
+                columns: [
+                    {
+                        title: '权限名称',
+                        field: 'name',
+                        width:20
+                    },
+                    {
+                        title: '排序',
+                        field: 'sort',
+                        width:5
+                    },
+                    {
+                        title: '路径',
+                        field: 'url',
+                        width:8
+                    },
+                    {
+                        title: '权限编码',
+                        field: 'permission',
+                        width:5
+                    },
+                    {
+                        title: '权限类型',
+                        field: 'type',
+                        width:8,
+                        formatter:function(value){
+                            var color;
+                            if(value=='0'){
+                                color='red';
+                            }else if(value=='1'){
+                                color='green';
+                            }else{
+                                color='green';
+                            }
+                            return '<span style="color:'+color+'">'+menuType[value];+'</span>';
+                        }
+                    },
+                    {
+                        title: '是否启用',
+                        field: 'status',
+                        width:8,
+                        formatter:function(value){
+                            if(value=="1"){
+                                return '<span style="color:green">是</span>';
+                            }else{
+                                return '<span style="color:red">否</span>';
+                            }
+                        }
+                    }
+                ],
+                isSuccess:function(data){
+                    if(data.code=='0'){
+                        return {'status':true,'data':data.data}
+                    }else{
+                        return {'status':false}
+                    }
+                }
+            });
+        }
+
+
+        $('#add').click(function(){
+            var row=$('#tb').treegridData('getRow');
+            var $form;
+            var addm=messageConfimDialogCommon(BootstrapDialog.TYPE_INFO,
+                "新增"+modelName,
+                $('<div></div>').load(addOrUpdateUrl),
+                function(){//页面显示前
+
+                },
+                function(){//页面显示后
+                    var selectValidate=initBootstrapSelect(
+                        [
+                            {id:'status',data:statusJson},
+                            {id:'type',data:menuType}
+                        ]);
+                    $('#status').selectpicker('val','1');
+                    $form=$('#'+formName);
+                    if(row){
+                        $('#parentId').val(row.id);
+                    }else{
+                        $('#parentId').val('');
+                    }
+
+                    if(row){
+                        $('#pname').val(row.name);
+                    }else{
+                        $('#pname').val('根');
+                    }
+                    $form.validate({
+                        rules: {
+                            name: {
+                                required: true
+                            },
+                            myid:{
+                                required: true
+                            },
+                            permission:{
+                                required: true
+                            }
+                        }
+                    });
+                },
+                function(){//取消,点关闭按钮
+                },
+                function(){//确定
+                    if ($form.valid()) {
+                        getData(
+                            'post',
+                            addUrl,
+                            $form.serialize() ,
+                            'json',
+                            function (data) {
+                                showtoastr("inverse",data.desc);
+                                if(data.code=='0'){
+                                    loadData();
+                                    if(addm){
+                                        addm.close();//关闭
+                                    }
+                                }
+                                return true;
+                            },function(obj){//error
+                                showtoastr("inverse", '未知错误');
+                                return false;
+                            }
+                        );
+                    }
+                });
+        });
+
+        $('#edit').click(function(){
+            var prow=$('#tb').treegridData('getPRow');
+            var row=$('#tb').treegridData('getRow');
+            if(row){
+                var $form;
+                var addm=messageConfimDialogCommon(BootstrapDialog.TYPE_INFO,
+                    "编辑"+modelName,
+                    $('<div></div>').load(addOrUpdateUrl),
+                    function(){//页面显示前
+
+                    },
+                    function(){//页面显示后
+                        var selectValidate=initBootstrapSelect(
+                            [
+                                {id:'status',data:statusJson},
+                                {id:'type',data:menuType}
+                            ]);
+                        $('#oldPermission').val(row.permission);
+                        $('#pname').val(row.name);
+                        $form=$('#'+formName);
+                        var options={
+                            id:formName,
+                            data:row,
+                            filter:function(){
+
+                            }
+                        };
+                        initForm(options);
+                        $form.validate({
+                            rules: {
+                                name: {
+                                    required: true
+                                },
+                                myid:{
+                                    required: true
+                                },
+                                permission:{
+                                    required: true
+                                }
+
+                            }
+                        });
+                    },
+                    function(){//取消,点关闭按钮
+                    },
+                    function(){//确定
+                        if ($form.valid()) {
+                            getData(
+                                'post',
+                                editUrl,
+                                $form.serialize() ,
+                                'json',
+                                function (data) {
+                                    showtoastr("inverse",data.desc);
+                                    if(data.code=='0'){
+                                        loadData();
+                                        if(addm){
+                                            addm.close();//关闭
+                                        }
+                                    }
+                                    return true;
+                                },function(obj){//error
+                                    showtoastr("inverse", '位置错误！');
+                                    return false;
+                                }
+                            );
+                        }
+                    });
+            }else{
+                showtoastr("inverse", '请选择一条数据');
+                return false;
+            }
+        });
+
+
+        $('#del').click(function(){
+            var row=$('#tb').treegridData('getRow');
+            var json={id:row.id};
+            if(row){
+                var delm=messageConfimDialog(BootstrapDialog.INFO, "提示","是否删除该用户信息？", function(){
+                    getData(
+                        'post',
+                        delUrl,
+                        json ,
+                        'json',
+                        function (data) {//success
+                            showtoastr("inverse",data.desc);
+                            if(data.code=='0'){
+                                //页面刷新
+                                loadData();
+                                delm.close();//关闭
+
+                            }
+                            return true;
+                        },function(obj){//error
+                            showtoastr("inverse", '未知错误');
+                            return false;
+                        }
+                    );
+                }, null);
+            }else{
+                showtoastr("inverse", '请选择一条数据!');
+            }
+        });
+
+
+        $("[data-toggle='popover']").popover();
+        $("[data-toggle='tooltip']").tooltip();
+
+
+    });
+
+</script>

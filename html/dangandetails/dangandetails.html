@@ -1,0 +1,212 @@
+<style>
+    #dangandetails-list{
+        overflow-y: scroll;
+    }
+    #dangandetails-content{
+        overflow-y: scroll;
+    }
+    #dangandetails-list-pagination{
+        position: relative;
+        display: block;
+        padding: 10px 15px;
+        margin-bottom: -1px;
+        background-color: #ffffff;
+        border: 1px solid #e9e9e9;
+    }
+</style>
+<div class="rows">
+    <div class="col-sm-3">
+        <div class="fh-column">
+            <div class="full-height-scroll">
+                <ul class="list-group elements-list" id="dangandetails-list">
+                    <li class="list-group-item">
+                        <div class="small m-t-xs">
+                            <p>
+                            <small class="pull-right  c-green f-700 "> 能力完好</small>
+                            <strong>蔡瑞</strong>
+                            </p>
+                        </div>
+                        <div class="small m-t-xs">
+                            <p>
+                                评定次数：第5次
+                            </p>
+                            <p>
+                                评定人：李云飞、李志明
+                            </p>
+                            <p>
+                                评定时间：2017.08.09
+                            </p>
+                        </div>
+                    </li>
+                    <li class="list-group-item active">
+                        <div class="small m-t-xs">
+                            <p>
+                                <small class="pull-right  c-red f-700 "> 重度失能</small>
+                                <strong>蔡瑞</strong>
+                            </p>
+                        </div>
+                        <div class="small m-t-xs">
+                            <p>
+                                评定次数：第5次
+                            </p>
+                            <p>
+                                评定人：李云飞、李志明
+                            </p>
+                            <p>
+                                评定时间：2017.08.09
+                            </p>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="small m-t-xs">
+                            <p>
+                                <small class="pull-right  c-green f-700 "> 能力完好</small>
+                                <strong>蔡瑞</strong>
+                            </p>
+                        </div>
+                        <div class="small m-t-xs">
+                            <p>
+                                评定次数：第5次
+                            </p>
+                            <p>
+                                评定人：李云飞、李志明
+                            </p>
+                            <p>
+                                评定时间：2017.08.09
+                            </p>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="small m-t-xs">
+                            <p>
+                                <small class="pull-right  c-green f-700 "> 能力完好</small>
+                                <strong>蔡瑞</strong>
+                            </p>
+                        </div>
+                        <div class="small m-t-xs">
+                            <p>
+                                评定次数：第5次
+                            </p>
+                            <p>
+                                评定人：李云飞、李志明
+                            </p>
+                            <p>
+                                评定时间：2017.08.09
+                            </p>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="small m-t-xs">
+                            <p>
+                                <small class="pull-right  c-green f-700 "> 能力完好</small>
+                                <strong>蔡瑞</strong>
+                            </p>
+                        </div>
+                        <div class="small m-t-xs">
+                            <p>
+                                评定次数：第5次
+                            </p>
+                            <p>
+                                评定人：李云飞、李志明
+                            </p>
+                            <p>
+                                评定时间：2017.08.09
+                            </p>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="small m-t-xs">
+                            <p>
+                                <small class="pull-right  c-green f-700 "> 能力完好</small>
+                                <strong>蔡瑞</strong>
+                            </p>
+                        </div>
+                        <div class="small m-t-xs">
+                            <p>
+                                评定次数：第5次
+                            </p>
+                            <p>
+                                评定人：李云飞、李志明
+                            </p>
+                            <p>
+                                评定时间：2017.08.09
+                            </p>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="small m-t-xs">
+                            <p>
+                                <small class="pull-right  c-green f-700 "> 能力完好</small>
+                                <strong>蔡瑞</strong>
+                            </p>
+                        </div>
+                        <div class="small m-t-xs">
+                            <p>
+                                评定次数：第5次
+                            </p>
+                            <p>
+                                评定人：李云飞、李志明
+                            </p>
+                            <p>
+                                评定时间：2017.08.09
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+                <div id="dangandetails-list-pagination" >
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-sm-9">
+        <div class="element-detail-box">
+
+            <div  id="dangandetails-content">
+                aa
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    $(function() {
+        vipspa.start({
+            view: '.element-detail-box #dangandetails-content',// 装载视图的dom
+            router: {
+                '/dangandetails/#pinggudetails': {
+                    templateUrl: 'pinggudangan/pinggudangan.html',
+                    controller: 'pinggudangan/pinggudangan.js'
+                },
+                'defaults': '/dangandetails/#pinggudetails'// 不符合上述路由时，默认跳至
+            },
+            errorTemplateId: '#error'
+        });
+        $("#dangandetails-list").css("height",clientHeight-170);
+        $("#dangandetails-content").css("height",clientHeight-120);
+        scrollBar('#dangandetails-list', 'minimal-dark', 'y');
+        scrollBar('#dangandetails-content', 'minimal-dark', 'y');
+
+        var options = {
+            currentPage: 1, //当前页数
+            totalPages: 3, //总页数
+            //点击事件，用于通过Ajax来刷新整个list列表
+            onPageClicked: function (event, originalEvent, type, page) {
+                var p3={'pageSize': pageSize,'currentPage':page};
+                var sqlParam1=getSearchparam(p3);
+                $.ajax({
+                    url: "/oldMan/oldManInfo/getOldManInfoList",
+                    datatype: 'json',
+                    type: "Post",
+                    data: sqlParam1 ,
+                    success: function (data1) {
+                        //console.log("第"+page+"页，每页显示"+pageSize+"条，共"+data1.total+"条记录");
+                        getIspaIndexPageView(data1);
+                    }
+                });
+            }
+        };
+        $('#dangandetails-list-pagination').bootstrapPaginator(options);
+    });
+</script>

@@ -1,0 +1,192 @@
+<style>
+    .modal-dialog {
+        width: 850px;
+        margin: 30px auto;
+    }
+    .toolbar {
+        border: 1px solid #ccc;
+    }
+    .text {
+        border: 1px solid #ccc;
+        height: 400px;
+        width: 100%;
+    }
+</style>
+<script src="../vendors/wangEditor-3.0.8/release/wangEditor.js"></script>
+<div class="row" style="width:800px;margin: 0px;">
+    <form id="addparams1">
+    <table style="margin:0px 45px; ">
+
+        <tr >
+            <td>
+                <span style="color: red">*</span>
+                <span style="font-weight: bold">标题</span>
+
+            </td>
+            <td>
+                <div class="form-group col-sm-2 ">
+                    <div class="fg-line" style="width:250px;">
+                        <input type="text" name="name"  id="name"    class="input-sm form-control fg-input" placeholder="请输入名称" >
+                    </div>
+                </div>
+            </td>
+            <td>
+                <span style="color: red">*</span>
+                <span style="font-weight: bold">
+                    简要
+                </span>
+
+            </td>
+            <td>
+                <div class="form-group col-sm-2 ">
+                    <div class="fg-line" style="width:250px;">
+                        <input type="text" name="editordescr"  id="editordescr"   class="input-sm form-control fg-input" placeholder="请输入描述" >
+                    </div>
+                </div>
+            </td>
+        </tr>
+<tr>
+    <td colspan="4">
+
+
+        <div id="div1" class="toolbar" style="margin-top: 10px;border-bottom-width: 0px;">
+        </div>
+        <div id="div2" class="text"  style="width: 702px;" > <!--可使用 min-height 实现编辑区域自动增加高度-->
+        </div>
+        <div style="height: 20px;" id="fj">
+
+            <div style="float: left;"  >
+                <table id="fjtable" style=" border-collapse:   separate;   border-spacing: 0px 10px;; ">
+                </table>
+            </div>
+        </div>
+    </td>
+</tr>
+    </table>
+    <!--文件路径-->
+    <input type="text" id="fileUrl" style="display: none"  value="">
+    <!--文名称-->
+    <input type="text" id="fileBaseName" style="display: none"   value="">
+    </form>
+    </div>
+<script>
+    var editor;
+
+    //富文本编辑器初始化
+    $(function(){
+        $addparams1=$('#addparams1');
+        var realPath ;
+        var E = window.wangEditor
+         editor = new E('#div1', '#div2');
+
+        editor.customConfig.uploadImgHeaders = {
+            "Authorization":"Bearer "+getLocalStorage('token') ,
+            "Accept":"application/json;charset=UTF-8"
+        }
+        editor.customConfig.uploadImgServer = cors+'/editorFile/fileUpload/imageUpload';
+        editor.customConfig.uploadImgHooks = {
+            before: function (xhr, editor, files) {
+                realPath=getWangEditorImgURL(files);
+            },
+            customInsert: function (insertImg, result, editor) {
+                if(result.fileUrl!=undefined){
+                    var myurlPathPre=urlPathPre+result.fileUrl;
+                    insertImg(myurlPathPre);
+                }
+
+            }
+        }
+        editor.customConfig.pasteFilterStyle = false;
+        editor.create();
+        validateEditor();
+    })
+function uploadfile(value) {
+    var fileurl=$("#fileUrl").val();
+    var baseName=$("#fileBaseName").val();
+    for(var i in value){
+
+        if(value[i].fileBaseName!=undefined){
+            var he=$("#fj").height();
+            var size=bytesToSize(value[i].size);
+            fileurl=fileurl+value[i].fileUrl+",";
+            $("#fileUrl").val(fileurl);
+            baseName=baseName+value[i].fileBaseName+"("+size+"),";
+            $("#fileBaseName").val(baseName);
+            $("#fjtable").append('<tr><td><a target="_blank" href=\"'+urlPathPre+value[i].fileUrl+'\" download=\"+value[i].fileBaseName+\">'+value[i].fileBaseName+'&nbsp;('+size+')</a></td><td><button id="" class="btn bgm-green btn-icon-text waves-effect pull-right" onclick="delfuj(this,\''+value[i].fileUrl+'\',\''+baseName+'\')"><i class="zmdi zmdi-delete zmdi-hc-fw" ></i> 删除</button></td></tr>');
+            if(a!=1){
+                $("#fj").height(he+40);
+            }else if (a==1){
+                $("#fj").height(he+30);
+            }
+            a=a+1;
+        }
+    }
+}
+function delfuj(value,url,baname) {
+    fileurl=$("#fileUrl").val();
+    baseName=$("#fileBaseName").val();
+    var  fileurlArry=fileurl.split(",");
+    var baseNameArry=baseName.split(",");
+    var ac="";
+    var bc="";
+    for (var i in fileurlArry){
+        if(fileurlArry[i]!=undefined&&fileurlArry[i]!=""&&i!="unique"&&fileurlArry[i]!=url) {
+            ac = fileurlArry[i] + "," + ac;
+            bc=baseNameArry[i]+","+bc;
+        }
+    }
+    $("#fileUrl").val(ac);
+    $("#fileBaseName").val(bc);
+    var he=$("#fj").height();
+    var q = $(value).parent().parent();
+    $(q).remove();
+    if(he>50){
+        $("#fj").height(he-40);
+    }else if(he==50){
+        $("#fj").height(he-30);
+    }
+    a=a-1;
+}
+    //文件上传页面
+    function openEditor(){
+        addm=messageConfimDialogCommon(BootstrapDialog.TYPE_INFO,
+            "上传附件",
+            $('<div></div>').load('editor/fileUpload.html'),
+            function($dialogParentDiv){
+                $dialogParentDiv.css('height',clientHeight*0.45);
+                $dialogParentDiv.css('overflow-x','');
+                $dialogParentDiv.css('overflow-y','');
+                $dialogParentDiv.parents('.modal-content').css('width',clientWidth*0.48);
+            },
+            function(){
+            },
+            function(dialogItself){
+                //cancel
+            },
+            function(dialogItself){
+                uploadfile(jsonstr);
+                addm.close();
+            });
+    }
+    function validateEditor(){
+        var validateOption = $jqueryValidateOption;
+        validateOption.rules = {
+            name:{
+                required:true
+            },
+            editordescr:{
+                required:true
+            }
+        }
+        validateOption.errorPlacement= function (error, element) {
+            if (element.is(":checkbox") || element.is(":radio")) {
+                element.parent().parent().append(error)
+            } else {
+                error.insertAfter(element);
+            }
+        }
+        jqueryValidate($addparams1, validateOption);
+    }
+
+
+</script>

@@ -1,0 +1,114 @@
+
+<style>
+    .modal-dialog{
+        width: 60%;
+    }
+    /*单选多选换行对齐开始*/
+    .checkbox-inline + .checkbox-inline {
+        margin-left: 0;
+    }
+    .radio-inline + .radio-inline, .checkbox-inline + .checkbox-inline {
+        margin-left: 0;
+    }
+
+</style>
+<div id="div_container" class="row div_father" style="">
+    <div class="pm-body clearfix">
+        <div class="tab-content">
+            <div class="pmb-block tab-pane active" id="basicInfo_div">
+                <form id="form_addOrUpdate" class="form-horizontal">
+                    <div class="card">
+                        <div class="card-body card-padding">
+                            <div class="form-group">
+                                <!--<label for="form_stcd" class="col-sm-2 control-label">所属站点</label>-->
+                                <!--<div class="col-sm-3">-->
+                                    <!--<div class="fg-line">-->
+                                        <!--<select id="form_stcd" name="stcd" class="selectpicker" data-live-search="true">-->
+                                            <!--<option value="">请选择</option>-->
+                                            <!--<option value="1">站点1</option>-->
+                                            <!--<option value="0">站点2</option>-->
+                                            <!--<option value="0">站点3</option>-->
+                                        <!--</select>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <label for="form_stcd" class="col-sm-2 control-label"><span class="span_required">*</span>站点编号</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <input name="stcd" type="text" class="form-control input-sm" id="form_stcd" placeholder="站点编号">
+                                    </div>
+                                </div>
+                                <label for="form_machine_name" class="col-sm-2 control-label"><span class="span_required">*</span>设备名称</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <input name="mname" type="text" class="form-control input-sm" id="form_machine_name" placeholder="设备名称">
+                                    </div>
+                                </div>
+                                <!--<label for="form_machine_type" class="col-sm-2 control-label">设备类型</label>-->
+                                <!--<div class="col-sm-3">-->
+                                    <!--<div class="fg-line">-->
+                                        <!--<select id="form_machine_type" name="mtype" class="selectpicker" data-live-search="true">-->
+                                            <!--<option value="">请选择</option>-->
+                                            <!--&lt;!&ndash;<option value="1">类型1</option>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<option value="0">类型2</option>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<option value="0">类型3</option>&ndash;&gt;-->
+                                        <!--</select>-->
+                                        <!--<input id="form_machine_type_input" name="mtype_hide" value="" style="width:0;height: 0;border: 0;">-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            </div>
+                            <div class="form-group">
+                                <label for="form_machine_IP" class="col-sm-2 control-label"><span class="span_required">*</span>设备IP</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <input name="ip" type="text" class="form-control input-sm" id="form_machine_IP" placeholder="设备IP">
+                                    </div>
+                                </div>
+                                <label for="form_machine_port" class="col-sm-2 control-label"><span class="span_required">*</span>设备端口</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <input name="port" type="text" class="form-control input-sm" id="form_machine_port" placeholder="设备端口">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="form_setting_type" class="col-sm-2 control-label"><span class="span_required">*</span>配置类型</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <select id="form_setting_type" name="settingtype" class="selectpicker" data-live-search="true">
+                                            <option value="">请选择</option>
+                                            <!--<option value="1">IP配置</option>-->
+                                            <!--<option value="0">SIM配置</option>-->
+                                        </select>
+                                        <input id="form_setting_type_input" name="settingtype_hide" value="" style="width:0;height: 0;border: 0;">
+                                    </div>
+                                </div>
+                                <label for="form_machine_no" class="col-sm-2 control-label"><span class="span_required">*</span>设备序列号</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <input name="mno" type="text" class="form-control input-sm" id="form_machine_no" placeholder="设备序列号">
+                                        <i  data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="标识设备的编号,唯一,上报设备数据时以前缀'machineOnline: '拼接上该序列号作为数据的key;读取数据时以前缀'machineOnline: '拼接上该序列号作为key获取" title="" data-original-title="提示" class="zmdi zmdi-help-outline zmdi-hc-fw"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="form_machine_desc" class="col-sm-2 control-label">设备描述</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <input name="description" type="text" class="form-control input-sm" id="form_machine_desc" placeholder="设备描述">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="background/equipment/addOrUpdate.js"></script>
+
+
+

@@ -1,0 +1,651 @@
+<style>
+    .print {
+        position: absolute;
+        right: 65px;
+        top: 20px;
+    }
+    .tdtitle1{
+        text-align: right;
+        font-weight: bold;
+    }
+    .tdcenter{
+        text-align: center;
+        vertical-align: middle;
+        font-weight: bold;
+    }
+    #div_pdk p{
+        margin-top: 10px;
+        padding-left: 20px;
+        color: #FF6600;
+    }
+    .ms-body,.ms-menu{
+        /*height: 700px;*/
+    }
+    #ul_left{
+        height: 90%;
+    }
+    .myPrintArea{
+        height: 550px;
+        overflow-y: auto;
+    }
+    #table_pdk .tdw1{
+        width: 6%;
+        padding: 10px;
+    }
+    #table_pdk tr:last-child td{
+         padding-bottom: 10px;
+    }
+    #dalrjbxx_myPrintArea_tab1 tr:last-child td{
+        padding-bottom: 10px;
+    }
+    #dalrjk_myPrintArea_tab1 tr:last-child td{
+        padding-bottom: 10px;
+    }
+    #dapgbg_myPrintArea_tab1 tr:last-child td{
+        padding-bottom: 10px;
+    }
+    #dapgbg_myPrintArea_tab2 tr:last-child td{
+        padding-bottom: 10px;
+    }
+    #dapgbg_myPrintArea_tab3 tr:last-child td{
+        padding-bottom: 10px;
+    }
+    .list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus{
+        background-color: #FFF68F;
+    }
+    #dapgbg_myPrintArea_tab3 p{
+        color: #A3A3A3;
+    }
+
+</style>
+
+<script src="pinggudangan/questions.js"></script>
+<script src="pinggudangan/pgdahis.js"></script>
+<div>
+    <ol class="breadcrumb">
+        <li><a href="#">首页</a></li>
+        <li class="active">评估档案</li>
+    </ol>
+</div>
+<div class="" style="">
+    <div class="card m-b-1" id="messages-main" >
+        <div class="ms-menu" style="padding: 2px;">
+            <ul id="ul_left" class="list-group  elements-list" style="overflow-y: auto;">
+                <!--<li class="list-group-item active">-->
+                    <!--<div class="small m-t-xs">-->
+                        <!--<p>-->
+                            <!--<small class="pull-right  c-red f-700 "> 重度失能</small>-->
+                            <!--<strong>蔡瑞</strong>-->
+                        <!--</p>-->
+                    <!--</div>-->
+                    <!--<div class="small m-t-xs">-->
+                        <!--<p>-->
+                            <!--评定次数：第5次-->
+                        <!--</p>-->
+                        <!--<p>-->
+                            <!--评定人：李云飞、李志明-->
+                        <!--</p>-->
+                        <!--<p>-->
+                            <!--评定时间：2017.08.09-->
+                        <!--</p>-->
+                    <!--</div>-->
+                <!--</li>-->
+                <!--<li class="list-group-item">-->
+                    <!--<div class="small m-t-xs">-->
+                        <!--<p>-->
+                            <!--<small class="pull-right  c-green f-700 "> 能力完好</small>-->
+                            <!--<strong>蔡瑞</strong>-->
+                        <!--</p>-->
+                    <!--</div>-->
+                    <!--<div class="small m-t-xs">-->
+                        <!--<p>-->
+                            <!--评定次数：第5次-->
+                        <!--</p>-->
+                        <!--<p>-->
+                            <!--评定人：李云飞、李志明-->
+                        <!--</p>-->
+                        <!--<p>-->
+                            <!--评定时间：2017.08.09-->
+                        <!--</p>-->
+                    <!--</div>-->
+                <!--</li>-->
+                <!--左侧列表-->
+            </ul>
+            <div id="dangandetails-list-pagination" >
+            </div>
+        </div>
+
+        <div class="ms-body">
+            <div class="listview lv-message">
+                <div class="lv-header-alt clearfix" style="padding-top: 0;padding-bottom: 0;">
+                    <ul class="tab-nav tn-justified" id="ul_toptitle">
+                        <li onclick="tabpagechange(this)" class="active waves-effect"><a href="#/dalrjbxx" data-toggle="tab">老人基本信息</a></li>
+                        <li onclick="tabpagechange(this)" class="waves-effect"><a href="#/dalrjk" data-toggle="tab">老人近况</a></li>
+                        <li onclick="tabpagechange(this)" class="waves-effect"><a href="#/dapglb" data-toggle="tab">评估量表</a></li>
+                        <li onclick="tabpagechange(this)" class="waves-effect"><a href="#/dapdk" data-toggle="tab">判定卡</a></li>
+                        <li onclick="tabpagechange(this)" class="waves-effect"><a href="#/dapgbg" data-toggle="tab">评估报告</a></li>
+                    </ul>
+                </div>
+
+                <div class="tab-content">
+                    <!--<div class="block-header">
+                        &lt;!&ndash;<h1 class="text-center"><strong id="pgdahis_title">老人基本信息</strong></h1>&ndash;&gt;
+                        <button id="pgdahisPrintBtn" onclick="pgdahisPrint()"  class="btn bgm-lightblue btn-icon-text waves-effect print">
+                            <i class="zmdi zmdi-print zmdi-hc-fw"></i>打印
+                        </button>
+                    </div>-->
+                    <div class="pmb-block tab-pane active tabpagemodel" id="dalrjbxx">
+                        <div class="myPrintArea">
+                            <div class="block-header">
+                                <button onclick="pgdahisPrint()"  class="btn bgm-lightblue btn-icon-text waves-effect print">
+                                    <i class="zmdi zmdi-print zmdi-hc-fw"></i>打印
+                                </button>
+                            </div>
+                            <div class="myPrintAreaContent">
+                                <h1 class="text-center"><strong>老人基本信息</strong></h1>
+                                <table id="dalrjbxx_myPrintArea_tab1" class="table table-bordered" style="border: 1px solid #f0f0f0;">
+                                    <colgroup>
+                                        <col width="25%" />
+                                        <col width="60%" />
+                                        <col width="15%" />
+                                    </colgroup>
+                                    <tr>
+                                        <td class="tdtitle1">姓名</td>
+                                        <td id="dalrjbxx_name">&nbsp;</td>
+                                        <td rowspan="5" style="text-align: center;vertical-align:middle;padding-right: 10px;">
+                                            <img id="dalrjbxx_photo" class="pgdaPhoto"  src="" style="width:120px;height: 150px;"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdtitle1">性别</td>
+                                        <td id="dalrjbxx_sex" class="tdclean">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdtitle1">宗教信仰</td>
+                                        <td id="dalrjbxx_zjxy" class="tdclean">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdtitle1">身份证号</td>
+                                        <td id="dalrjbxx_sfz" class="tdclean">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdtitle1">文化程度</td>
+                                        <td id="dalrjbxx_whcd" class="tdclean">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdtitle1">户籍地址</td>
+                                        <td id="dalrjbxx_hjdz" class="tdclean" colspan="2">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdtitle1">常住地址</td>
+                                        <td id="dalrjbxx_czdz" class="tdclean" colspan="2">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdtitle1">居住状况</td>
+                                        <td id="dalrjbxx_jzzk" class="tdclean" colspan="2">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdtitle1">经济来源</td>
+                                        <td id="dalrjbxx_jjly" class="tdclean" colspan="2">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdtitle1">医疗费用支付方式</td>
+                                        <td id="dalrjbxx_ylzf" class="tdclean" colspan="2">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdtitle1">婚姻状况</td>
+                                        <td id="dalrjbxx_hyzk" class="tdclean" colspan="2">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdtitle1">出生日期</td>
+                                        <td id="dalrjbxx_cs" class="tdclean" colspan="2">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdtitle1">社保卡号</td>
+                                        <td id="dalrjbxx_sbkh" class="tdclean" colspan="2">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdtitle1">民族</td>
+                                        <td id="dalrjbxx_mz" class="tdclean" colspan="2">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdtitle1">联系人姓名</td>
+                                        <td id="dalrjbxx_lxr" class="tdclean" colspan="2">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdtitle1">联系人电话</td>
+                                        <td id="dalrjbxx_lxdh" class="tdclean" colspan="2">&nbsp;</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pmb-block tab-pane tabpagemodel" id="dalrjk">
+                        <div class="myPrintArea">
+                            <div class="block-header">
+                                <button onclick="pgdahisPrint()"  class="btn bgm-lightblue btn-icon-text waves-effect print">
+                                    <i class="zmdi zmdi-print zmdi-hc-fw"></i>打印
+                                </button>
+                            </div>
+                            <div class="myPrintAreaContent">
+                                <h1 class="text-center"><strong>老人近况</strong></h1>
+                                <table id="dalrjk_myPrintArea_tab1" class="table table-bordered" style="border: 1px solid #f0f0f0;">
+                                    <colgroup>
+                                        <col width="20%" />
+                                        <col width="20%" />
+                                        <col width="60%" />
+                                    </colgroup>
+                                    <tr>
+                                        <td rowspan="4" style="text-align: center;vertical-align: middle;font-weight: bold;">疾病诊断</td>
+                                        <td class="tdcenter">痴呆</td>
+                                        <td id="dalrjk_chidai" class="tdclean">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdcenter" style="padding-left: 10px;">精神疾病</td>
+                                        <td id="dalrjk_jsjb" class="tdclean">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdcenter" style="padding-left: 10px;">慢性疾病</td>
+                                        <td id="dalrjk_mxjb" class="tdclean">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdcenter" style="padding-left: 10px;">其他疾病</td>
+                                        <td id="dalrjk_qtjb" class="tdclean">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="5" style="text-align: center;vertical-align: middle;font-weight: bold;">近30天内意外事件</td>
+                                        <td class="tdcenter" style="padding-left: 10px;">跌倒</td>
+                                        <td id="dalrjk_dd" class="tdclean">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdcenter" style="padding-left: 10px;">走失</td>
+                                        <td id="dalrjk_zoushi" class="tdclean">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdcenter" style="padding-left: 10px;" >噎食</td>
+                                        <td id="dalrjk_ys" class="tdclean">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdcenter" style="padding-left: 10px;">自杀</td>
+                                        <td id="dalrjk_zisha" class="tdclean">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdcenter" style="padding-left: 10px;">其他</td>
+                                        <td id="dalrjk_qita" class="tdclean">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" class="tdcenter">信息提供者姓名</td>
+                                        <td id="dalrjk_xxtgz" class="tdclean">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" class="tdcenter">信息提供者与老人的关系</td>
+                                        <td id="dalrjk_ylrgx" class="tdclean">&nbsp;</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pmb-block tab-pane tabpagemodel" id="dapglb">
+                        <div class="myPrintArea">
+                            <div class="block-header">
+                                <button onclick="pgdahisPrint()"  class="btn bgm-lightblue btn-icon-text waves-effect print">
+                                    <i class="zmdi zmdi-print zmdi-hc-fw"></i>打印
+                                </button>
+                            </div>
+                            <div class="myPrintAreaContent">
+                                <h1 class="text-center"><strong>评估量表</strong></h1>
+                                <div id="evaluation_m">
+                                    <ul class="tab-nav tn-justified" id="tab_nav_point">
+                                        <li class="active waves-effect"><a href="#daily_life" data-toggle="tab">日常生活活动    等级 : <span id="pdkLevel1" class="orange">&nbsp;</span></a></li>
+                                        <li class="waves-effect"><a href="#mental_state" data-toggle="tab">精神状态     等级：<span  id="pdkLevel2" class="orange">&nbsp;</span></a></li>
+                                        <li class="waves-effect"><a href="#perceived" data-toggle="tab">感知觉与沟通   等级：<span  id="pdkLevel3" class="orange">&nbsp;</span></a></li>
+                                        <li class="waves-effect"><a href="#social_participation" data-toggle="tab"> 社会参与评估         等级：<span  id="pdkLevel4" class="orange">&nbsp;</span></a></li>
+                                    </ul>
+
+                                    <div class="tab-content" id="questions">
+                                        <div class="pmb-block tab-pane active" id="daily_life">
+                                            <table class="table table-bordered text-left" id="daily_lifeT"></table>
+                                        </div>
+                                        <div class="pmb-block tab-pane" id="mental_state">
+                                            <table class="table table-bordered text-left" id="mental_stateT"></table>
+                                        </div>
+                                        <div class="pmb-block tab-pane" id="perceived">
+                                            <table class="table table-bordered text-left" id="perceivedT"></table>
+                                        </div>
+                                        <div class="pmb-block tab-pane" id="social_participation">
+                                            <table class="table table-bordered text-left" id="social_participationT"></table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pmb-block tab-pane tabpagemodel" id="dapdk">
+                        <div class="myPrintArea">
+                            <div class="block-header">
+                                <button onclick="pgdahisPrint()"  class="btn bgm-lightblue btn-icon-text waves-effect print">
+                                    <i class="zmdi zmdi-print zmdi-hc-fw"></i>打印
+                                </button>
+                            </div>
+                            <div class="myPrintAreaContent">
+                                <h1 class="text-center"><strong>判定卡</strong></h1>
+                                <div id="div_pdk" class="table-responsive" style="margin-left:50px;margin-right: 50px;">
+                                    <table id="table_pdk" class="table table-bordered" style="text-align: center;border: 1px solid #f0f0f0;">
+                                        <tr >
+                                            <th style="vertical-align: middle;text-align: center" rowspan="2">日常生活活动</th>
+                                            <th style="vertical-align: middle;text-align: center" colspan="4">精神认知</th>
+                                            <th style="vertical-align: middle;text-align: center" colspan="4">感知觉与沟通</th>
+                                            <th style="vertical-align: middle;text-align: center" colspan="4">社会参与</th>
+                                            <th style="vertical-align: middle;text-align: center" rowspan="2">评估等级</th>
+                                        </tr>
+                                        <tr>
+                                            <td class="tdw1">0</td>
+                                            <td class="tdw1">1</td>
+                                            <td class="tdw1">2</td>
+                                            <td class="tdw1">3</td>
+                                            <td class="tdw1">0</td>
+                                            <td class="tdw1">1</td>
+                                            <td class="tdw1">2</td>
+                                            <td class="tdw1">3</td>
+                                            <td class="tdw1">0</td>
+                                            <td class="tdw1">1</td>
+                                            <td class="tdw1">2</td>
+                                            <td class="tdw1">3</td>
+                                        </tr>
+                                        <tr>
+                                            <td>0</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td id="td_pddj"style="text-align: center;vertical-align:middle;"  rowspan="4">&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td >3</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                            <td  class="tdw1">&nbsp;</td>
+                                        </tr>
+                                    </table>
+                                    <p>&nbsp;&nbsp;注：老年人能力评估结果判定卡使用时，一般根据日常生活活动能力进行初步定位，锁定目标区域，然后根据其他三项能力在判定卡上同一颜色区域定位查找相应的能力等级。以下为几种特殊情况：</p>
+                                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）当日常生活活动为0，精神认知、感知觉与沟通有一项为1及以上，或者社会参与为2或以上，判定为轻度失能。</p>
+                                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）当日常生活活动为1时，后三项有一项为0或1，判定为轻度失能；后三项均为2及以上或一项为3，则判定为中度失能。</p>
+                                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（3）当日常生活活动为2时，后三项全部为2以上或某一项为3，判定为重度失能，否则为中度失能。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pmb-block tab-pane tabpagemodel" id="dapgbg">
+                        <div class="myPrintArea">
+                            <div class="block-header">
+                                <button onclick="pgdahisPrint()"  class="btn bgm-lightblue btn-icon-text waves-effect print">
+                                    <i class="zmdi zmdi-print zmdi-hc-fw"></i>打印
+                                </button>
+                            </div>
+                            <div class="myPrintAreaContent">
+                                <h1 class="text-center"><strong>评估报告</strong></h1>
+                                <table id="dapgbg_myPrintArea_tab1" class="table table-bordered" style="border: 1px solid #f0f0f0;">
+                                    <colgroup>
+                                        <col width="30%" />
+                                        <col width="50%" />
+                                        <col width="20%" />
+                                    </colgroup>
+                                    <tr>
+                                        <td class="tdtitle1">评估编号</td>
+                                        <td id="dapgbg_no" class="tdclean" >&nbsp;</td>
+                                        <td rowspan="5" style="text-align: center;vertical-align:middle;padding-right: 10px;">
+                                            <img id="dapgbg_photo" class="pgdaPhoto"  src="" style="width:120px;height: 150px;"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdtitle1">评估日期</td>
+                                        <td id="dapgbg_dateReport" class="tdclean" >&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdtitle1">评估原因</td>
+                                        <td id="dapgbg_cause" class="tdclean">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdtitle1">姓名</td>
+                                        <td id="dapgbg_name" class="tdclean">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdtitle1">性别</td>
+                                        <td id="dapgbg_gender" class="tdclean">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdtitle1">出生日期</td>
+                                        <td id="dapgbg_dateBirth" class="tdclean" colspan="2">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdtitle1">评估机构</td>
+                                        <td id="dapgbg_agency" class="tdclean" colspan="2">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdtitle1">执行评估员</td>
+                                        <td id="dapgbg_assessor" class="tdclean" colspan="2">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdtitle1">一级指标分级</td>
+                                        <td id="dapgbg_level1rating" class="tdclean" colspan="2">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdtitle1">老年人能力初步等级</td>
+                                        <td id="dapgbg_preliminaryLevel" class="tdclean" colspan="2">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdtitle1">等级变更条款</td>
+                                        <td id="dapgbg_gradeChangeClause" class="tdclean" colspan="2">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdtitle1">老年人能力最终等级</td>
+                                        <td id="dapgbg_finalGrade" class="tdclean" colspan="2">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdtitle1">护理等级</td>
+                                        <td id="dapgbg_nursingGrade" class="tdclean" colspan="2">&nbsp;</td>
+                                    </tr>
+                                </table>
+                                <table id="dapgbg_myPrintArea_tab2" class="table table-bordered" style="border: 1px solid #f0f0f0;">
+                                    <colgroup>
+                                        <col width="30%" />
+                                        <col width="30%" />
+                                        <col width="40%" />
+                                    </colgroup>
+                                    <tr >
+                                        <td class="tdtitle1">评估员签名
+                                            <!--<div class="field" style="float: left;width: 150px;text-align: right;" >-->
+                                                <!--评估员签名&nbsp;&nbsp;-->
+                                            <!--</div>-->
+                                            <!--<div style="float: left;text-decoration: underline;">-->
+                                                <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+                                            <!--</div>-->
+                                            <!--<div class="ud" style="float: left;"><strong>&nbsp;&nbsp;、&nbsp;&nbsp;</strong></div>-->
+                                            <!--<div style="float: left;text-decoration: underline;">-->
+                                                <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+                                            <!--</div>-->
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td >
+                                            <div class="field" style="float: left;">日期&nbsp;&nbsp;</div>
+                                            <div style="float: left;text-decoration: underline;">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            </div>
+                                            <div class="field" style="float: left;">年</div>
+                                            <div style="float: left;text-decoration: underline;">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            </div>
+                                            <div class="field" style="float: left;">月</div>
+                                            <div style="float: left;text-decoration: underline;">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            </div>
+                                            <div class="field" style="float: left;">日</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdtitle1">评估员机构签章
+                                            <!--<div class="field" style="float: left;width: 150px;text-align: right;" >评估员机构签章&nbsp;&nbsp;</div>
+                                            <div style="float: left;text-decoration: underline;">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            </div>-->
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            <div class="field" style="float: left;">日期&nbsp;&nbsp;</div>
+                                            <div style="float: left;text-decoration: underline;">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            </div>
+                                            <div class="field" style="float: left;">年</div>
+                                            <div style="float: left;text-decoration: underline;">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            </div>
+                                            <div class="field" style="float: left;">月</div>
+                                            <div style="float: left;text-decoration: underline;">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            </div>
+                                            <div class="field" style="float: left;">日</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdtitle1">信息提供人签章
+                                            <!--<div class="field" style="float: left;width: 150px;text-align: right;" >信息提供人签章&nbsp;&nbsp;</div>
+                                            <div style="float: left;text-decoration: underline;">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            </div>-->
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            <div class="field" style="float: left;">日期&nbsp;&nbsp;</div>
+                                            <div style="float: left;text-decoration: underline;">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            </div>
+                                            <div class="field" style="float: left;">年</div>
+                                            <div style="float: left;text-decoration: underline;">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            </div>
+                                            <div class="field" style="float: left;">月</div>
+                                            <div style="float: left;text-decoration: underline;">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            </div>
+                                            <div class="field" style="float: left;">日</div>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table id="dapgbg_myPrintArea_tab3" class="table table-bordered" style="border: 1px solid #f0f0f0;">
+                                    <tr>
+                                        <td>
+                                            <p>&nbsp;&nbsp;注：老年人能力评估结果判定卡使用时，一般根据日常生活活动能力进行初步定位，锁定目标区域，然后根据其他三项能力在判定卡上同一颜色区域定位查找相应的能力等级。以下为几种特殊情况：</p>
+                                            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）当日常生活活动为0，精神认知、感知觉与沟通有一项为1及以上，或者社会参与为2或以上，判定为轻度失能。</p>
+                                            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）当日常生活活动为1时，后三项有一项为0或1，判定为轻度失能；后三项均为2及以上或一项为3，则判定为中度失能。</p>
+                                            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（3）当日常生活活动为2时，后三项全部为2以上或某一项为3，判定为重度失能，否则为中度失能。</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function() {
+//        vipspa.start({
+//            view: '.element-detail-box #dangandetails-content',// 装载视图的dom
+//            router: {
+//                '/dangandetails/#pinggudetails': {
+//                    templateUrl: 'pinggudangan/pinggudangan.html',
+//                    controller: 'pinggudangan/pinggudangan.js'
+//                },
+//                'defaults': '/dangandetails/#pinggudetails'// 不符合上述路由时，默认跳至
+//            },
+//            errorTemplateId: '#error'
+//        });
+//        $("#dangandetails-list").css("height",clientHeight-170);
+//        $("#dangandetails-content").css("height",clientHeight-120);
+//        scrollBar('#dangandetails-list', 'minimal-dark', 'y');
+//        scrollBar('#dangandetails-content', 'minimal-dark', 'y');
+
+//        var options = {
+//            currentPage: 1, //当前页数
+//            totalPages: 3, //总页数
+//            //点击事件，用于通过Ajax来刷新整个list列表
+//            onPageClicked: function (event, originalEvent, type, page) {
+//                var sqlParam1=getSearchparam();
+//                $.ajax({
+//                    url: "/oldMan/oldManInfo/getOldManInfoList",
+//                    datatype: 'json',
+//                    type: "Post",
+//                    data: {'param': sqlParam1, 'pageSize': pageSize,'currentPage':page} ,
+//                    success: function (data1) {
+//                        //console.log("第"+page+"页，每页显示"+pageSize+"条，共"+data1.total+"条记录");
+//                        getIspaIndexPageView(data1);
+//                    }
+//                });
+//            }
+//        };
+//        $('#dangandetails-list-pagination').bootstrapPaginator(options);
+    });
+</script>
+
+
+
+
+

@@ -1,0 +1,75 @@
+<style>
+    .modal-dialog{
+        width: 60%;
+    }
+    /*单选多选换行对齐开始*/
+    .checkbox-inline + .checkbox-inline {
+        margin-left: 0;
+    }
+    .radio-inline + .radio-inline, .checkbox-inline + .checkbox-inline {
+        margin-left: 0;
+    }
+    /*单选多选换行对齐结束*/
+    .span_required{
+        color: red;
+    }
+</style>
+
+<div id="div_container" class="row div_father" style="overflow-y: auto;">
+    <div class="pm-body clearfix">
+        <div class="tab-content">
+            <div class="pmb-block tab-pane active" id="basicInfo_div">
+                <form id="form_addOrUpdate" class="form-horizontal">
+                    <div class="card">
+                        <div class="card-body card-padding">
+                            <div class="form-group">
+                                <label for="form_name" class="col-sm-2 control-label"><span class="span_required">*</span>姓名</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <input name="name" type="text" class="form-control input-sm" id="form_name" placeholder="姓名">
+                                    </div>
+                                </div>
+                                <label for="form_telephone" class="col-sm-2 control-label"><span class="span_required">*</span>手机号码</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <input name="telephone" type="text" class="form-control input-sm" id="form_telephone" placeholder="手机号码">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="form_bookId" class="col-sm-2 control-label"><span class="span_required">*</span>所属通讯录</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <input name="bookname" type="text"  readonly
+                                               class="form-control input-sm" id="form_bookName"
+                                               style="background-color: white" placeholder="组织部门">
+                                        <div id="menuContent1" class="menuContent ztree_selectInput">
+                                            <ul id="treeBook" class="ztree" style="margin-top:0; width:200px;"></ul>
+                                        </div>
+                                        <input name="bookid" type="hidden" id="form_bookId"><!--隐藏的通讯录编号值域-->
+                                    </div>
+                                </div>
+                                <label for="form_sort" class="col-sm-2 control-label">排序</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <input name="sort" type="text" class="form-control input-sm" id="form_sort" placeholder="排序">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="form_remark" class="col-sm-2 control-label">备注</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <input name="remark" type="text" class="form-control input-sm" id="form_remark" placeholder="备注">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="background/smsman/addOrUpdate.js"></script>

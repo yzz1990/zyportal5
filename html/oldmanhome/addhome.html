@@ -1,0 +1,95 @@
+
+<div class="row">
+    <table>
+        <tr>
+            <td>
+                <span style="color: red">*</span>
+                <span>养老院名称</span>
+            </td>
+            <td>
+                <div class="form-group fg-float col-lg-2 col-sm-2 col-xs-6">
+                    <div class="fg-line" style="width:180px;">
+                        <input type="text" id="name"     class="input-sm form-control fg-input"  >
+                    </div>
+                </div>
+            </td>
+            <td>
+            </td>
+            <td>
+                <span style="color: red">*</span>
+                <span>养老院地址</span>
+            </td>
+            <td>
+                <div class="form-group fg-float col-lg-2 col-sm-2 col-xs-6">
+                    <div class="fg-line" style="width:180px;">
+                        <input type="text" id="address"     class="input-sm form-control fg-input"  >
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span style="color: red">*</span>
+                <span>所属区域</span>
+            </td>
+            <td>
+                <div class="form-group col-lg-2 " style="width:210px;">
+                    <select id="arealoda"  class="selectpicker" data-live-search="true" >
+                    </select>
+                </div>
+            </td>
+            <td></td>
+            <td>
+                <span style="color: red">*</span>
+                <span>联系电话</span>
+            </td>
+            <td>
+                <div class="form-group fg-float col-lg-2 col-sm-2 col-xs-6">
+                    <div class="fg-line" style="width:180px;">
+                        <input type="text"  id="phone"   class="input-sm form-control fg-input"  >
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+    </table>
+
+    </div>
+
+</div>
+<script>
+    function loadchoose(value) {
+      /*  $("#arealoda option:selected").val(value);*/
+      /*  $("#arealoda").append('<option value="'+value+'">'+value+'</option>');*/
+        loadareas(value);
+
+
+    }
+    function loadareas(value) {
+        getData(
+            'post',
+            '/Area/AdministrationArea/SelectAreas',
+            null,
+            'json',
+            function (data) {//success
+                data=data.data;
+                $("#arealoda").append('<option value="">请选择区域</option>');
+                if(data.length>0){
+                    for(var i=0;i<data.length;i++){
+                        $("#arealoda").append('<option value="'+data[i].area+'">'+data[i].area+'</option>');
+                    }
+                }
+                $("#arealoda").selectpicker({});  //初始化
+                if(value!=undefined){
+                    $("#arealoda").selectpicker('val', value);
+                }
+
+                /*initTable(); // 调用函数，初始化表格*/
+            },function(obj){//error
+                showtoastr("inverse", '区域加载异常');
+            }
+        );
+
+    }
+
+</script>

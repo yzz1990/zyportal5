@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>电子公示牌详情</title>
+
+        <link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+        <link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">
+    </head>
+    <style>
+        .zzy-riverimg {
+            width: 100%;
+            height: 250px;
+            text-align: center;
+        }
+        .zzy-rivername{
+            text-align: left;
+            color: white;
+            height: 12%;
+            font-size: 15px;
+        }
+        .zzy-myimg{
+            width: 100%;
+            vertical-align: top;
+            height: 85%;
+        }
+        .zzy-mypadding{
+            padding: 0px;
+        }
+        .zzy-liw{
+              width: 40%;
+              float: left;
+              text-align: left;
+              padding-left: 5%;
+          }
+        .zzy-liw2{
+            width: 40%;
+            float: left;
+            text-align: left;
+            padding-left: 2.5%;
+        }
+        .zzy-liwtwo{
+            width: 20%;
+            float: left;
+            text-align: left;
+            padding-left: 2.5%;
+
+        }
+        .zzy-liwtwo3{
+            float: left;
+            text-align: left;
+            padding-left: 2.5%;
+
+        }
+        .zzy-liwtwo2{
+            width: 70%;
+            float: left;
+            text-align: left;
+            padding-left: 1.25%;
+
+        }
+        .zzy-hdfw{
+            padding-top: 2.5%;
+            padding-bottom: 2.5%;
+        }
+        .zzy-hzlxfs{
+            text-align: left;
+            color:#6dda56;
+            padding-left: 2.5%;
+            padding-top: 5%;
+        }
+
+.zzy-btop{
+    border-bottom: 0px solid #e5e5e5;
+}
+        .zzy-riverimg1 {
+            margin-right: .8em;
+            width: 80px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+        }
+        .weui-msg {
+            padding-top: 0px;
+            text-align: center;
+        }
+        .zzy-telimg{
+            width: 15px;
+            margin-left: 10px;
+        }
+        .zzy-bodyfontsize{
+            font-size: 13px;
+        }
+        .weui-flex {
+            margin: 5px;
+            display: flex;
+        }
+    </style>
+    <body >
+    <div class="weui-search-bar" id="searchBar">
+        <form class="weui-search-bar__form">
+            <div class="weui-search-bar__box">
+                <i class="weui-icon-search"></i>
+                <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required="">
+                <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+            </div>
+            <label class="weui-search-bar__label" id="searchText" style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);">
+                <i class="weui-icon-search"></i>
+                <span>搜索</span>
+            </label>
+        </form>
+        <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+    </div>
+        <div class="weui-msg zzy-bodyfontsize">
+            <div class="weui-panel__bd">
+                <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg zzy-mypadding">
+                    <div class="zzy-riverimg">
+                        <img class="zzy-myimg" src="../images/river.jpg" alt="">
+                        <div class="zzy-rivername" style="background-color:#777272" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;余杭塘河(拱墅段) </div>
+                    </div>
+                </a>
+            </div>
+            <div class="weui-panel__bd">
+                <div class="weui-flex ">
+                    <div class="weui-flex__item zzy-paddingl">
+                        <div class="weui-cell__bd zzy-liw">
+                        <p>河道编号</p>
+                    </div>
+                        <div class="weui-cell__ft zzy-liw2">HDGS0003</div>
+                    </div>
+                    <div class="weui-flex__item zzy-paddingl">
+                        <div class="weui-cell__bd zzy-liw">
+                            <p>所属区县</p>
+                        </div>
+                        <div class="weui-cell__ft zzy-liw2">拱墅县</div>
+                    </div>
+                </div>
+                <div class="weui-flex ">
+                    <div class="weui-flex__item zzy-paddingl">
+                        <div class="weui-cell__bd zzy-liw">
+                            <p>河道起点</p>
+                        </div>
+                        <div class="weui-cell__ft zzy-liw2">运河</div>
+                    </div>
+                    <div class="weui-flex__item zzy-paddingl">
+                        <div class="weui-cell__bd zzy-liw">
+                            <p>河道等级</p>
+                        </div>
+                        <div class="weui-cell__ft zzy-liw2">区县级</div>
+                    </div>
+                </div>
+                <div class="weui-flex ">
+                    <div class="weui-flex__item zzy-paddingl">
+                        <div class="weui-cell__bd zzy-liw">
+                            <p>河道终点</p>
+                        </div>
+                        <div class="weui-cell__ft zzy-liw2">紫金港</div>
+                    </div>
+                    <div class="weui-flex__item zzy-paddingl">
+                        <div class="weui-cell__bd zzy-liw">
+                            <p>河道长度</p>
+                        </div>
+                        <div class="weui-cell__ft zzy-liw2">3.900千米</div>
+                    </div>
+                </div>
+                <div class="weui-flex ">
+                    <div class="weui-flex__item">
+                        <div class="weui-cell__bd zzy-liwtwo">
+                            <p>河长职责</p>
+                        </div>
+                        <div class="weui-cell__ft zzy-liwtwo2">
+                            各级河长负责牵头组织开展包干河道水质和污染源现状调查，制定水环境治理实施方案，推动重点工程项目落实
+                        ，协调解决重点难点问题，做好督促检查工作，确保完成水环境治理任务
+                        </div>
+                    </div>
+
+                </div>
+                <div class="weui-flex ">
+                    <div class="weui-flex__item">
+                        <div class="weui-cell__bd zzy-liwtwo">
+                            <p>整理目标</p>
+                        </div>
+                        <div class="weui-cell__ft zzy-liwtwo2">
+                      水清，流畅，岸绿，景美，宜居
+                        </div>
+                    </div>
+
+                </div>
+                <div class="weui-flex__item zzy-hdfw zzy-btop">
+                    <a href="javascript:void(0);" >
+                    查看河道方位
+                    </a>
+                </div>
+
+                <div class="weui-flex__item zzy-hzlxfs zzy-btop" >
+                    <div class="placeholder">河长联系方式</div>
+                </div>
+                <div class="weui-flex " >
+                    <div class="weui-flex__item zzy-paddingl" >
+                        <div class="weui-cell__bd zzy-liw">
+                            <p>区县河长</p>
+                        </div>
+                        <div class="weui-cell__ft zzy-liw2">张三    <img src="../images/call.png" alt="" class="zzy-telimg"  onclick="lxdh()"></div>
+
+                    </div>
+                    <div class="weui-flex__item zzy-paddingl" >
+                        <div class="weui-cell__bd zzy-liw">
+                            <p>河道警长</p>
+                        </div>
+                        <div class="weui-cell__ft zzy-liw2">李四    <img src="../images/call.png" alt="" class="zzy-telimg" onclick="lxdh()"> </div>
+
+                    </div>
+                </div>
+                <div class="weui-flex ">
+                    <div class="weui-flex__item">
+                        <div class="weui-cell__bd zzy-liwtwo">
+                            <p>河长职务</p>
+                        </div>
+                        <div class="weui-cell__ft zzy-liwtwo2">
+                            区人大主任
+                        </div>
+                    </div>
+
+                </div>
+                <div class="weui-flex ">
+                    <div class="weui-flex__item">
+                        <div class="weui-cell__bd zzy-liwtwo">
+                            <p>联系部门</p>
+                        </div>
+                        <div class="weui-cell__ft zzy-liwtwo2">
+                            区人大办公室
+                        </div>
+                    </div>
+
+                </div>
+                <div class="weui-flex ">
+                    <div class="weui-flex__item">
+                        <div class="weui-cell__bd zzy-liwtwo">
+                            <p>联系人</p>
+                        </div>
+                        <div class="weui-cell__ft zzy-liwtwo2" >
+                            王五
+                            <img src="../images/call.png" alt="" class="zzy-telimg" onclick="lxdh()">
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="weui-flex zzy-btop">
+                <div class="weui-flex__item">
+                    <div class="weui-cell__bd zzy-liwtwo3">
+                        <p>统一监督电话</p>
+                    </div>
+                    <div class="weui-cell__ft zzy-liwtwo2">
+                        0510-857xxxxx
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="weui-flex__item zzy-hzlxfs zzy-btop" >
+                <div class="placeholder">下级河道</div>
+            </div>
+
+            <div class="weui-flex ">
+                <div class="weui-flex__item">
+                    <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                        <div class="weui-media-box__bd">
+                            <h4 class="weui-media-box__title">余杭塘河(祥符街道)</h4>
+                            <p class="weui-media-box__desc">镇级河道</p>
+                        </div>
+                        <div class="zzy-riverimg1">
+                            <img class="weui-media-box__thumb zzy-imghe " src="../images/river.jpg" alt="">
+                                                    </div>
+                    </a>
+                </div>
+
+            </div>
+            <div class="weui-flex ">
+                <div class="weui-flex__item">
+                    <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                        <div class="weui-media-box__bd">
+                            <h4 class="weui-media-box__title">余杭塘河(小河街道)</h4>
+                            <p class="weui-media-box__desc">镇级河道</p>
+                        </div>
+                        <div class="zzy-riverimg1">
+                            <img class="weui-media-box__thumb zzy-imghe " src="../images/river.jpg" alt="">
+                                                   </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    <div class="weui-footer zzy-hdfw ">
+        <p class="weui-footer__text">Copyright © 2017-2020 中科智远科技有限公司</p>
+    </div>
+        </div>
+
+        <script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+        <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+        <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/swiper.min.js"></script>
+        <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/city-picker.min.js"></script>
+    <script>
+        $(function () {
+            $.showLoading();
+   setTimeout(function() {
+                $.hideLoading();
+            }, 3000);
+        })
+        function lxdh() {
+            $.confirm("确认拨打电话？", function() {
+                //点击确认后的回调函数
+                window.location.href="tel:18552026779";
+            }, function() {
+                //点击取消后的回调函数
+            });
+
+        }
+    </script>
+    </body>
+</html>

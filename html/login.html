@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<!--[if IE 9 ]>
+<html class="ie9"><![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>v5</title>
+
+    <!-- Vendor CSS -->
+    <link href="../vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
+    <link href="../vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css"
+          rel="stylesheet">
+
+    <!-- CSS -->
+    <link href="../css/app.min.1.css" rel="stylesheet">
+    <link href="../css/app.min.2.css" rel="stylesheet">
+</head>
+
+<body class="login-content">
+<!-- Login -->
+<div class="lc-block toggled" id="l-login">
+    <h3 id="loginTitle"></h3>
+    <div class="input-group m-b-20">
+        <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
+        <div class="fg-line">
+            <input type="text" name="username" id="username" class="form-control" placeholder="用户名">
+        </div>
+    </div>
+
+    <div class="input-group m-b-20 ">
+        <span class="input-group-addon"><i class="zmdi zmdi-male"></i></span>
+        <div class="fg-line">
+            <input type="password" name="password" id="password" class="form-control" placeholder="密码">
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="checkbox">
+        <label onclick="remChang();">
+            <input type="checkbox" id="rememberPW" value="" onclick="remChang();">
+            <i class="input-helper" onclick="remChang();"></i>
+            记住我
+        </label>
+    </div>
+
+    <a href="javascript:void(0);" id="loginBtn" class="btn btn-login btn-danger btn-float"><i
+            class="zmdi zmdi-arrow-forward"></i></a>
+</div>
+
+
+<!-- Older IE warning message -->
+<!--[if lt IE 9]>
+<div class="ie-warning">
+    <h1 class="c-white">Warning!!</h1>
+    <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers
+        to access this website.</p>
+    <div class="iew-container">
+        <ul class="iew-download">
+            <li>
+                <a href="http://www.google.com/chrome/">
+                    <img src="img/browsers/chrome.png" alt="">
+                    <div>Chrome</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.mozilla.org/en-US/firefox/new/">
+                    <img src="img/browsers/firefox.png" alt="">
+                    <div>Firefox</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.opera.com">
+                    <img src="img/browsers/opera.png" alt="">
+                    <div>Opera</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.apple.com/safari/">
+                    <img src="img/browsers/safari.png" alt="">
+                    <div>Safari</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                    <img src="img/browsers/ie.png" alt="">
+                    <div>IE (New)</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <p>Sorry for the inconvenience!</p>
+</div>
+<![endif]-->
+
+<!-- Javascript Libraries -->
+<script src="../vendors/bower_components/jquery/jquery-2.1.1.js"></script>
+<script src="../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<script src="../vendors/bower_components/Waves/dist/waves.min.js"></script>
+<script type="text/javascript" src="../vendors/bootstrap-growl/bootstrap-growl.min.js"></script>
+<!-- Placeholder for IE9 -->
+<!--[if IE 9 ]>
+<script src="../vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
+<![endif]-->
+<script type="text/javascript" src="../js/common.js"></script>
+<script>
+    var isRem = false;
+    $(document).ready(function () {
+        systemView();
+        //获取Cookie保存的用户名和密码
+//        var username = getCookieValue("cookUser");
+//        var password = getCookieValue("cookPass");
+//        if (username != '' && password != '') {
+//            $("#username").val(username);
+//            $("#password").val(password);
+//            $("#rememberPW").attr("checked", true);
+//            isRem = true;
+//        }
+        var username = getLocalStorage("cookUser");
+        var password = getLocalStorage("cookPass");
+        if ((username != null && password != null)　&&　(username != '' && password != '') ) {
+            $("#username").val(username);
+            $("#password").val(password);
+            isRem = true;
+        }else{
+            $("#username").val('');
+            $("#password").val('');
+            isRem = false;
+        }
+        $("#rememberPW").attr("checked", isRem);
+
+    });
+
+    function systemView() {
+        var title = getParameterValueByCode("loginName");
+        if (title != undefined) {
+            $("#loginTitle").html(title);
+        } else {
+            $("#loginTitle").html("");
+        }
+//        var rePwd = getParameterValueByCode("isRemberPwd");
+//        if (rePwd == "true") {
+//            $("#rememberPW").attr("checked", true);
+//            isRem = true;
+//        } else {
+//            $("#rememberPW").attr("checked", false);
+//            isRem = false;
+//        }
+    }
+
+    function remChang(){
+        isRem=!isRem;
+//        alert($("#rememberPW").attr("checked"));
+    }
+
+    function getCookieValue(name) {
+        var name = escape(name);
+        //读cookie属性，这将返回文档的所有cookie
+        var allcookies = document.cookie;
+        //查找名为name的cookie的开始位置
+        name += "=";
+        var pos = allcookies.indexOf(name);
+        //如果找到了具有该名字的cookie，那么提取并使用它的值
+        if (pos != -1) {                                             //如果pos值为-1则说明搜索"version="失败
+            var start = pos + name.length;                  //cookie值开始的位置
+            var end = allcookies.indexOf(";", start);        //从cookie值开始的位置起搜索第一个";"的位置,即cookie值结尾的位置
+            if (end == -1) end = allcookies.length;        //如果end值为-1说明cookie列表里只有一个cookie
+            var value = allcookies.substring(start, end);  //提取cookie的值
+            return unescape(value);                           //对它解码
+        }
+        else return "";                                             //搜索失败，返回空字符串
+    }
+
+
+    function setCookie(name, value, hours, path) {
+        var name = escape(name);
+        var value = escape(value);
+        var expires = new Date();
+        expires.setTime(expires.getTime() + hours * 3600000);
+        path = path == "" ? "" : ";path=" + path;
+        _expires = (typeof hours) == "string" ? "" : ";expires=" + expires.toUTCString();
+        document.cookie = name + "=" + value + _expires + path;
+    }
+
+
+    /*
+     * Login
+     */
+    if ($('.login-content')[0]) {
+        //Add class to HTML. This is used to center align the logn box
+        $('html').addClass('login-content');
+
+        $('body').on('click', '.login-navigation > li', function () {
+            var z = $(this).data('block');
+            var t = $(this).closest('.lc-block');
+            t.removeClass('toggled');
+            setTimeout(function () {
+                $(z).addClass('toggled');
+            });
+
+        })
+    }
+    /*
+     * Text Feild
+     */
+
+    //Add blue animated border and remove with condition when focus and blur
+    if ($('.fg-line')[0]) {
+        $('body').on('focus', '.fg-line .form-control', function () {
+            $(this).closest('.fg-line').addClass('fg-toggled');
+        })
+
+        $('body').on('blur', '.form-control', function () {
+            var p = $(this).closest('.form-group, .input-group');
+            var i = p.find('.form-control').val();
+
+            if (p.hasClass('fg-float')) {
+                if (i.length == 0) {
+                    $(this).closest('.fg-line').removeClass('fg-toggled');
+                }
+            }
+            else {
+                $(this).closest('.fg-line').removeClass('fg-toggled');
+            }
+        });
+    }
+
+    function validForm() {
+        var u = $("#username").val();
+        var p = $("#password").val();
+        if (u == "" || p == "") {
+            w
+            showtoastr("inverse", "请输入用户名密码");
+            return false;
+        }
+        return true;
+    }
+
+    $("#loginBtn").click(function () {
+        if (validForm()) {
+            getData(
+                'post',
+                '/Permission/auth/token?username=' + $("#username").val() + "&password=" + $("#password").val(),
+                '',
+                'json',
+                function (obj) {
+                    if (obj.code != "0") {
+                        showtoastr("inverse", obj.code + "--" + (obj.desc != "undefind" ? obj.desc : "异常"));
+                    } else {
+                        setLocalStorage("token", obj.data.access_token);
+                        getData(
+                            'get',
+                            '/system/user/getBasic',
+                            null,
+                            'json',
+                            function (obj) {
+                                if (obj.code != "0") {
+                                    showtoastr("inverse", obj.code + "--" + (obj.desc != "undefind" ? obj.desc : "异常"));
+                                } else {
+//                                    var time = 60 * 60 * 60;
+//                                    if (isRem) {
+//                                        setCookie('cookUser', $("#username").val(), time, '/');
+//                                        setCookie('cookPass', $("#password").val(), time, '/');
+//                                    } else {
+//                                        setCookie('cookUser ', '', time, '/');
+//                                        setCookie('cookPass', '', time, '/');
+//                                    }
+                                    var time = 60 * 60 * 60;
+                                    if (isRem) {
+                                        setLocalStorage('cookUser', $("#username").val());
+                                        setLocalStorage('cookPass', $("#password").val());
+                                    } else {
+                                        setLocalStorage('cookUser ', '');
+                                        setLocalStorage('cookPass', '');
+                                    }
+                                    showtoastr("inverse", "验证成功,正在跳转");
+                                    setLocalStorage("userInfo",JSON.stringify(obj.data));
+//                                    location.href = "home.html";
+                                    location.href = "index.html";
+                                }
+                            }
+                        );
+                    }
+                }
+            );
+        }
+    });
+
+</script>
+
+</body>
+</html>

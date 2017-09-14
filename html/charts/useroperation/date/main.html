@@ -1,0 +1,163 @@
+<style>
+    /*#loading {*/
+        /*background-color: #374140;*/
+        /*height: 100%;*/
+        /*width: 100%;*/
+        /*position: fixed;*/
+        /*margin-top: 0;*/
+        /*top: 0;*/
+        /*filter: alpha(Opacity=80);*/
+        /*-moz-opacity: 0.5;*/
+        /*opacity: 0.7;*/
+        /*z-index: 99999;*/
+        /*display: none;*/
+    /*}*/
+
+    /*#loading-center {*/
+        /*width: 100%;*/
+        /*height: 100%;*/
+        /*position: relative;*/
+    /*}*/
+
+    /*#loading-center-absolute {*/
+        /*position: absolute;*/
+        /*left: 50%;*/
+        /*top: 50%;*/
+        /*height: 50px;*/
+        /*width: 150px;*/
+        /*margin-top: -25px;*/
+        /*margin-left: -75px;*/
+
+    /*}*/
+
+    /*.object {*/
+        /*width: 8px;*/
+        /*height: 50px;*/
+        /*margin-right: 5px;*/
+        /*background-color: #FFF;*/
+        /*-webkit-animation: animate 1s infinite;*/
+        /*animation: animate 1s infinite;*/
+        /*float: left;*/
+    /*}*/
+
+    /*.object:last-child {*/
+        /*margin-right: 0px;*/
+    /*}*/
+
+    /*.object:nth-child(10) {*/
+        /*-webkit-animation-delay: 0.9s;*/
+        /*animation-delay: 0.9s;*/
+    /*}*/
+
+    /*.object:nth-child(9) {*/
+        /*-webkit-animation-delay: 0.8s;*/
+        /*animation-delay: 0.8s;*/
+    /*}*/
+
+    /*.object:nth-child(8) {*/
+        /*-webkit-animation-delay: 0.7s;*/
+        /*animation-delay: 0.7s;*/
+    /*}*/
+
+    /*.object:nth-child(7) {*/
+        /*-webkit-animation-delay: 0.6s;*/
+        /*animation-delay: 0.6s;*/
+    /*}*/
+
+    /*.object:nth-child(6) {*/
+        /*-webkit-animation-delay: 0.5s;*/
+        /*animation-delay: 0.5s;*/
+    /*}*/
+
+    /*.object:nth-child(5) {*/
+        /*-webkit-animation-delay: 0.4s;*/
+        /*animation-delay: 0.4s;*/
+    /*}*/
+
+    /*.object:nth-child(4) {*/
+        /*-webkit-animation-delay: 0.3s;*/
+        /*animation-delay: 0.3s;*/
+    /*}*/
+
+    /*.object:nth-child(3) {*/
+        /*-webkit-animation-delay: 0.2s;*/
+        /*animation-delay: 0.2s;*/
+    /*}*/
+
+    /*.object:nth-child(2) {*/
+        /*-webkit-animation-delay: 0.1s;*/
+        /*animation-delay: 0.1s;*/
+    /*}*/
+
+    /*@-webkit-keyframes animate {*/
+
+        /*50% {*/
+            /*-ms-transform: scaleY(0);*/
+            /*-webkit-transform: scaleY(0);*/
+            /*transform: scaleY(0);*/
+
+        /*}*/
+    /*}*/
+
+    /*@keyframes animate {*/
+        /*50% {*/
+            /*-ms-transform: scaleY(0);*/
+            /*-webkit-transform: scaleY(0);*/
+            /*transform: scaleY(0);*/
+        /*}*/
+    /*}*/
+
+    #profile-main .ms-menu .lv-item.active{
+        background-color: #FFEB3B;
+    }
+</style>
+
+<div class="card" id="profile-main" style="margin-bottom: 0;" >
+    <div class="pm-overview c-overflow mCustomScrollbar _mCS_3 mCS-autoHide" style="overflow: visible;">
+        <div class="ms-menu">
+            <div class="ms-block">
+                <div class="dropdown" id="dropdown_item">
+                    <a class="btn btn-primary btn-block waves-effect" href="" data-toggle="dropdown"><span id="sel_title"></span><i
+                            class="caret m-l-5"></i></a>
+                    <ul id="ul_changeitem" class="dropdown-menu dm-icon w-100">
+                        <li><a href="javascript:;" id="recent7Day"><i class="zmdi zmdi-collection-item-7 zmdi-hc-fw"></i><span>近7天</span></a></li>
+                        <li><a href="javascript:;" id="thisWeek"><i class="zmdi zmdi-view-week zmdi-hc-fw"></i><span>本周</span></a></li>
+                        <li><a href="javascript:;" id="thisMonth"><i class="zmdi zmdi-widgets zmdi-hc-fw"> </i><span>本月</span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="listview lv-user " id="top5list">
+
+            </div>
+        </div>
+    </div>
+    <div class="pm-body clearfix" style="background-color: #404a59">
+        <div id="chart_body" class="card-body card-padding">
+            <div class="row" id="mainChart" >
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--<div id="loading">-->
+    <!--<div id="loading-center">-->
+        <!--<div id="loading-center-absolute">-->
+            <!--<div class="object"></div>-->
+            <!--<div class="object"></div>-->
+            <!--<div class="object"></div>-->
+            <!--<div class="object"></div>-->
+            <!--<div class="object"></div>-->
+            <!--<div class="object"></div>-->
+            <!--<div class="object"></div>-->
+            <!--<div class="object"></div>-->
+            <!--<div class="object"></div>-->
+            <!--<div class="object"></div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+
+<!--<link href="charts/page-preload-animations/_css/Icomoon/style.css" rel="stylesheet" type="text/css"/>-->
+<!--<link href="charts/page-preload-animations/_css/main.css" rel="stylesheet" type="text/css"/>-->
+
+<script type="text/javascript" src="charts/useroperation/date/main.js"></script>

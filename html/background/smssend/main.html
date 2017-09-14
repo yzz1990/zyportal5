@@ -1,0 +1,86 @@
+<style>
+    .modal-dialog{
+        width: 60%;
+    }
+    /*单选多选换行对齐开始*/
+    .checkbox-inline + .checkbox-inline {
+        margin-left: 0;
+    }
+    .radio-inline + .radio-inline, .checkbox-inline + .checkbox-inline {
+        margin-left: 0;
+    }
+    /*单选多选换行对齐结束*/
+    .span_required{
+        color: red;
+    }
+</style>
+<link href="../vendors/tagsinput/jquery.tagsinput.css" rel="stylesheet">
+<script src="../vendors/tagsinput/jquery.tagsinput.js"></script>
+
+<div id="div_container" class="row div_father" style="overflow-y: auto;">
+    <div class="pm-body clearfix">
+        <div class="tab-content">
+            <div class="pmb-block tab-pane active" id="basicInfo_div">
+                <div id="form_sendSMS" class="form-horizontal">
+                    <div class="card">
+                        <div class="card-body card-padding">
+                            <div class="form-group">
+                                <label for="form_tomans" class="col-sm-2 control-label"><span class="span_required">*</span>请选择接收人员：</label>
+                                <div class="col-sm-9">
+                                    <div class="fg-line">
+                                        <div id="form_tomansDIV" class="form-control input-sm">
+                                            <input id="form_tomans" type="text" placeholder="最多选择100人...">
+                                        </div>
+                                    </div>
+                                </div>
+                                <i data-trigger="hover" data-toggle="tooltip" data-placement="left"
+                                   data-content="手动输入人员格式：姓名:号码 例如：张三:15061888888   注意：最多选择100人。" title="" data-original-title="提示"
+                                   class="zmdi zmdi-help-outline zmdi-hc-fw tip-all-right"></i>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"></label>
+                                <div class="col-sm-9">
+                                    <button class='btn bgm-green waves-effect' onclick='openSMSBookModel()'>通讯录</button>
+                                    <!--<button class='btn bgm-yellow waves-effect' onclick='openSMSOrganizationModel()'>组织机构</button>-->
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="form_content" class="col-sm-2 control-label"><span class="span_required">*</span>请输入发信内容：</label>
+                                <div class="col-sm-9">
+                                    <div class="fg-line">
+                                        <textarea class="form-control input-sm" rows="8" id="form_content" placeholder="最多输入300字..."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"></label>
+                                <div class="col-sm-9">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" id="form_istimed">
+                                            <i class="input-helper"></i>
+                                            定时发送
+                                        </label>
+                                    </div>
+                                    <br>
+                                    <input type="text" id="form_deftime" class="datainp wicon" placeholder="" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div role="separator" class="divider"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"></label>
+                                <div class="col-sm-9">
+                                    <button class='btn btn-primary waves-effect' onclick='sendSMS();'>发送短信</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="background/smssend/main.js"></script>

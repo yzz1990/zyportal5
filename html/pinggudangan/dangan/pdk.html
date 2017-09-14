@@ -1,0 +1,108 @@
+<style>
+    #div_pdk p{
+        margin-top: 10px;
+        padding-left: 20px;
+        color: #FF6600;
+    }
+    .print {
+        position: absolute;
+        right: 65px;
+        top: 20px;
+    }
+</style>
+<div class="block-header">
+    <h1 class="text-center"><strong>判定卡</strong></h1>
+    <button onclick="pdjgPrint()"  class="btn bgm-lightblue btn-icon-text waves-effect print">
+        <i class="zmdi zmdi-print zmdi-hc-fw"></i>打印
+    </button>
+</div>
+<div id="div_pdk" class="table-responsive" style="margin-left:50px;margin-right: 50px;">
+    <table id="table_pdk" class="table table-bordered" style="text-align: center;border: 1px solid #f0f0f0;">
+        <tr >
+            <th rowspan="2">日常生活活动</th>
+            <th colspan="4">精神认知</th>
+            <th colspan="4">感知觉与沟通</th>
+            <th colspan="4">社会参与</th>
+            <th rowspan="2">评估等级</th>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td class="tdw1">1</td>
+            <td class="tdw1">2</td>
+            <td class="tdw1">3</td>
+            <td class="tdw1">0</td>
+            <td class="tdw1">1</td>
+            <td class="tdw1">2</td>
+            <td class="tdw1">3</td>
+            <td class="tdw1">0</td>
+            <td class="tdw1">1</td>
+            <td class="tdw1">2</td>
+            <td class="tdw1">3</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td id="td_pddj" rowspan="4">&nbsp;</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+    <p>&nbsp;&nbsp;注：老年人能力评估结果判定卡使用时，一般根据日常生活活动能力进行初步定位，锁定目标区域，然后根据其他三项能力在判定卡上同一颜色区域定位查找相应的能力等级。以下为几种特殊情况：</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）当日常生活活动为0，精神认知、感知觉与沟通有一项为1及以上，或者社会参与为2或以上，判定为轻度失能。</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）当日常生活活动为1时，后三项有一项为0或1，判定为轻度失能；后三项均为2及以上或一项为3，则判定为中度失能。</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（3）当日常生活活动为2时，后三项全部为2以上或某一项为3，判定为重度失能，否则为中度失能。</p>
+</div>

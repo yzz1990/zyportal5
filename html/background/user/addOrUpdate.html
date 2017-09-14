@@ -1,0 +1,139 @@
+
+<style>
+    .modal-dialog{
+        width: 60%;
+    }
+    /*单选多选换行对齐开始*/
+    .checkbox-inline + .checkbox-inline {
+        margin-left: 0;
+    }
+    .radio-inline + .radio-inline, .checkbox-inline + .checkbox-inline {
+        margin-left: 0;
+    }
+    .photo{
+        position: absolute;
+        top:10px;
+        right:-10px;
+        width: 240px;
+        height: 320px;
+    }
+    #form_headPhoto{
+        /*width: 100px;
+        height: 150px;*/
+        margin-bottom: 5px;
+        /*margin-left: 25px;*/
+        border: 1px dashed #E6E6FA;
+    }
+</style>
+<div id="div_container" class="row div_father" style="">
+    <div class="pm-body clearfix">
+        <div class="tab-content">
+            <div class="pmb-block tab-pane active" id="basicInfo_div">
+                <form id="form_addOrUpdate" class="form-horizontal">
+                    <div class="card">
+                        <div class="card-body card-padding">
+                            <div class="form-group">
+                                <label for="form_username" class="col-sm-2 control-label"><span class="span_required">*</span>登录账号</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <input name="username" type="text" class="form-control input-sm" id="form_username" placeholder="登录账号">
+                                    </div>
+                                </div>
+                                <label for="form_password" class="col-sm-1 control-label"><span class="span_required">*</span>密码</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <input name="password" type="password" class="form-control input-sm" id="form_password" placeholder="密码">
+                                    </div>
+                                </div>
+                                <!--<label  class="col-sm-2 control-label">头像上传</label>-->
+                                <div class="photo">
+                                    <img id="form_headPhoto" src="" >
+                                    <input id="imageUpload" type="file" accept="image/jpeg,image/jpg,image/png" >
+                                    <input id="form_photoUrl" name="photourl" type="hidden"><!--上传图片路径-->
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="form_realname" class="col-sm-2 control-label"><span class="span_required">*</span>真实姓名</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <input name="realname" type="text" class="form-control input-sm" id="form_realname" placeholder="真实姓名">
+                                    </div>
+                                </div>
+                                <label for="form_email" class="col-sm-1 control-label"><span class="span_required">*</span>邮箱</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <input name="email" type="text" class="form-control input-sm" id="form_email" placeholder="邮箱">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="form_tel" class="col-sm-2 control-label"><span class="span_required">*</span>电话</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <input name="tel" type="text" class="form-control input-sm" id="form_tel" placeholder="电话">
+                                    </div>
+                                </div>
+                                <label for="form_sex" class="col-sm-1 control-label radio-inline">性别</label>
+                                <div class="col-sm-3" id="form_sex">
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="form_birthday" class="col-sm-2 control-label">出生年月</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <input id="form_birthday" name="birthday" class="datainp wicon" type="text" readonly>
+                                    </div>
+                                </div>
+                                <label for="form_description" class="col-sm-1 control-label">描述</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <input name="description" type="text" class="form-control input-sm" id="form_description" placeholder="描述">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label  class="col-sm-2 control-label">组织部门</label>
+                                <div class="col-sm-3" >
+                                    <div class="fg-line">
+                                        <input name="organizeName" type="text"  readonly
+                                               class="form-control input-sm" id="form_organizeName"
+                                               style="background-color: white" placeholder="组织部门">
+                                        <div id="menuContent1" class="menuContent ztree_selectInput">
+                                            <ul id="treeDemo" class="ztree" style="margin-top:0; width:200px;"></ul>
+                                        </div>
+                                        <input name="organizeId" type="hidden" id="form_organizeId"><!--隐藏的组织编号值域-->
+                                    </div>
+                                </div>
+                                <label  class="col-sm-1 control-label">角色</label>
+                                <div class="col-sm-3" >
+                                    <div class="fg-line">
+                                        <input name="roleName" type="text"  readonly
+                                               class="form-control input-sm" id="form_roleName"
+                                               style="background-color: white" placeholder="角色">
+                                        <div id="menuContent2" class="menuContent ztree_selectInput">
+                                            <ul id="treeDemo2" class="ztree" style="margin-top:0; width:200px;"></ul>
+                                        </div>
+                                        <input name="roleId" type="hidden" id="form_roleId"><!--隐藏的角色编号值域-->
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <input type="hidden" name="status" value="1" id="form_status"><!--用户启用状态,默认为1:启用-->
+
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="background/user/addOrUpdate.js"></script>
+
+
+

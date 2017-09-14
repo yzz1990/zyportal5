@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>投诉举报</title>
+    <link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">
+    <link rel="stylesheet" type="text/css" href="webuploader/webuploader.css">
+<!--    <style>
+        .webuploader-element-invisible {
+            position: absolute !important;
+            clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+            clip: rect(1px,1px,1px,1px);
+        }
+    </style>-->
+</head>
+<body>
+<div class="weui-cells weui-cells_form" style="margin-top:0">
+    <div class="weui-cells__title">投诉举报</div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">举报时间</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" type="text" id="time" readonly>
+        </div>
+    </div>
+
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">举报编号</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" type="text" value="武河办交2017B001" readonly>
+        </div>
+    </div>
+
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">所属区域</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" type="text" id="picker" placeholder="请选择所属区域">
+        </div>
+    </div>
+
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">河道名称</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" type="text" placeholder="模糊搜索">
+        </div>
+    </div>
+
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">河长姓名</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" type="text" placeholder="请输入河长姓名">
+        </div>
+    </div>
+
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">举报人</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" type="text" placeholder="选填">
+        </div>
+    </div>
+
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">联系方式</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" type="text" placeholder="选填">
+        </div>
+    </div>
+
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">问题类别</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" type="text" id="picker2" placeholder="请选择问题类别">
+        </div>
+    </div>
+
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">问题地点</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" type="text" >
+        </div>
+    </div>
+
+    <div class="weui-cells weui-cells_form">
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <textarea class="weui-textarea" placeholder="请输入描述文字" rows="4"></textarea>
+                <div class="weui-textarea-counter"><!--<span>0</span>/200--></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="weui-cells weui-cells_form">
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <div class="weui-uploader">
+                    <div class="weui-uploader__hd">
+                        <p class="weui-uploader__title">图片上传</p>
+                        <div class="weui-uploader__info"></div>
+                    </div>
+                    <div class="weui-uploader__bd">
+                        <ul class="weui-uploader__files" id="uploadList">
+                            <!--<li class="weui-uploader__file" style="background-image:url(./images/pic_160.png)"></li>
+                            <li class="weui-uploader__file" style="background-image:url(./images/pic_160.png)"></li>
+                            <li class="weui-uploader__file" style="background-image:url(./images/pic_160.png)"></li>
+                            <li class="weui-uploader__file weui-uploader__file_status" style="background-image:url(./images/pic_160.png)">
+                                <div class="weui-uploader__file-content">
+                                    <i class="weui-icon-warn"></i>
+                                </div>
+                            </li>
+                            <li class="weui-uploader__file weui-uploader__file_status" style="background-image:url(./images/pic_160.png)">
+                                <div class="weui-uploader__file-content">50%</div>
+                            </li>-->
+                        </ul>
+
+                        <div style="display: none;" id="upload_btn_hidden">上传</div>
+                        <div class="weui-uploader__input-box" id="upload_btn"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="javascript:;" class="weui-btn weui-btn_warn">确认</a>
+    <a href="javascript:;" class="weui-btn weui-btn_primary">取消</a>
+</div>
+
+
+</body>
+<script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+<script src="webuploader/webuploader.js"></script>
+<script src="util.js"></script>
+<script>
+//图片大小79px
+    !function(){
+
+        $('#time').val($wu.getDT());
+        $("#picker").picker({
+            title: "请选择所属区域",
+            cols: [
+                {
+                    textAlign: 'center',
+                    values: ['全部']
+                }
+            ]
+        });
+        $("#picker2").picker({
+            title: "请选择问题类别",
+            cols: [
+                {
+                    textAlign: 'center',
+                    values: ['河道垃圾','其他']
+                }
+            ]
+        });
+        //绑定上传按钮
+        $('#upload_btn').click(function(){
+            $('#upload_btn_hidden label').click();
+        });
+
+        // 初始化Web Uploader
+        var uploader = WebUploader.create({
+
+            // 选完文件后，是否自动上传。
+            auto: true,
+
+            // swf文件路径
+            swf:   'webuploader/Uploader.swf',
+
+            // 文件接收服务端。
+            server: root+'editorFile/fileUpload/imageUpload',
+
+            // 选择文件的按钮。可选。
+            // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+            pick: '#upload_btn_hidden',
+
+            /*        sendAsBinary:true,*/
+
+            // 只允许选择图片文件。
+            accept: {
+                title: 'Images',
+                extensions: 'gif,jpg,jpeg,bmp,png',
+                mimeTypes: 'image/gif,image/jpg,image/jpeg,image/bmp,image/png'
+            }
+
+        });
+        // 当有文件添加进来的时候
+        uploader.on( 'fileQueued', function( file ) {
+            var $li = $(
+                    '<li id="' + file.id + '" class="weui-uploader__file weui-uploader__file_status">' +
+                    '<img>' +
+                    '</li>'
+                ),
+
+                $img = $li.find('img');
+            // $list为容器jQuery实例
+            $('#uploadList').append( $li );
+            // 创建缩略图
+            // 如果为非图片文件，可以不用调用此方法。
+            // thumbnailWidth x thumbnailHeight 为 100 x 100
+            var thumbnailWidth=79;
+            var thumbnailHeight=79;
+            uploader.makeThumb( file, function( error, src ) {
+                if ( error ) {
+                    $img.replaceWith('<span>不能预览</span>');
+                    return;
+                }
+
+                $img.attr( 'src', src );
+            }, thumbnailWidth, thumbnailHeight );
+        });
+
+        // 文件上传过程中创建进度条实时显示。
+        uploader.on( 'uploadProgress', function( file, percentage ) {
+            var $li = $( '#'+file.id ),
+                $percent = $li.find('.weui-uploader__file-content');
+            // 避免重复创建
+            if ( !$percent.length ) {
+                $percent = $('<div class="weui-uploader__file-content"><span></span></div>')
+                    .appendTo( $li )
+                    .find('span');
+            }
+            $percent.text(percentage * 100 + '%' );
+        });
+
+        // 文件上传成功，给item添加成功class, 用样式标记上传成功。
+        uploader.on( 'uploadSuccess', function( file ) {
+            /*$( '#'+file.id ).addClass('upload-state-done');*/
+            console.log('上传成功')
+        });
+
+        // 文件上传失败，显示上传出错。
+        uploader.on( 'uploadError', function( file ) {
+             var  $li= $( '#'+file.id );
+             $li.remove();
+
+             /*$error = $li.find('weui-icon-warn');
+
+             // 避免重复创建
+             if ( !$error.length ) {
+                $error = $('<div class="weui-uploader__file-content"><i class="weui-icon-warn"></i></div>').appendTo( $li );
+             }*/
+             //$error.text('上传失败');
+            $.toptip('上传失败,请重试!', 'error');
+        });
+
+        // 完成上传完了，成功或者失败，先删除进度条。
+        uploader.on( 'uploadComplete', function( file ) {
+            $( '#'+file.id ).find('.weui-uploader__file-content').remove();
+            $( '#'+file.id ).removeClass('weui-uploader__file_status');
+        });
+    }();
+
+
+
+
+</script>
+</html>

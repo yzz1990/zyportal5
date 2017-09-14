@@ -1,0 +1,57 @@
+<style>
+    .modal-dialog{
+        width: 60%;
+    }
+    /*单选多选换行对齐开始*/
+    .checkbox-inline + .checkbox-inline {
+        margin-left: 0;
+    }
+    .radio-inline + .radio-inline, .checkbox-inline + .checkbox-inline {
+        margin-left: 0;
+    }
+    /*单选多选换行对齐结束*/
+    .span_required{
+        color: red;
+    }
+</style>
+
+<div id="div_container" class="row div_father" style="overflow-y: auto;">
+    <div class="pm-body clearfix">
+        <div class="tab-content">
+            <div class="pmb-block tab-pane active" id="basicInfo_div">
+                <form id="form_detail" class="form-horizontal">
+                    <div class="card">
+                        <div class="card-body card-padding">
+                            <div class="form-group">
+                                <label for="form_fromman" class="col-sm-2 control-label">发送人：</label>
+                                <div class="col-sm-8">
+                                    <div class="fg-line">
+                                        <label class="control-label" id="form_fromman"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="form_tomans" class="col-sm-2 control-label">接收人员：</label>
+                                <div class="col-sm-8">
+                                    <div class="fg-line">
+                                        <label class="control-label" id="form_tomans"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="form_content" class="col-sm-2 control-label">短信内容：</label>
+                                <div class="col-sm-8">
+                                    <div class="fg-line">
+                                        <label class="control-label" id="form_content"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="background/smsrecord/detail.js"></script>

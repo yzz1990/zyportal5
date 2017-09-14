@@ -1,0 +1,72 @@
+<style>
+    .print {
+        position: absolute;
+        right: 15px;
+        top: 20px;
+    }
+    .tdcenter{
+        text-align: center;
+    }
+
+</style>
+<div id="myPrintArea" style="height: 550px;overflow-y: auto;">
+    <div class="block-header">
+        <h1 class="text-center"><strong>老人近况</strong></h1>
+        <button onclick="pdjgPrint()"  class="btn bgm-lightblue btn-icon-text waves-effect print">
+            <i class="zmdi zmdi-print zmdi-hc-fw"></i>打印
+        </button>
+    </div>
+    <table id="myPrintArea_tab1" class="table table-bordered" style="border: 1px solid #f0f0f0;">
+        <colgroup>
+            <col width="20%" />
+            <col width="20%" />
+            <col width="60%" />
+        </colgroup>
+        <tr>
+            <td rowspan="4" style="text-align: center;vertical-align: middle;">疾病诊断</td>
+            <td class="tdcenter">痴呆</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="tdcenter" style="padding-left: 10px;">精神疾病</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="tdcenter" style="padding-left: 10px;">慢性疾病</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="tdcenter" style="padding-left: 10px;">其他疾病</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td rowspan="5" style="text-align: center;vertical-align: middle;">近30天内意外事件</td>
+            <td class="tdcenter" style="padding-left: 10px;">跌倒</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="tdcenter" style="padding-left: 10px;">走失</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="tdcenter" style="padding-left: 10px;" >噎食</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="tdcenter" style="padding-left: 10px;">自杀</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="tdcenter" style="padding-left: 10px;">其他</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="tdcenter">信息提供者姓名</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="tdcenter">信息提供者与老人的关系</td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,41 @@
+<div class="card">
+    <div class="card-body card-padding">
+        <div class="row">
+            <div class="form-group fg-float col-lg-2 col-sm-2 col-xs-6">
+                <div class="fg-line">
+                    <input type="text" class="input-sm form-control fg-input">
+                    <label class="fg-label">请输入用户名</label>
+                </div>
+            </div>
+            <div class="form-group fg-float col-lg-2 col-sm-2 col-xs-6">
+                <div class="fg-line">
+                    <input type="text" class="input-sm form-control fg-input">
+                    <label class="fg-label">请输入密码</label>
+                </div>
+            </div>
+            <div class="form-group col-lg-2 ">
+                <select id= "roleName" class="selectpicker" data-live-search="true">
+                    <option>请选择角色</option>
+                    <option>角色2</option>
+                    <option>角色3</option>
+                    <option>角色1</option>
+                    <option>角色2</option>
+                    <option>角色3</option>
+                </select>
+            </div>
+            <div class="form-group col-lg-2">
+                <button class="btn bgm-lightblue btn-icon-text waves-effect"><i class="zmdi zmdi-search zmdi-hc-fw"></i> 查询</button>
+            </div>
+            <div class="form-group col-lg-4">
+                <button id="btn_GasHis" class="btn bgm-amber btn-icon-text waves-effect pull-right"><i class="zmdi zmdi-plus zmdi-hc-fw"></i> 新增</button>
+            </div>
+        </div>
+        <div class="row">
+            <table id="main_table1" class="table table-striped">
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="table/table.js"></script>

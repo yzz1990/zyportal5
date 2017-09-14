@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>预览</title>
+</head>
+<body>
+<div class="row" style="width:800px;margin: 0px;">
+    <table style="margin:0px 45px;">
+        <tr>
+            <td colspan="4">
+                <div id="prediv" class="toolbar" style="margin-top: 5px;display: none;">
+                </div>
+                <div style="height: 50px;" id="fj">
+                    <div style="float: left;"  >
+                        <table id="prefjtable" style=" border-collapse:   separate;   border-spacing: 0px 10px; ">
+                        </table>
+                    </div>
+                </div>
+                <div id="prediv2" class="text"  style="width: 702px;border: 0px;" > <!--可使用 min-height 实现编辑区域自动增加高度-->
+                </div>
+            </td>
+        </tr>
+
+    </table>
+
+</div>
+<script type="text/javascript" src="../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="../../js/common.js"></script>
+<script>
+    $(document).ready(function() {
+        var id=window.location.search;
+      id=id.replace('?','')
+        edReload(id);
+    })
+    function  edReload(id) {
+        $.ajax({
+            url: cors+"/Editor/SystemEditor/SelectEditorById",
+            datatype: 'json',
+            data: {'id':id} ,
+            type: "Post",
+            success: function (data) {
+                data=data.data;
+                var precount=1;
+                var preBasename=data.basename.split(",");
+                var preUrl=data.fileurl.split(",");
+                for(var i in preBasename){
+                    var he=$("#fj").height();
+                    if(preBasename[i]!=undefined&&preBasename[i]!=""&&i!="unique") {
+                        $("#prefjtable").append('<tr><td><a target="_blank" href=\"'+urlPathPre+preUrl[i]+'\" >'+preBasename[i]+'</a></td></tr>');
+                        if(precount!=1){
+                            $("#fj").height(he+30);
+                        }
+                        precount=precount+1;
+                    }
+
+                }
+                debugger;
+                var mycontent=decodeURIComponent(data.content);
+                myReferer(mycontent);
+                $("#prediv2").html(mycontent);
+            /*    preeditor.txt.html(decodeURIComponent(data.content))*/
+            },   headers: {
+                "Authorization":"Bearer "+getLocalStorage('token') ,
+                "Accept":"application/json;charset=UTF-8"
+            }
+        });
+    }
+    
+
+</script>
+</body>
+</html>

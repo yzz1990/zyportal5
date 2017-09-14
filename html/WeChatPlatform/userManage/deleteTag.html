@@ -1,0 +1,40 @@
+
+<style>
+    .modal-dialog{
+        width: 60%;
+    }
+    /*单选多选换行对齐开始*/
+    .checkbox-inline + .checkbox-inline {
+        margin-left: 0;
+    }
+    .radio-inline + .radio-inline, .checkbox-inline + .checkbox-inline {
+        margin-left: 0;
+    }
+
+</style>
+<div id="div_container" class="row div_father" style="overflow-y: auto;height: 300px">
+    <div class="pm-body clearfix">
+        <div class="tab-content">
+            <div class="pmb-block tab-pane active" id="basicInfo_div">
+                <form id="form_addOrUpdate" class="form-horizontal">
+                    <div class="card">
+                        <div class="card-body card-padding">
+                            <div class="form-group">
+                                <label for="taglist" class="col-sm-4 col-sm-offset-2 control-label">请选择需删除的分组：</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <select id="taglist" name="taglist" class="selectpicker" data-live-search="false">
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>媒体聚焦</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">
+    <style>
+        .swiper-container {
+            background-color: black;
+            width: 100%;
+        }
+
+        .swiper-container img {
+            display: block;
+            width: 100%;
+        }
+    </style>
+</head>
+<body ontouchstart>
+<div class="weui-search-bar" id="searchBar">
+    <form class="weui-search-bar__form">
+        <div class="weui-search-bar__box">
+            <i class="weui-icon-search"></i>
+            <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required="">
+            <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+        </div>
+        <label class="weui-search-bar__label" id="searchText"
+               style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);">
+            <i class="weui-icon-search"></i>
+            <span>搜索</span>
+        </label>
+    </form>
+    <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+</div>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <!--D:\X-20170428-YL-0001 老人能力评估系统\03研发文件\10、源代码\webclient\zyportal5\img\headers\sm-->
+        <div class="swiper-slide"><img src="../../../img/headers/sm/1.png"/></div>
+        <div class="swiper-slide"><img src="../../../img/headers/sm/2.png"/></div>
+        <div class="swiper-slide"><img src="../../../img/headers/sm/3.png"/></div>
+        <div class="swiper-slide"><img src="../../../img/headers/sm/4.png"/></div>
+        <div class="swiper-slide"><img src="../../../img/headers/sm/5.png"/></div>
+        <div class="swiper-slide"><img src="../../../img/headers/sm/6.png"/></div>
+        <div class="swiper-slide"><img src="../../../img/headers/sm/7.png"/></div>
+        <div class="swiper-slide"><img src="../../../img/headers/sm/8.png"/></div>
+        <div class="swiper-slide"><img src="../../../img/headers/sm/9.png"/></div>
+    </div>
+    <div class="swiper-pagination"></div>
+</div>
+
+<div class="weui-panel__bd" id="weui-panel__bd">
+    <a class="weui-media-box weui-media-box_appmsg" id="noDongTai">
+        <div class="weui-media-box__bd">
+            <p class="weui-media-box__desc">当前无新动态</p>
+        </div>
+    </a>
+    <!--<a href="zjhzdetail.html" class="weui-media-box weui-media-box_appmsg">-->
+    <!--<div class="weui-media-box__hd">-->
+    <!--<img class="weui-media-box__thumb" src="../../../img/headers/square/2.png">-->
+    <!--</div>-->
+    <!--<div class="weui-media-box__bd">-->
+    <!--<h4 class="weui-media-box__title">一张图读懂河长制</h4>-->
+    <!--<p class="weui-media-box__desc">2017年5月18日</p>-->
+    <!--</div>-->
+
+    <!--</a>-->
+    <!--<a href="zjhzdetail.html" class="weui-media-box weui-media-box_appmsg">-->
+    <!--<div class="weui-media-box__hd">-->
+    <!--<img class="weui-media-box__thumb" src="../../../img/headers/square/3.png">-->
+    <!--</div>-->
+    <!--<div class="weui-media-box__bd">-->
+    <!--<h4 class="weui-media-box__title">看看河长有哪些职责</h4>-->
+    <!--<p class="weui-media-box__desc">2017年5月17日</p>-->
+    <!--</div>-->
+
+    <!--</a>-->
+    <!--<a href="zjhzdetail.html" class="weui-media-box weui-media-box_appmsg">-->
+    <!--<div class="weui-media-box__hd">-->
+    <!--<img class="weui-media-box__thumb" src="../../../img/headers/square/4.png">-->
+    <!--</div>-->
+    <!--<div class="weui-media-box__bd">-->
+    <!--<h4 class="weui-media-box__title">关于全面推行河长制的意见</h4>-->
+    <!--<p class="weui-media-box__desc">2017年5月17日</p>-->
+    <!--</div>-->
+
+    <!--</a>-->
+</div>
+<div class="weui-panel__ft" id="weui-panel__ft">
+    <a href="javascript:giveMeMore();" class="weui-cell weui-cell_access weui-cell_link">
+        <div class="weui-cell__bd">查看更多</div>
+        <span class="weui-cell__ft"></span>
+    </a>
+</div>
+<div class="weui-footer">
+    <p class="weui-footer__links">
+        <a href="javascript:void(0);" class="weui-footer__link">中科智远</a>
+        <a href="javascript:void(0);" class="weui-footer__link">自媒体</a>
+    </p>
+    <p class="weui-media-box__desc">Copyright © 2008-2016 zkzy</p>
+</div>
+
+<script src="../js/swiper.js"></script>
+<script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+<!-- 如果使用了某些拓展插件还需要额外的JS -->
+<script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/swiper.min.js"></script>
+<script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/city-picker.min.js"></script>
+<script src="../js/jquery-2.1.1.js"></script>
+<script>
+    var noDongtai = document.getElementById('noDongTai');
+    var panel = document.getElementById('weui-panel__bd');
+
+    //考虑一下为用户节省流量，每次请求只加载他想要的第几页数据，不要全都给他
+    function dateDesign() {
+
+    }
+    //这里假设有20条
+    var list = [
+        {id: '1', title: '从“河长制”走向“河长治”', date: '2017年7月1日', img: '../../../img/headers/square/1.png'},
+        {id: '2', title: '一张图读懂河长制”', date: '2017年5月18日', img: '../../../img/headers/square/2.png'},
+        {id: '3', title: '看看河长有哪些职责”', date: '2017年5月17日', img: '../../../img/headers/square/3.png'},
+        {id: '4', title: '关于全面推行河长制的意见”', date: '关于全面推行河长制的意见', img: '../../../img/headers/square/4.png'},
+    ]
+    window.onload = function () {
+        if (list) {
+            noDongtai.style.display = 'none';
+            showList(list);
+        }
+    }
+
+
+    function giveMeMore() {
+        //1.拿数据
+        var list2 = [
+            {id: '1', title: '从“河长制”走向“河长治”', date: '2017年7月1日', img: '../../../img/headers/square/1.png'},
+            {id: '2', title: '一张图读懂河长制”', date: '2017年5月18日', img: '../../../img/headers/square/2.png'},
+            {id: '3', title: '看看河长有哪些职责”', date: '2017年5月17日', img: '../../../img/headers/square/3.png'},
+            {id: '4', title: '关于全面推行河长制的意见”', date: '关于全面推行河长制的意见', img: '../../../img/headers/square/4.png'},
+        ]
+        //2.展示新数据20+20
+        if(list2){
+            showList(list2);
+        }
+    }
+    function  showList(list) {
+        var html = '';
+        for (var i = 0; i < list.length; i++) {
+            html += '<a href="zjhzdetail.html?id=' + list[i].id + '" class="weui-media-box weui-media-box_appmsg"> ' +
+                '<div class="weui-media-box__hd"> ' +
+                '<img class="weui-media-box__thumb" src=' + list[i].img + '> ' +
+                '</div> ' +
+                '<div class="weui-media-box__bd">' +
+                ' <h4 class="weui-media-box__title">' + list[i].title + '</h4> ' +
+                '<p class="weui-media-box__desc">' + list[i].date + '</p>' +
+                ' </div> ' +
+                '</a>'
+        }
+        //展示这20条
+        panel.innerHTML += html;
+    }
+    $(".swiper-container").swiper({
+        loop: true,
+        autoplay: 3000
+    });
+</script>
+</body>
+</html>

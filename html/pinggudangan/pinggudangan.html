@@ -1,0 +1,1623 @@
+<style>
+    .btn-toRecent{
+        position: fixed;
+        z-index: 2;
+        right:250px;
+        bottom:50px;
+    }
+    .photo{
+        position: absolute;
+        right:15px;
+
+    }
+    .photo img{
+        width:120px;
+    }
+    .separated{
+        border-bottom:1px dashed #ccc;
+        margin:50px 0;
+        left:0;
+        width:100%;
+    }
+    .col-sm-1{
+        padding-left: 0;
+    }
+    .religion{
+        position: relative;
+        left: -80px;
+        display: none;
+    }
+    #evaluation_m>ul{
+        width:1000px;
+        margin: 0 auto;
+    }
+    .orange{
+        color:Orange;
+    }
+    #card td{
+        text-align: center;
+    }
+    .signature td{
+        padding:30px 3px;
+    }
+    .signature{
+        font-size:12px;
+    }
+    .signature div{
+        display: inline-block;
+    }
+    .print {
+        position: absolute;
+        right: 15px;
+        top: 70px;
+    }
+    #table_pdk th,#table_pdk td{
+        text-align: center;
+        vertical-align: middle;
+    }
+    #table_pdk .tdw1{
+        width: 6%;
+    }
+    #div_pdk p{
+        margin-top: 10px;
+        padding-left: 20px;
+        color: #FF6600;
+    }
+    #myPrintArea #myPrintArea_tab1 tr td:first-child{
+        text-align: right;
+    }
+    #myPrintArea #myPrintArea_tab2 tr td{
+        /*border: none;*/
+    }
+    #myPrintArea_tab3 p{
+        color: #A3A3A3;
+    }
+    .nobor_input{
+        border:none;
+    }
+    #form_headPhoto{
+        margin-bottom: 5px;
+        border: 1px dashed #E6E6FA;
+    }
+    .pointnav{
+        position:fixed;
+        display:block;
+        padding:8px 15px;
+        list-style: none;
+        right: 100px;
+        top: 370px;
+        font-size:18px;
+        z-index: 3;
+    }
+    .pointnav li{
+        margin:5px 0;
+     }
+    .pointnav li a{
+        text-align: left;
+        color: #000;
+        display: block;
+        cursor: pointer;
+    }
+    .status{
+        border-radius: 50%;
+        width:15px;
+        height:15px;
+        background-color:#D9534F;
+        display: inline-block;
+        margin-right:10px;
+    }
+    .jqmeter{
+        position:fixed;
+        right: 80px;
+        top: 370px;
+        z-index: 3;
+    }
+    .dis_none{
+        display: none;
+    }
+    .file-caption-name{
+        position: relative;
+        top:10px;
+    }
+    #questions table tr{
+        height:200px;
+    }
+</style>
+<div>
+    <ol class="breadcrumb">
+        <li><a href="#">首页</a></li>
+        <li class="active">新增评估</li>
+    </ol>
+</div>
+<div class="card">
+    <div class="pm-body clearfix">
+        <ul class="tab-nav tn-justified" id="tab-nav">
+            <li class="active waves-effect" index="0"><a href="#basic" data-toggle="tab">老人基本信息</a></li>
+            <li class="waves-effect" index="1"><a href="#recent" data-toggle="tab">老人近况</a></li>
+            <li class="waves-effect" index="2"><a href="#scale" data-toggle="tab">评估量表</a></li>
+            <li class="waves-effect" index="3"><a href="#card" data-toggle="tab">判定卡</a></li>
+            <li class="waves-effect" index="4"><a href="#report" data-toggle="tab">评估报告</a></li>
+        </ul>
+
+        <div class="tab-content" id="c-tab-content">
+                <div class="pmb-block tab-pane active" id="basic">
+                    <form class="form-horizontal" style="margin-left:50px" id="basicForm">
+                                    <div class="form-group">
+                                        <label for="name" class="col-sm-1 control-label">姓名</label>
+                                        <div class="col-sm-8">
+                                            <div class="fg-line">
+                                                <input type="text" class="form-control input-sm" name="name" id="name" placeholder="姓名">
+                                            </div>
+                                        </div>
+                                        <div class="photo">
+                                            <img id="form_headPhoto" src="">
+                                            <input id="imageUpload" type="file" accept="image/jpeg,image/jpg,image/png" >
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label radio-inline">性别</label>
+                                        <div class="col-sm-2">
+                                            <label class="radio radio-inline m-r-20">
+                                                <input type="radio" name="sex" value="0">
+                                                <i class="input-helper"></i>
+                                                男
+                                            </label>
+
+                                            <label class="radio radio-inline m-r-20">
+                                                <input type="radio" name="sex" value="1">
+                                                <i class="input-helper"></i>
+                                                女
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label radio-inline">宗教信仰</label>
+                                        <div class="col-sm-2">
+                                            <label class="radio radio-inline m-r-20">
+                                                <input type="radio" value="0" name="hasreligion" onclick="displayReligion(0)">
+                                                <i class="input-helper"></i>
+                                                无
+                                            </label>
+
+                                            <label class="radio radio-inline m-r-20">
+                                                <input type="radio" value="1" name="hasreligion" onclick="displayReligion(1)">
+                                                <i class="input-helper"></i>
+                                                有
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-2 religion">
+                                            <div class="fg-line">
+                                                <select class="selectpicker" id="religion" name="religion" data-live-search="true">
+                                                    <option value="">请选择宗教</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label">身份证号</label>
+                                        <div class="col-sm-8">
+                                            <div class="fg-line">
+                                                <input type="text" class="form-control input-sm" name="pcardid" placeholder="身份证号">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label radio-inline">文化程度</label>
+                                        <div class="col-sm-11">
+                                            <label class="radio radio-inline m-r-20">
+                                                <input type="radio" name="culture" value="0">
+                                                <i class="input-helper"></i>
+                                                文盲
+                                            </label>
+
+                                            <label class="radio radio-inline m-r-20">
+                                                <input type="radio" name="culture" value="1">
+                                                <i class="input-helper"></i>
+                                                小学
+                                            </label>
+
+                                            <label class="radio radio-inline m-r-20">
+                                                <input type="radio" name="culture" value="2">
+                                                <i class="input-helper"></i>
+                                                初中
+                                            </label>
+
+                                            <label class="radio radio-inline m-r-20">
+                                                <input type="radio" name="culture" value="3">
+                                                <i class="input-helper"></i>
+                                                高中
+                                            </label>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label">户籍地址</label>
+                                        <div class="col-sm-7">
+                                            <div class="fg-line">
+                                                <input type="text" class="form-control input-sm" name="registeraddress" placeholder="户籍地址">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group" id="div_residentaddress">
+                                        <label for="form_czdz" class="col-sm-1 control-label"><span class="span_required">*</span>常住地址</label>
+                                        <div class="col-sm-7">
+                                            <div class="fg-line">
+                                                <input id="form_czdz" name="residentaddress" type="text" class="form-control input-sm inputfilter" placeholder="常住地址">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-1" id="div_residentaddress_btn">
+                                            <a href="javascript:addform_czdz(this);"  class="btn bgm-lightblue btn-icon-text waves-effect">
+                                                <i class="zmdi zmdi-plus zmdi-hc-fw"></i>添加
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label radio-inline">居住状况</label>
+
+                                        <div class="col-sm-11">
+                                            <label class="radio radio-inline m-r-20">
+                                                <input type="radio" name="livingstatus" value="0">
+                                                <i class="input-helper"></i>
+                                                独居
+                                            </label>
+
+                                            <label class="radio radio-inline m-r-20">
+                                                <input type="radio" name="livingstatus" value="1">
+                                                <i class="input-helper"></i>
+                                                与子女居住
+                                            </label>
+
+                                            <label class="radio radio-inline m-r-20">
+                                                <input type="radio" name="livingstatus" value="2">
+                                                <i class="input-helper"></i>
+                                                与父母居住
+                                            </label>
+
+                                            <label class="radio radio-inline m-r-20">
+                                                <input type="radio" name="livingstatus" value="3">
+                                                <i class="input-helper"></i>
+                                                与兄弟姐妹居住
+                                            </label>
+
+                                            <label class="radio radio-inline m-r-20">
+                                                <input type="radio" name="livingstatus" value="4">
+                                                <i class="input-helper"></i>
+                                                与非亲属关系的人居住
+                                            </label>
+
+                                            <label class="radio radio-inline m-r-20">
+                                                <input type="radio" name="livingstatus" value="5">
+                                                <i class="input-helper"></i>
+                                                养老机构
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="div_form_yly" style="display: none;">
+                                        <div class="col-sm-2 col-md-offset-">
+                                                <select class="selectpicker" id="form_yly" name="nursinghomeid" data-live-search="true">
+                                                    <option value="">请选择养老院</option>
+                                                </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label radio-inline">经济来源</label>
+                                        <div class="col-sm-11">
+                                            <label class="checkbox checkbox-inline m-r-20">
+                                                <input type="checkbox" value="0" name="economicsfrom">
+                                                <i class="input-helper"></i>
+                                                退休金/养老金
+                                            </label>
+
+                                            <label class="checkbox checkbox-inline m-r-20">
+                                                <input type="checkbox" value="1" name="economicsfrom">
+                                                <i class="input-helper"></i>
+                                                子女补贴
+                                            </label>
+
+                                            <label class="checkbox checkbox-inline m-r-20">
+                                                <input type="checkbox" value="2" name="economicsfrom">
+                                                <i class="input-helper"></i>
+                                                亲友资助
+                                            </label>
+
+                                            <label class="checkbox checkbox-inline m-r-20">
+                                                <input type="checkbox" value="3" name="economicsfrom">
+                                                <i class="input-helper"></i>
+                                                其他补贴
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label radio-inline">医疗费用支付方式</label>
+                                        <div class="col-sm-11">
+                                            <label class="checkbox checkbox-inline m-r-20">
+                                                <input type="checkbox" value="0" name="medicalpaytype"/>
+                                                <i class="input-helper"></i>
+                                                城镇职工基本医疗保险
+                                            </label>
+
+                                            <label class="checkbox checkbox-inline m-r-20">
+                                                <input type="checkbox" value="1" name="medicalpaytype"/>
+                                                <i class="input-helper"></i>
+                                                城镇居民基本医疗保险
+                                            </label>
+
+                                            <label class="checkbox checkbox-inline m-r-20">
+                                                <input type="checkbox" value="2" name="medicalpaytype">
+                                                <i class="input-helper"></i>
+                                                新型农村合作医疗
+                                            </label>
+
+                                            <label class="checkbox checkbox-inline m-r-20">
+                                                <input type="checkbox" value="3" name="medicalpaytype"/>
+                                                <i class="input-helper"></i>
+                                                贫困救助
+                                            </label>
+
+                                            <label class="checkbox checkbox-inline m-r-20">
+                                                <input type="checkbox" value="4" name="medicalpaytype">
+                                                <i class="input-helper"></i>
+                                                商业医疗保险
+                                            </label>
+
+                                            <label class="checkbox checkbox-inline m-r-20">
+                                                <input type="checkbox" value="5" name="medicalpaytype">
+                                                <i class="input-helper"></i>
+                                                全公费
+                                            </label>
+
+                                            <label class="checkbox checkbox-inline m-r-20">
+                                                <input type="checkbox" value="6" name="medicalpaytype">
+                                                <i class="input-helper"></i>
+                                                全自费
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label radio-inline">婚姻状况</label>
+                                        <div class="col-sm-11">
+                                            <label class="radio radio-inline m-r-20">
+                                                <input type="radio" name="maritalstatus" value="0">
+                                                <i class="input-helper"></i>
+                                                未婚
+                                            </label>
+
+                                            <label class="radio radio-inline m-r-20">
+                                                <input type="radio" name="maritalstatus" value="1">
+                                                <i class="input-helper"></i>
+                                                已婚
+                                            </label>
+
+                                            <label class="radio radio-inline m-r-20">
+                                                <input type="radio" name="maritalstatus" value="2">
+                                                <i class="input-helper"></i>
+                                                丧偶
+                                            </label>
+
+                                            <label class="radio radio-inline m-r-20">
+                                                <input type="radio" name="maritalstatus" value="3">
+                                                <i class="input-helper"></i>
+                                                离婚
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="birth" class="col-sm-1 control-label">出生日期</label>
+                                        <div class="col-sm-11">
+                                            <div class="fg-line">
+                                                <input id="birth" class="datainp wicon" type="text"  name="birth" placeholder="出生日期" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="socialcardid" class="col-sm-1 control-label">社保卡号</label>
+                                        <div class="col-sm-11">
+                                            <div class="fg-line">
+                                                <input type="text" class="form-control input-sm" id="socialcardid"  name="socialcardid" placeholder="社保卡号">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="famousfamily" class="col-sm-1 control-label">民族</label>
+                                        <div class="col-sm-3">
+                                            <select class="selectpicker" id="famousfamily" name="famousfamily" data-live-search="true">
+                                                <option value="">请选择</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" id="div_lx">
+                                        <label for="form_lxrxm" class="col-sm-1 control-label">联系人姓名</label>
+                                        <div class="col-sm-2">
+                                            <div class="fg-line">
+                                                <input type="text" class="form-control input-sm" name="contactperson" id="form_lxrxm" placeholder="联系人姓名">
+                                            </div>
+                                        </div>
+                                        <label for="form_lxrdh" class="col-sm-1 control-label">联系人电话</label>
+                                        <div class="col-sm-2">
+                                            <div class="fg-line">
+                                                <input type="text" class="form-control input-sm" id="form_lxrdh" name="contacttel" placeholder="联系人电话">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-1" id="div_lx_btn">
+                                            <button onclick="return addform_lx(this)"  class="btn bgm-lightblue btn-icon-text waves-effect">
+                                                <i class="zmdi zmdi-plus zmdi-hc-fw"></i>添加
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                    </div>
+                                    <input name="id" type="hidden"><!--存放id-->
+                                    <input id="form_photoUrl" name="photourl" type="hidden"><!--上传图片路径-->
+                                    <input name="recentrating" type="hidden"><!--最近评估等级-->
+                                    <input name="evaluationcount" type="hidden"><!--评估次数-->
+                                    <input name="ylyName" type="hidden"><!--养老院名称-->
+                                    <input name="ylyid" type="hidden"><!--养老院id-->
+                                    <input name="createtime" type="hidden">
+                                    <input name="modifytime" type="hidden">
+
+                                <div class="btn-toRecent">
+                                    <a class="btn btn-info" onclick="toTabNav('tab-nav',1);">下一步</a>
+                                </div>
+                            </form>
+                </div>
+                <div class="pmb-block tab-pane" id="recent">
+                    <form class="form-horizontal" style="margin-left:50px" id="recentForm">
+
+                        <input id="fileBaseName" name="fileBasename" type="hidden">
+                        <input id="filepath" name="filePath" type="hidden">
+                                <div class="form-group">
+                                    <label class="col-sm-1 control-label radio-inline">痴呆</label>
+                                    <div class="col-sm-11">
+                                        <label class="radio radio-inline m-r-20">
+                                            <input type="radio" value="0" name="dementia" checked="checked">
+                                            <i class="input-helper"></i>
+                                            无
+                                        </label>
+                                        <label class="radio radio-inline m-r-20">
+                                            <input type="radio" value="1" name="dementia">
+                                            <i class="input-helper"></i>
+                                            轻度
+                                        </label>
+                                        <label class="radio radio-inline m-r-20">
+                                            <input type="radio" value="2" name="dementia">
+                                            <i class="input-helper"></i>
+                                            中度
+                                        </label>
+                                        <label class="radio radio-inline m-r-20">
+                                            <input type="radio" value="3" name="dementia">
+                                            <i class="input-helper"></i>
+                                            重度
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-1 control-label radio-inline">精神疾病</label>
+                                    <div class="col-sm-11">
+                                        <label class="radio radio-inline m-r-20">
+                                            <input type="radio" value="0" name="mentalIllness" checked="checked">
+                                            <i class="input-helper"></i>
+                                            无
+                                        </label>
+                                        <label class="radio radio-inline m-r-20">
+                                            <input type="radio" value="1" name="mentalIllness">
+                                            <i class="input-helper"></i>
+                                            精神分裂症
+                                        </label>
+                                        <label class="radio radio-inline m-r-20">
+                                            <input type="radio" value="2" name="mentalIllness">
+                                            <i class="input-helper"></i>
+                                            又相情感障碍
+                                        </label>
+                                        <label class="radio radio-inline m-r-20">
+                                            <input type="radio" value="3" name="mentalIllness">
+                                            <i class="input-helper"></i>
+                                            偏执性精神障碍
+                                        </label>
+                                        <label class="radio radio-inline m-r-20">
+                                            <input type="radio" value="4" name="mentalIllness">
+                                            <i class="input-helper"></i>
+                                            分裂情感障碍
+                                        </label>
+                                        <label class="radio radio-inline m-r-20">
+                                            <input type="radio" value="5" name="mentalIllness">
+                                            <i class="input-helper"></i>
+                                            癫痫所致精神障碍
+                                        </label>
+                                        <label class="radio radio-inline m-r-20">
+                                            <input type="radio" value="6" name="mentalIllness">
+                                            <i class="input-helper"></i>
+                                            精神发育迟滞伴发精神障碍
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-1 control-label">慢性疾病</label>
+                                    <div class="col-sm-11">
+                                        <label class="radio radio-inline m-r-20">
+                                            <input type="radio" value="0" name="chronicDisease" checked="checked">
+                                            <i class="input-helper"></i>
+                                            无
+                                        </label>
+                                        <label class="radio radio-inline m-r-20">
+                                            <input type="radio" value="1" name="chronicDisease">
+                                            <i class="input-helper"></i>
+                                            肝胆疾病
+                                        </label>
+                                        <label class="radio radio-inline m-r-20">
+                                            <input type="radio" value="2" name="chronicDisease">
+                                            <i class="input-helper"></i>
+                                            白内障
+                                        </label>
+                                        <label class="radio radio-inline m-r-20">
+                                            <input type="radio" value="3" name="chronicDisease">
+                                            <i class="input-helper"></i>
+                                            青光眼
+                                        </label>
+                                        <label class="radio radio-inline m-r-20">
+                                            <input type="radio" value="4" name="chronicDisease">
+                                            <i class="input-helper"></i>
+                                            视网膜血管性疾病
+                                        </label>
+                                        <label class="radio radio-inline m-r-20">
+                                            <input type="radio" value="5" name="chronicDisease">
+                                            <i class="input-helper"></i>
+                                            糖尿病视网膜病变
+                                        </label>
+                                        <label class="radio radio-inline m-r-20">
+                                            <input type="radio" value="6" name="chronicDisease">
+                                            <i class="input-helper"></i>
+                                            失聪
+                                        </label>
+                                        <label class="radio radio-inline m-r-20">
+                                            <input type="radio" value="7" name="chronicDisease">
+                                            <i class="input-helper"></i>
+                                            肾脏疾病
+                                        </label>
+                                        <label class="radio radio-inline m-r-20">
+                                            <input type="radio" value="8" name="chronicDisease">
+                                            <i class="input-helper"></i>
+                                            肿瘤
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="otherDiseases" class="col-sm-1 control-label">其他疾病</label>
+                                    <div class="col-sm-4">
+                                        <div class="fg-line">
+                                            <input type="text" class="form-control input-sm" id="otherDiseases" name="otherDiseases" value="无"  placeholder="其他疾病">
+                                        </div>
+                                    </div>
+                                    <!--<div class="col-sm-3">
+                                        <div style="position: relative;top:-5px;">
+                                            <input id="fileUpload" type="file" >
+                                        </div>
+                                    </div>-->
+                                </div>
+                                <div class="form-group">
+                                    <label for="otherDiseases" class="col-sm-1 control-label">附件</label>
+                                    <div class="col-sm-5">
+                                        <div style="">
+                                            <input id="fileUpload" type="file" >
+                                        </div>
+                                    </div>
+                                </div>
+
+                        <div class="separated"></div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label radio-inline">跌倒</label>
+                            <div class="col-sm-11">
+                                <label class="radio radio-inline m-r-20">
+                                    <input type="radio" value="0" name="fall" checked="checked">
+                                    <i class="input-helper"></i>
+                                    无
+                                </label>
+                                <label class="radio radio-inline m-r-20">
+                                    <input type="radio" value="1" name="fall">
+                                    <i class="input-helper"></i>
+                                    发生过1次
+                                </label>
+                                <label class="radio radio-inline m-r-20">
+                                    <input type="radio" value="2" name="fall">
+                                    <i class="input-helper"></i>
+                                    发生过2次
+                                </label>
+                                <label class="radio radio-inline m-r-20">
+                                    <input type="radio" value="3" name="fall">
+                                    <i class="input-helper"></i>
+                                    发生过3次
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label radio-inline">走失</label>
+                            <div class="col-sm-11">
+                                <label class="radio radio-inline m-r-20">
+                                    <input type="radio" value="0" name="lost" checked="checked">
+                                    <i class="input-helper"></i>
+                                    无
+                                </label>
+                                <label class="radio radio-inline m-r-20">
+                                    <input type="radio" value="1" name="lost">
+                                    <i class="input-helper"></i>
+                                    发生过1次
+                                </label>
+                                <label class="radio radio-inline m-r-20">
+                                    <input type="radio" value="2" name="lost">
+                                    <i class="input-helper"></i>
+                                    发生过2次
+                                </label>
+                                <label class="radio radio-inline m-r-20">
+                                    <input type="radio" value="3" name="lost">
+                                    <i class="input-helper"></i>
+                                    发生过3次
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label radio-inline">噎食</label>
+                            <div class="col-sm-11">
+                                <label class="radio radio-inline m-r-20">
+                                    <input type="radio" value="0" name="chokingFood" checked="checked">
+                                    <i class="input-helper"></i>
+                                    无
+                                </label>
+                                <label class="radio radio-inline m-r-20">
+                                    <input type="radio" value="1" name="chokingFood">
+                                    <i class="input-helper"></i>
+                                    发生过1次
+                                </label>
+                                <label class="radio radio-inline m-r-20">
+                                    <input type="radio" value="2" name="chokingFood">
+                                    <i class="input-helper"></i>
+                                    发生过2次
+                                </label>
+                                <label class="radio radio-inline m-r-20">
+                                    <input type="radio" value="3" name="chokingFood">
+                                    <i class="input-helper"></i>
+                                    发生过3次
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label radio-inline">自杀</label>
+                            <div class="col-sm-11">
+                                <label class="radio radio-inline m-r-20">
+                                    <input type="radio" value="0" name="suicide" checked="checked">
+                                    <i class="input-helper"></i>
+                                    无
+                                </label>
+                                <label class="radio radio-inline m-r-20">
+                                    <input type="radio" value="1" name="suicide">
+                                    <i class="input-helper"></i>
+                                    发生过1次
+                                </label>
+                                <label class="radio radio-inline m-r-20">
+                                    <input type="radio" value="2" name="suicide">
+                                    <i class="input-helper"></i>
+                                    发生过2次
+                                </label>
+                                <label class="radio radio-inline m-r-20">
+                                    <input type="radio" value="3" name="suicide">
+                                    <i class="input-helper"></i>
+                                    发生过3次
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label radio-inline">其他</label>
+                            <div class="col-sm-11">
+                                <div class="fg-line">
+                                    <input type="text" class="form-control input-sm" name="other" value="无">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="separated"></div>
+
+                        <div class="form-group">
+                            <label for="providerName" class="col-sm-1 control-label" style="padding-right: 10px;">信息提供者姓名</label>
+                            <div class="col-sm-11">
+                                <div class="fg-line">
+                                    <input type="text" class="form-control input-sm" name="providerName" id="providerName" placeholder="信息提供者姓名">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label radio-inline">信息提供者与老人的关系</label>
+                            <div class="col-sm-11">
+                                <label class="radio radio-inline m-r-20">
+                                    <input type="radio" value="0" name="providerRelationship" checked="checked">
+                                    <i class="input-helper"></i>
+                                    配偶
+                                </label>
+                                <label class="radio radio-inline m-r-20">
+                                    <input type="radio" value="1" name="providerRelationship">
+                                    <i class="input-helper"></i>
+                                    子女
+                                </label>
+                                <label class="radio radio-inline m-r-20">
+                                    <input type="radio" value="2" name="providerRelationship">
+                                    <i class="input-helper"></i>
+                                    其他亲属
+                                </label>
+                                <label class="radio radio-inline m-r-20">
+                                    <input type="radio" value="3" name="providerRelationship">
+                                    <i class="input-helper"></i>
+                                    雇佣照顾者
+                                </label>
+                                <label class="radio radio-inline m-r-20">
+                                    <input type="radio" value="4" name="providerRelationship">
+                                    <i class="input-helper"></i>
+                                    养老机构
+                                </label>
+                                <label class="radio radio-inline m-r-20">
+                                    <input type="radio" value="5" name="providerRelationship">
+                                    <i class="input-helper"></i>
+                                    社工
+                                </label>
+                                <label class="radio radio-inline m-r-20">
+                                    <input type="radio" value="6" name="providerRelationship">
+                                    <i class="input-helper"></i>
+                                    其他
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="btn-toRecent">
+                        <a class="btn btn-info" onclick="toTabNav('tab-nav',0);">上一步</a>
+                        <a class="btn btn-info" onclick="toTabNav('tab-nav',2);">下一步</a>
+                    </div>
+                </div>
+                <div class="pmb-block tab-pane" id="scale">
+                    <form class="form-horizontal" id="scaleForm">
+                        <div class="form-group text-center">
+                            <div class="col-sm-12">
+                                <label class="control-label radio-inline"><strong>评估原因</strong></label>
+                                <label class="radio radio-inline m-r-20">
+                                    <input type="radio" value="0" name="cause" checked="checked">
+                                    <i class="input-helper"></i>
+                                    第一次评估
+                                </label>
+                                <label class="radio radio-inline m-r-20">
+                                    <input type="radio" value="1" name="cause" >
+                                    <i class="input-helper"></i>
+                                    常规评估
+                                </label>
+                                <label class="radio radio-inline m-r-20">
+                                    <input type="radio" value="2" name="cause" >
+                                    <i class="input-helper"></i>
+                                    状况变化后重新评估
+                                </label>
+                                <label class="radio radio-inline m-r-20">
+                                    <input type="radio" value="3" name="cause" >
+                                    <i class="input-helper"></i>
+                                    其他
+                                </label>
+                                <div id="jqmeter0" class="jqmeter"></div>
+                                <div id="jqmeter1" class="jqmeter dis_none"></div>
+                                <div id="jqmeter2" class="jqmeter dis_none"></div>
+                                <div id="jqmeter3" class="jqmeter dis_none"></div>
+                                <!--mark-->
+                                <!--<div class="progress">
+                                    <div class="progress-bar" id="progress0"></div>
+                                </div>
+                                <div class="progress dis_none">
+                                    <div class="progress-bar" id="progress1"></div>
+                                </div>
+                                <div class="progress dis_none">
+                                    <div class="progress-bar" id="progress2"></div>
+                                </div>
+                                <div class="progress dis_none">
+                                    <div class="progress-bar" id="progress3"></div>
+                                </div>-->
+                            </div>
+                        </div>
+
+                        <div id="evaluation_m">
+                            <ul class="tab-nav tn-justified" id="tab_nav_point">
+                                <li class="active waves-effect" index="0"><a href="#daily_life" data-toggle="tab">日常生活活动    等级 : <span class="orange" id="damaged0"></span></a></li>
+                                <li class="waves-effect" index="1"><a href="#mental_state" data-toggle="tab">精神状态     等级：<span class="orange" id="damaged1"></span></a></li>
+                                <li class="waves-effect" index="2"><a href="#perceived" data-toggle="tab">感知觉与沟通   等级：<span class="orange" id="damaged2"></span></a></li>
+                                <li class="waves-effect" index="3"><a href="#social_participation" data-toggle="tab"> 社会参与评估         等级：<span class="orange" id="damaged3"></span></a></li>
+                            </ul>
+
+                            <div class="tab-content" id="questions">
+                                <div class="pmb-block tab-pane active" id="daily_life">
+                                    <table class="table table-bordered table-striped text-left" id="daily_lifeT"></table>
+                                </div>
+                                <div class="pmb-block tab-pane" id="mental_state">
+                                    <table class="table table-bordered table-striped text-left" id="mental_stateT"></table>
+                                </div>
+                                <div class="pmb-block tab-pane" id="perceived">
+                                    <table class="table table-bordered table-striped text-left" id="perceivedT"></table>
+                                </div>
+                                <div class="pmb-block tab-pane" id="social_participation">
+                                    <table class="table table-bordered table-striped text-left" id="social_participationT"></table>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="btn-toRecent">
+                        <a class="btn btn-info"  onclick="toTabNav('tab-nav',1);">上一步</a>
+                        <a class="btn btn-info"  onclick="toTabNav('tab-nav',3);">下一步</a>
+                    </div>
+                </div>
+                <div class="pmb-block tab-pane" id="card">
+                <div id="div_pdk" class="table-responsive" style="margin-left:50px;margin-right: 50px;">
+                    <table id="table_pdk" class="table table-bordered" style="text-align: center;border: 1px solid #f0f0f0;">
+                        <tr >
+                            <th rowspan="2">日常生活活动</th>
+                            <th colspan="4">精神认知</th>
+                            <th colspan="4">感知觉与沟通</th>
+                            <th colspan="4">社会参与</th>
+                            <th rowspan="2">评估等级</th>
+                        </tr>
+                        <tr>
+                            <td>0</td>
+                            <td class="tdw1">1</td>
+                            <td class="tdw1">2</td>
+                            <td class="tdw1">3</td>
+                            <td class="tdw1">0</td>
+                            <td class="tdw1">1</td>
+                            <td class="tdw1">2</td>
+                            <td class="tdw1">3</td>
+                            <td class="tdw1">0</td>
+                            <td class="tdw1">1</td>
+                            <td class="tdw1">2</td>
+                            <td class="tdw1">3</td>
+                        </tr>
+                        <tr>
+                            <td>0</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td id="td_pddj" rowspan="4">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </table>
+                    <p>&nbsp;&nbsp;注：老年人能力评估结果判定卡使用时，一般根据日常生活活动能力进行初步定位，锁定目标区域，然后根据其他三项能力在判定卡上同一颜色区域定位查找相应的能力等级。以下为几种特殊情况：</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）当日常生活活动为0，精神认知、感知觉与沟通有一项为1及以上，或者社会参与为2或以上，判定为轻度失能。</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）当日常生活活动为1时，后三项有一项为0或1，判定为轻度失能；后三项均为2及以上或一项为3，则判定为中度失能。</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（3）当日常生活活动为2时，后三项全部为2以上或某一项为3，判定为重度失能，否则为中度失能。</p>
+                </div>
+				<div class="btn-toRecent">
+                        <a class="btn btn-info"  onclick="toTabNav('tab-nav',4);">下一步</a>
+                    </div>
+            </div>
+                <div class="pmb-block tab-pane" id="report">
+                <button onclick="pdjgPrint()"  class="btn bgm-lightblue btn-icon-text waves-effect print">
+                    <i class="zmdi zmdi-print zmdi-hc-fw"></i>打印
+                </button>
+                <div id="myPrintArea">
+                    <form class="form-horizontal" id="reportForm" style="margin-left:50px;margin-right: 50px;">
+                        <h1 class="text-center"><strong>评估报告</strong></h1>
+                        <table id="myPrintArea_tab1" class="table table-bordered" style="border: 1px solid #f0f0f0;">
+                            <colgroup>
+                                <col width="30%" />
+                                <col width="50%" />
+                                <col width="20%" />
+                            </colgroup>
+                            <tr>
+                                <td>评估编号</td>
+                                <td><input type="text" name="no" id="no" class="nobor_input" readonly/></td>
+                                <td rowspan="5" style="text-align: center;vertical-align:middle;padding-right: 10px;">
+                                    <img  src="" id="report_img" style="width:100%;height: 100%;"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>评估日期</td>
+                                <td><input type="text" name="dateReport" id="dateReport" class="nobor_input" readonly/></td>
+                            </tr>
+                            <tr>
+                                <td>评估原因</td>
+                                <td>
+                                    <input type="hidden" name="cause" id="report_cause"/>
+                                    <input type="text" id="report_cause_d" class="nobor_input" readonly/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>姓名</td>
+                                <td><input type="text" name="name" id="report_name" class="nobor_input" readonly/></td>
+                            </tr>
+                            <tr>
+                                <td>性别</td>
+                                <td>
+                                    <input type="hidden" name="gender" id="report_gender"/>
+                                    <input type="text" id="report_gender_d" class="nobor_input" readonly/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>出生日期</td>
+                                <td colspan="2"><input type="text" name="dateBirth" id="dateBirth" class="nobor_input" readonly/></td>
+                            </tr>
+                            <tr>
+                                <td>评估机构</td>
+                                <td colspan="2"><input type="text" name="agency" value="" id="agency" class="nobor_input" readonly/></td>
+                            </tr>
+                            <tr>
+                                <td>执行评估员</td>
+                                <td colspan="2"><input type="text" name="assessor" value="" id="assessor" class="nobor_input" readonly/></td>
+                            </tr>
+                            <tr>
+                                <td>一级指标分级</td>
+                                <td colspan="2">
+                                    <div id="level1rating_td"></div>
+                                    <input type="hidden" name="level1rating" id="level1rating" class="nobor_input" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>老年人能力初步等级</td>
+                                <td colspan="2">
+                                    <div id="preliminaryLevelD" class="nobor_input" ></div>
+                                    <input type="hidden" name="preliminaryLevel" id="preliminaryLevel"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>等级变更条款</td>
+                                <td colspan="2">
+                                    <div id="gradeChangeClause_td"></div>
+                                    <input type="hidden" name="gradeChangeClause" id="gradeChangeClause"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>老年人能力最终等级</td>
+                                <td colspan="2">
+                                    <div class="nobor_input" id="finalGradeD"></div>
+                                    <input type="hidden" name="finalGrade" id="finalGrade" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>护理等级</td>
+                                <td colspan="2">
+                                    <div class="nobor_input" id="nursingGradeD"></div>
+                                    <input type="hidden" name="nursingGrade" id="nursingGrade" />
+                                </td>
+                            </tr>
+                        </table>
+                        <table id="myPrintArea_tab2" class="table table-bordered signature" style="border: 1px solid #f0f0f0;">
+                            <colgroup>
+                                <col width="30%" />
+                                <col width="30%" />
+                                <col width="40%" />
+                            </colgroup>
+                            <tr >
+                                <td  style="text-align: right;">评估员签名
+                                    <!--<div class="field" style="float: left;width: 150px;text-align: right;" >
+                                        评估员签名&nbsp;&nbsp;
+                                    </div>
+                                    <div style="float: left;text-decoration: underline;">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </div>
+                                    <div class="ud" style="float: left;"><strong>&nbsp;&nbsp;、&nbsp;&nbsp;</strong></div>
+                                    <div style="float: left;text-decoration: underline;">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </div>-->
+                                </td>
+                                <td>
+                                    &nbsp;
+                                </td>
+                                <td >
+                                    <div class="field" style="float: left;">日期&nbsp;&nbsp;</div>
+                                    <div style="float: left;text-decoration: underline;">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </div>
+                                    <div class="field" style="float: left;">年</div>
+                                    <div style="float: left;text-decoration: underline;">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </div>
+                                    <div class="field" style="float: left;">月</div>
+                                    <div style="float: left;text-decoration: underline;">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </div>
+                                    <div class="field" style="float: left;">日</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td  style="text-align: right;">评估员机构签章
+                                    <!--<div class="field" style="float: left;width: 150px;text-align: right;" >评估员机构签章&nbsp;&nbsp;</div>
+                                    <div style="float: left;text-decoration: underline;">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </div>-->
+                                </td>
+                                <td>
+                                    &nbsp;
+                                </td>
+                                <td>
+                                    <div class="field" style="float: left;">日期&nbsp;&nbsp;</div>
+                                    <div style="float: left;text-decoration: underline;">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </div>
+                                    <div class="field" style="float: left;">年</div>
+                                    <div style="float: left;text-decoration: underline;">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </div>
+                                    <div class="field" style="float: left;">月</div>
+                                    <div style="float: left;text-decoration: underline;">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </div>
+                                    <div class="field" style="float: left;">日</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td  style="text-align: right;">信息提供人签章
+                                    <!--<div class="field" style="float: left;width: 150px;text-align: right;" >信息提供人签章&nbsp;&nbsp;</div>
+                                    <div style="float: left;text-decoration: underline;">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </div>-->
+                                </td>
+                                <td>
+                                    &nbsp;
+                                </td>
+                                <td>
+                                    <div class="field" style="float: left;">日期&nbsp;&nbsp;</div>
+                                    <div style="float: left;text-decoration: underline;">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </div>
+                                    <div class="field" style="float: left;">年</div>
+                                    <div style="float: left;text-decoration: underline;">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </div>
+                                    <div class="field" style="float: left;">月</div>
+                                    <div style="float: left;text-decoration: underline;">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </div>
+                                    <div class="field" style="float: left;">日</div>
+                                </td>
+                            </tr>
+                        </table>
+                        <table id="myPrintArea_tab3" class="table table-bordered" style="border: 1px solid #f0f0f0;">
+                            <tr>
+                                <td>
+                                    <p>&nbsp;&nbsp;注：老年人能力评估结果判定卡使用时，一般根据日常生活活动能力进行初步定位，锁定目标区域，然后根据其他三项能力在判定卡上同一颜色区域定位查找相应的能力等级。以下为几种特殊情况：</p>
+                                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）当日常生活活动为0，精神认知、感知觉与沟通有一项为1及以上，或者社会参与为2或以上，判定为轻度失能。</p>
+                                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）当日常生活活动为1时，后三项有一项为0或1，判定为轻度失能；后三项均为2及以上或一项为3，则判定为中度失能。</p>
+                                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（3）当日常生活活动为2时，后三项全部为2以上或某一项为3，判定为重度失能，否则为中度失能。</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+                <div class="btn-toRecent">
+                    <a class="btn btn-info" id="save">保存</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="pinggudangan/jqmeter.min.js"></script>
+<script src="pinggudangan/questions.js"></script>
+<script src="pinggudangan/pinggudangan.js"></script>
+<script>
+    $('#jqmeter0').jQMeter({
+        goal:'10',
+        raised:'0',
+        orientation:'vertical',
+        width:'20px',
+        height:'285px',
+        barColor:'#5CB85C'
+    });
+    $('#jqmeter1').jQMeter({
+        goal:'10',
+        raised:'0',
+        orientation:'vertical',
+        width:'20px',
+        height:'75px',
+        barColor:'#5CB85C'
+    });
+    $('#jqmeter2').jQMeter({
+        goal:'10',
+        raised:'0',
+        orientation:'vertical',
+        width:'20px',
+        height:'105px',
+        barColor:'#5CB85C'
+    });
+    $('#jqmeter3').jQMeter({
+        goal:'10',
+        raised:'0',
+        orientation:'vertical',
+        width:'20px',
+        height:'135px',
+        barColor:'#5CB85C'
+    });
+
+    $('[name="livingstatus"]').click(function(){
+        ylySelectHideShow($(this).val());
+    });
+    var tabIndex={
+        0:true,
+        1:false,
+        2:false,
+        3:true,
+        4:false
+    }
+
+    $('#tab_nav_point a').on('show.bs.tab', function(e) {
+        var cindex=parseInt($(this).parent().attr('index'));
+        $('.jqmeter').css('display','none');
+        var cp='.progress:eq('+cindex+')';
+
+        $('#jqmeter'+cindex).css('display','block');
+    });
+    $('#tab-nav a').on('show.bs.tab', function(e) {
+        var cindex=parseInt($(this).parent().attr('index'));
+        var $active=$('#tab-nav .active');
+        var index_active=parseInt($active.attr('index'));
+        if(cindex>index_active){
+            if(index_active==0){
+                var sf=selectValidate();
+                var sern=$('#basicForm').serializeObject();
+                if($("#basicForm").valid()&&sf){
+                    if(cindex-index_active==1){
+                        tabIndex[cindex]=true;
+                    }
+                    if(formChanges(ser,sern)){
+                        ser=sern;
+                        var m=messageConfimDialogCommon(BootstrapDialog.SUCCESS,"信息变动","是否更新老人基本信息？",null,null,function(){
+                            if(cindex-index_active==1){
+                                tabIndex[cindex]=true;
+                            }
+                        },function(){
+                            getData(
+                                'post',
+                                '/oldMan/oldManInfo/update',
+                                $('#basicForm').serialize(),
+                                'json',
+                                function(data){
+                                    if(data.code&&data.code=='5'){
+                                        showtoastr("inverse",data.desc);
+                                        m.close();
+                                    }
+                                }
+                            )
+                        });
+                    }
+                }else{
+                    e.preventDefault();
+                    showtoastr("inverse",'表单格式错误或为空，请检查重试');
+                }
+            }else if(index_active==1){
+                if(!$("#recentForm").valid()) {
+                    e.preventDefault();
+                    showtoastr("inverse",'表单格式错误或为空，请检查后重试');
+                }else{
+                    if(cindex-index_active==1){
+                        tabIndex[cindex]=true;
+                    }
+                }
+            }else if(index_active==2){
+                if(!pointValid()){
+                    e.preventDefault();
+                    showtoastr("inverse",'请选择答案');
+                }else{
+                    var levels=level1rating();
+                    var leveld=[];
+                    for(var i=0;i<levels.length;i++){
+                        leveld[i]=levels[i].level;
+                    }
+                    initPdkTable(leveld[0],leveld[1],leveld[2],leveld[3]);
+                    tabIndex[4]=true;
+                }
+            }
+        }
+        if(!tabIndex[cindex]){
+            e.preventDefault();
+        }
+    });
+
+    var yly=[];
+    getData_async(
+        'post',
+        '/Pension/OldmanHome/SelectNameId',
+        null,
+        'json',
+        function (data) {
+            if(data.length>0){
+                for(var i=0;i<data.length;i++){
+                    yly.push({
+                        value:data[i].id,
+                        text:data[i].name
+                    });
+                }
+            }
+        },function(obj){
+            showtoastr("inverse", '养老院列表加载异常');
+        }
+    );
+
+    var selectValidate=initBootstrapSelect(
+        [
+            {id:'famousfamily',data:nations,required:true,errText:'请选择民族'},
+            {id:'religion',data:valarrzjjp},
+            {id:'form_yly',data:yly}
+        ]);
+
+
+        $('#assessor').val(getUserInfo().realname);
+        var contactperson=[];
+        var contacttel=[];
+        var ser=initForm({id:'basicForm',filter:function(name,value){
+            switch(name){
+                case 'religion':
+                    if(value&&value.length>0){
+                        displayReligion(1,value);
+                    }
+                    return true;
+                case 'residentaddress':
+                    var arr=value.split(',');
+                    if(arr.length>0){
+                        var guid=uuid();
+                        $('#form_czdz').val(arr[0]);
+                        for(var i=1;i<arr.length;i++){
+                            var guid=uuid();
+                            $('#form_czdz').parent().append('<input id="address'+guid+'"  name="residentaddress" value="'+arr[i]+'" type="text" class="form-control input-sm" placeholder="常住地址">');
+                            $('#div_residentaddress_btn').append('<button guid="'+guid+'"  onclick="return delform_czdz(this)"  class="btn bgm-red btn-icon-text waves-effect">' +
+                                '<i class="zmdi zmdi-minus zmdi-hc-fw"></i>删除' +
+                                '</button>')
+                        }
+                    }
+                    return true;
+                case 'contactperson':
+                    contactperson=contactperson.concat(value.split(','));
+                    return true;
+                case 'contacttel':
+                    contacttel=contacttel.concat(value.split(','));
+                    return true;
+                case 'photourl':
+                    $('#form_photoUrl').val(value);
+                    $('#form_headPhoto').attr('src',urlPathPre+value);
+                    return true;
+                case 'livingstatus':
+                    ylySelectHideShow(value);
+                    return false;
+            }
+        },finalFn:function(){
+            if(contactperson.length>0&&contacttel.length>0&&contactperson.length==contacttel.length){
+                $('#form_lxrxm').val(contactperson[0]);
+                $('#form_lxrdh').val(contacttel[0]);
+                for(var i=1;i<contactperson.length;i++){
+                    var guid=uuid();
+                    $('#form_lxrxm').parent().append('<input id="lxrxm'+guid+'" value="'+contactperson[i]+'" name="contactperson" type="text" class="form-control input-sm" placeholder="联系人姓名">');
+                    $('#form_lxrdh').parent().append('<input id="lxrdh'+guid+'" value="'+contacttel[i]+'" name="contacttel" type="text" class="form-control input-sm" placeholder="联系人电话">');
+                    $('#div_lx_btn').append('<button guid="'+guid+'"  onclick="return delform_lx(this)"  class="btn bgm-red btn-icon-text waves-effect">' +
+                        '<i class="zmdi zmdi-minus zmdi-hc-fw"></i>删除' +
+                        '</button>');
+                }
+            }
+        }});
+
+    $('#form_headPhoto').css('width',photoW);
+    $('#form_headPhoto').css('height',photoH);
+
+    function randomNum(minNum,maxNum){
+        switch(arguments.length){
+            case 1:
+                return parseInt(Math.random()*minNum+1);
+                break;
+            case 2:
+                return parseInt(Math.random()*(maxNum-minNum+1)+minNum);
+                break;
+            default:
+                return 0;
+                break;
+        }
+    }
+
+        var d = new Date();
+        var year = d.getFullYear();
+        var month=d.getMonth()+1;
+        var day=d.getDate();
+        var hour=d.getHours();
+        var min=d.getMinutes();
+        var sec=d.getSeconds();
+        month=month>10?month:'0'+month;
+        day=day>10?day:'0'+day;
+        hour=hour>10?hour:'0'+hour;
+        min=min>10?min:'0'+min;
+        sec=sec>10?sec:'0'+sec;
+        var no='WND'+year+month+day+hour+min+sec+randomNum(100,999);
+        var date=year+'-'+month+'-'+day;
+
+        var sex=$('[name="sex"]:checked').val();
+        $('#no').val(no);
+        $('#dateReport').val(date);
+        $('#report_gender').val(sex);
+        $('#report_gender_d').val(sex=='1'?'女':'男');
+        $('#dateBirth').val($('#birth').val());
+
+        $('#report_img').attr('src',$('#form_headPhoto').attr('src'))
+
+    function pointValid(){
+        if(scaleValite()){
+            var cause=$('[name="cause"]:checked').val();
+            $('#report_cause').val(cause);
+            var x=$('[name="cause"]:checked').parent().text().trim();
+            $('#report_cause_d').val(x);
+
+            var levels=level1rating();
+            var leveld=[];
+            for(var i=0;i<levels.length;i++){
+                leveld[i]=levels[i].level;
+            }
+            $('#level1rating').val(leveld);
+            $('#level1rating_td').html('');
+            $('#level1rating_td').append('<p>日常生活等级:'+abilityLevels[levels[0].level]+'</p>')
+            $('#level1rating_td').append('<p>精神认知:'+abilityLevels[levels[1].level]+'</p>')
+            $('#level1rating_td').append('<p>感知觉与沟通:'+abilityLevels[levels[2].level]+'</p>')
+            $('#level1rating_td').append('<p>社会适应:'+abilityLevels[levels[3].level]+'</p>')
+
+            var preliminary_level=getPgdjByScore(levels[0].level,levels[1].level,levels[2].level,levels[3].level);
+
+            $('#preliminaryLevel').val(preliminary_level);
+
+            $('#preliminaryLevelD').html(abilityLevels[preliminary_level]);
+
+
+            //等级变更
+            var lc=levelChange(preliminary_level);
+            $('#finalGradeD').html(abilityLevels[lc.level]);
+            $('#finalGrade').val(lc.level);
+            if(lc.clause.length>0){
+                $('#gradeChangeClause_td').html('');
+                for(var j=0;j< lc.clause.length;j++){
+                    $('#gradeChangeClause_td').append('<p>'+clause[lc.clause[j]]+'</p>');
+                }
+            }
+
+            $('#gradeChangeClause').val(lc.clause);
+
+            $('#nursingGrade').val(lc.level);
+            $('#nursingGradeD').html(nursingGrade[lc.level]);
+
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
+    function scaleValite(){
+        var first='';
+        var flag=true;
+        var serobj=$('#scaleForm').serializeObject();
+        for(var key in serobj){
+            if(!serobj[key]){
+                $('#'+key+'_name-error').remove();
+                $('[name="'+key+'"]').parent().parent().parent().append('<label id="'+key+'_name-error" class="error" for="'+key+'_name">请选择答案</label>');
+                if(flag){
+                    first=key;
+                }
+                flag=false;
+            }
+        }
+        $('#questions table').each(function(index,table){
+            if($(this).find('[name="'+first+'"]').length>0){
+                toTabNav('tab_nav_point',index);
+                return false;
+            }
+        })
+        if(first==''){
+            return true
+        }else{
+            return false;
+        }
+    }
+
+    $('#save').click(function(){
+        var count=parseInt($('[name="evaluationcount"]').val());
+        $('[name="evaluationcount"]').val(++count)
+        $('[name="recentrating"]').val($('#finalGrade').val())
+        getData(
+            'post',
+            '/oldMan/oldManInfo/update',
+            $('#basicForm').serialize(),
+            'json',
+            function(data){
+                if(data.code&&data.code=='5'){
+                    getData(
+                        'post',
+                        '/system/eva/add',
+                        {
+                            basic:decodeURIComponent(
+                                $('#basicForm').serialize()
+                                ,true),
+                            recent:decodeURIComponent(
+                                $('#recentForm').serialize()
+                                ,true),
+                            scale:decodeURIComponent(
+                                $('#scaleForm').serialize()
+                                ,true),
+                            report:decodeURIComponent(
+                                $('#reportForm').serialize()
+                                ,true),
+                            status:'1',
+                            count:$('[name="evaluationcount"]').val()
+                        },
+                        'json',
+                        function(data){
+                            if(data.code&&data.code=='0'){
+                                showtoastr("inverse",data.desc);
+                            }
+                            history.go(-1);
+                        }
+                    )
+                }
+            }
+        )
+    })
+
+    function displayReligion(i,value){
+        value=value?value:'';
+        if(i==1){
+            $('.religion').show();
+        }else{
+            $('.religion').hide();
+        }
+        $('#religion').selectpicker('val',value);
+    }
+
+        //填充判定卡的颜色,获得判定等级
+        function initPdkTable(v1,v2,v3,v4){
+            var c=getPgdjColor('-1');
+            //还原最初状态
+            $('#td_pddj').html('');
+            $('#table_pdk').css('background-color',c);
+            var $tableRow=$("#table_pdk").find("tr").eq(2+v1);
+            var pdjgStr=getPgdjByScore(v1,v2,v3,v4);
+            c=getPgdjColor(pdjgStr);
+//            if(pdjgStr=='能力完好'){
+//                c='#25CF2D';
+//            }else if(pdjgStr=='轻度失能'){
+//                c='#FFCA00';
+//            }else if(pdjgStr=='中度失能'){
+//                c='#4B98FF';
+//            }else if(pdjgStr=='重度失能'){
+//                c='#6F008F';
+//            }
+
+            var $colV1=$tableRow.find("td").eq(0).css('background-color',c);
+            var $colV2=$tableRow.find("td").eq(1+v2).css('background-color',c);
+            var $colV3=$tableRow.find("td").eq(1+v3+4).css('background-color',c);
+            var $colV4=$tableRow.find("td").eq(1+v4+8).css('background-color',c);
+            $('#td_pddj').text(pdjgStr);
+        }
+
+        //打印判定结果
+        function pdjgPrint(){
+//        $("#myPrintArea").printArea();
+            var keepAttr = [];
+            keepAttr.push('class');
+            keepAttr.push('id');
+            keepAttr.push('style');
+            var options = {
+                mode : 'iframe',//   打印模式:iframe或popup
+                popClose : true,//Popup模式下有效
+                extraCss :'' ,//额外的样式
+                retainAttr : keepAttr,
+                extraHead : ''
+            };
+
+            $("#myPrintArea").printArea(options);
+        }
+
+    function addform_czdz($obj){
+        var guid=uuid();
+        $('#form_czdz').parent().append('<input id="address'+guid+'"  name="residentaddress" type="text" class="form-control input-sm" placeholder="常住地址">');
+        $($obj).parent().append('<button guid="'+guid+'"  onclick="return delform_czdz(this)"  class="btn bgm-red btn-icon-text waves-effect">' +
+            '<i class="zmdi zmdi-minus zmdi-hc-fw"></i>删除' +
+            '</button>')
+        return false;
+    }
+
+    //删除一行
+    function delform_czdz($obj){
+        $($obj).remove();
+        var guid=$($obj).attr('guid');
+        // var removeSelector='#address'+guid;
+        $('#div_residentaddress #address'+guid).remove();
+        return false;
+    }
+
+    //养老院选择显示隐藏
+    function ylySelectHideShow(value){
+        if(value=='5'){
+            $('#div_form_yly').show();
+        }else{
+            $('#div_form_yly').hide();
+            $('#div_form_yly').selectpicker('val','');
+        }
+    }
+    //新增一行联系人和联系方式
+    function addform_lx($obj){
+        var guid=uuid();
+
+        $('#form_lxrxm').parent().append('<input id="lxrxm'+guid+'" name="contactperson" type="text" class="form-control input-sm" placeholder="联系人姓名">');
+        $('#form_lxrdh').parent().append('<input id="lxrdh'+guid+'" name="contacttel" type="text" class="form-control input-sm" placeholder="联系人电话">');
+        $($obj).parent().append('<button guid="'+guid+'"  onclick="return delform_lx(this)"  class="btn bgm-red btn-icon-text waves-effect">' +
+            '<i class="zmdi zmdi-minus zmdi-hc-fw"></i>删除' +
+            '</button>');
+        return false;
+    }
+    //删除一行联系人及联系方式
+    function delform_lx ($obj) {
+        $($obj).remove();
+        var guid=$($obj).attr('guid');
+        $('#div_lx #lxrxm'+guid).remove();
+        $('#div_lx #lxrdh'+guid).remove();
+        return false;
+    }
+    addQuestions();
+    pointValid();
+</script>

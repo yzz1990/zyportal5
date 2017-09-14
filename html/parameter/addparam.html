@@ -1,0 +1,167 @@
+
+<style>
+    .modal-dialog {
+        width: 60%;
+        margin: 30px auto;
+    }
+</style>
+
+<div class="row" style="width: 100%;">
+    <form id="addparams">
+
+
+    <table style="margin: auto;">
+
+        <tr>
+<td>
+    <span style="color: red">*</span>
+    <span style="font-weight: bold">参数组名</span>
+
+</td>
+            <td style="padding-right: 15%;">
+                <div class="form-group col-sm-2 ">
+                    <div class="fg-line" style="width:200px;">
+                        <input type="text"  name="groupType" id="groupType"    class="input-sm form-control fg-input" placeholder="参数组名称" >
+                    </div>
+                </div>
+            </td>
+            <td>
+                <span style="color: red">*</span>
+                <span style="font-weight: bold">
+                    参数名称
+                </span>
+
+            </td>
+            <td >
+                <div class="form-group col-sm-2 ">
+                    <div class="fg-line" style="width:200px;">
+                        <input type="text" name="name"   id="name"  class="input-sm form-control fg-input" placeholder="参数名称" >
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span style="color: red">*</span>
+                <span style="font-weight: bold">参数编码</span>
+
+            </td>
+            <td>
+                <div class="form-group col-sm-2 ">
+                    <div class="fg-line" style="width:200px;">
+                        <input type="text"  name="myid" id="myid"   class="input-sm form-control" placeholder="参数编码" >
+                    </div>
+                </div>
+            </td>
+            <td>
+                <span style="color: red">*</span>
+                <span style="font-weight: bold">
+                   是否启用
+                </span>
+
+            </td>
+            <td>
+                <div class="form-group col-lg-2 " style="width:240px;">
+                    <select  id="state"  class="selectpicker" data-live-search="true" >
+                        <option value="Y">是</option>
+                        <option value="N">否</option>
+                    </select>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span style="color: red">*</span>
+                <span style="font-weight: bold">
+                  参数值类型
+                </span>
+
+            </td>
+            <td>
+                <div class="form-group col-lg-2 " style="width:240px;">
+                    <select  id="editorType"  class="selectpicker" data-live-search="true" onchange="paramTypeChange();">
+                        <option value="checkbox">Checkbox</option>
+                        <option value="validatebox">Validatebox</option>
+                    </select>
+                </div>
+            </td>
+            <td>
+                <span style="color: red">*</span>
+                <span style="font-weight: bold">
+                  参数值
+                </span>
+            </td>
+            <td id="ck">
+                <div class="form-group col-lg-2 " style="width:240px;">
+                    <select  id="value"  class="selectpicker" data-live-search="true" >
+                        <option value="true">是</option>
+                        <option value="false">否</option>
+                    </select>
+                </div>
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                <span style="color:black">&nbsp;</span>
+                <span style="font-weight: bold">
+                  参数描述
+                </span>
+            </td>
+            <td colspan="4">
+                <div class="fg-line">
+                <textarea  id="description" class="form-control input-sm" style="width: 98%;height: 70px;resize: none"></textarea>
+                </div>
+            </td>
+
+        </tr>
+    </table>
+    </form>
+    </div>
+
+</div>
+
+<script>
+
+    $(function () {
+        $addparams=$('#addparams');
+        $("#state").selectpicker({});
+        $("#editorType").selectpicker({});
+        $("#value").selectpicker({});
+        validateElement();
+    })
+    function paramTypeChange() {
+        var checkboxval=$("#editorType").val();
+  if(checkboxval=="checkbox"){
+      $("#ck").empty();
+$("#ck").append('<div class="form-group col-lg-2 " style="width:210px;"><select id="value"  class="selectpicker" data-live-search="true" ><option value="true">是</option> <option value="false">否</option></select></div>');
+      $("#value").selectpicker({});
+  }else {
+      $("#ck").empty();
+      $("#ck").append('<div class="form-group fg-float col-lg-2 col-sm-2 col-xs-6"> <div class="fg-line" style="width:180px;"><input type="text"   select id="value"  class="input-sm form-control fg-input"  ></div></div>')
+  }
+    }
+    function validateElement(){
+        var validateOption = $jqueryValidateOption;
+        validateOption.rules = {
+            groupType:{//姓名
+                required:true
+            },
+            name:{//身份证
+                required:true
+            },
+            myid:{//户籍地址
+                required:true
+            }
+        }
+       validateOption.errorPlacement= function (error, element) {
+            if (element.is(":checkbox") || element.is(":radio")) {
+                element.parent().parent().append(error)
+            } else {
+                error.insertAfter(element);
+            }
+        }
+        jqueryValidate($addparams, validateOption);
+    }
+
+</script>

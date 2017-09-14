@@ -1,0 +1,32 @@
+<div class="card">
+    <div class="card-body card-padding">
+        <div class="rows">
+            <div class="form-group col-sm-2" >
+                <select id="gzhlx" class="selectpicker" onchange="getgzhselect()">
+                    <option value="">请选择公众号类型</option>
+                    <option value="订阅号">订阅号</option>
+                    <option value="服务号">服务号</option>
+                    <option value="企业号">企业号</option>
+                </select>
+            </div>
+            <div class="form-group col-sm-2" >
+                <select id="wxgzh" class="selectpicker" data-live-search="true">
+                </select>
+            </div>
+            <div class="form-group col-sm-1">
+                <button class="btn bgm-lightblue btn-icon-text waves-effect" onclick="serachInfo()"><i class="zmdi zmdi-search zmdi-hc-fw"></i>查询</button>
+            </div>
+            <div class="form-group col-sm-1 pull-right">
+                <button class="btn bgm-amber btn-icon-text waves-effect" onclick="openAddModel()"><i class="zmdi zmdi-plus zmdi-hc-fw" ></i> 新增</button>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row">
+            <table id="main_table1" class="table table-striped" >
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<script src="WeChatPlatform/gzhgl/gzhgl.js"></script>

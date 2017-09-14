@@ -1,0 +1,47 @@
+<style>
+    .modal-dialog{
+        width: 60%;
+    }
+    /*单选多选换行对齐开始*/
+    .checkbox-inline + .checkbox-inline {
+        margin-left: 0;
+    }
+    .radio-inline + .radio-inline, .checkbox-inline + .checkbox-inline {
+        margin-left: 0;
+    }
+    /*单选多选换行对齐结束*/
+    .span_required{
+        color: red;
+    }
+</style>
+
+<div id="div_container" class="row div_father" style="overflow-y: auto;">
+    <div class="pm-body clearfix">
+        <div class="tab-content">
+            <div class="pmb-block tab-pane active" id="basicInfo_div">
+                <form id="form_addOrUpdate" class="form-horizontal">
+                    <div class="card">
+                        <div class="card-body card-padding">
+                            <div class="form-group">
+                                <label for="form_fromman" class="col-sm-2 control-label">发信人</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <input name="fromman" type="text" class="form-control input-sm" id="form_fromman" placeholder="发信人">
+                                    </div>
+                                </div>
+                                <label for="form_content" class="col-sm-2 control-label">短信内容</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <input name="content" type="text" class="form-control input-sm" id="form_content" placeholder="短信内容">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="background/smsrecord/addOrUpdate.js"></script>

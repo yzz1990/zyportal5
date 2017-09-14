@@ -1,0 +1,31 @@
+.ztree_selectInput{
+    display:none;
+    position: fixed;
+    width: 210px;
+    height: 200px;
+    overflow: auto;
+    background-color: #FFFEF4;
+    z-index: 99999;
+    border: 1px solid #9D9D9D;
+}
+.mytable {
+    table-layout: fixed;
+    /*width: 98%;*/
+    border:0px;
+    margin: 0px;
+}
+.mytable tr td {
+    text-overflow: ellipsis; /* for IE */
+    -moz-text-overflow: ellipsis; /* for Firefox,mozilla */
+    overflow: hidden;
+    white-space: nowrap;
+    /*border: 1px solid;*/
+    /*text-align: left*/
+}
+.span_required{
+    color: red;
+    padding-right: 5px;
+}
+.select_stamp{
+    background-color:yellow;
+}

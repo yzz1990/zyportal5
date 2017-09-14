@@ -1,0 +1,38 @@
+<div class="card">
+    <div class="card-body card-padding">
+        <div class="rows">
+            <!--<div class="form-group col-sm-2" >
+                <span><h5>请选择公众号:</h5></span>
+            </div>-->
+            <div class="form-group col-sm-2" >
+                <select id="wxgzh" class="selectpicker" data-live-search="true" onchange="getWeChatId()">
+                </select>
+            </div>
+            <div class="form-group col-sm-1">
+                <button class="btn bgm-lightblue btn-icon-text waves-effect" onclick="serachInfo()"><i class="zmdi zmdi-search zmdi-hc-fw"></i>查询</button>
+            </div>
+            <div class="form-group col-sm-1 pull-right">
+                <button id="delTag" class="btn btn-danger btn-icon-text waves-effect" data-trigger="hover"
+                        data-toggle="popover" data-placement="bottom" data-content="删除当前选中用户身上已有的某个标签"
+                        title="" data-original-title="提示" onclick="deletetag()"><i class="zmdi zmdi-close zmdi-hc-fw" ></i>删标签</button>
+            </div>
+            <div class="form-group col-sm-1 pull-right">
+                <button id="addTag" class="btn bgm-amber btn-icon-text waves-effect" data-trigger="hover"
+                        data-toggle="popover" data-placement="bottom" data-content="为当前选中用户添加新的标签"
+                        title="" data-original-title="提示" onclick="addtag()"><i class="zmdi zmdi-plus zmdi-hc-fw" ></i>打标签</button>
+            </div>
+            <div class="form-group col-sm-1 pull-right">
+                <button id="synchronize" class="btn bgm-lightblue btn-icon-text waves-effect" data-trigger="hover"
+                        data-toggle="popover" data-placement="bottom" data-content="将当前公众号用户信息同步至数据库中"
+                        title="" data-original-title="提示" onclick="synchronize()">&nbsp;同&nbsp;&nbsp;步&nbsp;</button>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row">
+            <table id="main_table1" class="table table-striped">
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="WeChatPlatform/userManage/userManage.js"></script>

@@ -1,0 +1,76 @@
+<style>
+    .modal-dialog{
+        width: 60%;
+    }
+    /*table样式*/
+    table {
+        border-top: 1px solid #ccc;
+        border-left: 1px solid #ccc;
+    }
+    table td,
+    table th {
+        border-bottom: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+        padding: 3px 5px;
+    }
+    table th {
+        border-bottom: 2px solid #ccc;
+        text-align: center;
+    }
+    /* blockquote 样式 */
+    blockquote {
+        display: block;
+        border-left: 8px solid #d0e5f2;
+        padding: 5px 10px;
+        margin: 10px 0;
+        line-height: 1.4;
+        font-size: 100%;
+        background-color: #f1f1f1;
+    }
+
+    /* code 样式 */
+    code {
+        display: inline-block;
+        *display: inline;
+        *zoom: 1;
+        background-color: #f1f1f1;
+        border-radius: 3px;
+        padding: 3px 5px;
+        margin: 0 3px;
+    }
+    pre code {
+        display: block;
+    }
+
+    /*!*图片样式*!
+    img{
+        width:200px;
+        height:200px;
+    }*/
+</style>
+<div id="div_container" class="row div_father" style="overflow-y: auto;">
+    <div class="pm-body clearfix">
+        <div class="tab-content">
+            <div class="pmb-block tab-pane active" id="basicInfo_div">
+                <form class="form-horizontal" style="margin-left:50px" id="mpnewsForm" enctype="multipart/form-data">
+                    <div>
+                        <h2 id="mpnews_title"></h2>
+                    </div>
+                    <div>
+                        <span id="timeAndAuthor"></span>
+                    </div>
+                    <div>
+                        <img id="pic" src="">
+                    </div>
+                    <div>
+                        <div id="mpnews_content"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../js/release/wangEditor.js"></script>
+
+

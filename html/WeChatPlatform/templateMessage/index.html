@@ -1,0 +1,81 @@
+<div class="card">
+    <div class="card-body card-padding">
+        <div class="row">
+            <!--<div class="form-group col-sm-2" >
+                <span><h5>请选择公众号:</h5></span>
+            </div>-->
+            <div class="form-group col-sm-2" >
+                <select id="wxgzh" class="selectpicker" data-live-search="true" onchange="getWeChatId()">
+                </select>
+            </div>
+
+            <div id="user" class="col-sm-2" hidden>
+                <select id="touser" class="selectpicker show-tick" onchange="getUser()">
+                    <option value="">请选择发送对象</option>
+                </select>
+            </div>
+
+            <div class="form-group col-sm-1">
+                <button class="btn bgm-lightblue btn-icon-text waves-effect" onclick="sendMessage()">发送</button>
+            </div>
+        </div>
+        <div class="row">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="first" class="col-sm-1 control-label"><span class="red">*</span>标题：</label>
+                    <div class="col-sm-4">
+                        <div class="fg-line">
+                            <input name="first" type="text" class="form-control input-sm" id="first" placeholder="标题">
+                        </div>
+                    </div>
+                    <label for="keyword1" class="col-sm-2 control-label"><span class="red">*</span>单位名称：</label>
+                    <div class="col-sm-4">
+                        <div class="fg-line">
+                            <input name="keyword1" type="text" class="form-control input-sm" id="keyword1" placeholder="单位名称">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="keyword2" class="col-sm-1 control-label"><span class="red">*</span>事件ID：</label>
+                    <div class="col-sm-4">
+                        <div class="fg-line">
+                            <input name="keyword2" type="text" class="form-control input-sm" id="keyword2" placeholder="事件ID">
+                        </div>
+                    </div>
+                    <label for="keyword3" class="col-sm-2 control-label"><span class="red">*</span>事件名称：</label>
+                    <div class="col-sm-4">
+                        <div class="fg-line">
+                            <input name="keyword3" type="text" class="form-control input-sm" id="keyword3" placeholder="事件名称">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="keyword4" class="col-sm-1 control-label"><span class="red">*</span>告警等级：</label>
+                    <div class="col-sm-4">
+                        <div class="fg-line">
+                            <input name="keyword4" type="text" class="form-control input-sm" id="keyword4" placeholder="告警等级">
+                        </div>
+                    </div>
+                    <label for="keyword5" class="col-sm-2 control-label"><span class="red">*</span>关联参数值：</label>
+                    <div class="col-sm-4">
+                        <div class="fg-line">
+                            <input name="keyword5" type="text" class="form-control input-sm" id="keyword5" placeholder="关联参数值">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="remark" class="col-sm-1 control-label"><span class="red">*</span>备注：</label>
+                    <div class="col-sm-4">
+                        <div class="fg-line">
+                            <input name="remark" type="text" class="form-control input-sm" id="remark" placeholder="备注">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="WeChatPlatform/templateMessage/index.js"></script>

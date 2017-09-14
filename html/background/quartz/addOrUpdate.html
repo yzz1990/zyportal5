@@ -1,0 +1,90 @@
+
+<style>
+    .modal-dialog{
+        width: 60%;
+    }
+    /*单选多选换行对齐开始*/
+    .checkbox-inline + .checkbox-inline {
+        margin-left: 0;
+    }
+    .radio-inline + .radio-inline, .checkbox-inline + .checkbox-inline {
+        margin-left: 0;
+    }
+
+</style>
+<div id="div_container" class="row div_father" style="">
+    <div class="pm-body clearfix">
+        <div class="tab-content">
+            <div class="pmb-block tab-pane active" id="basicInfo_div">
+                <form id="form_addOrUpdate" class="form-horizontal">
+                    <div class="card">
+                        <div class="card-body card-padding">
+                            <p style="color: red;display: none;" id="p_note">编辑时任务组和任务不能进行操作</p>
+                            <div class="form-group">
+                                <label for="jobgroup" class="col-sm-2 control-label radio-inline"><span class="span_required">*</span>任务组</label>
+                                <div class="col-sm-5" id="form_jobgroup">
+                                    <select id= "jobgroup" name="groupid" required >
+                                        <!--<option value="">请选择</option>-->
+                                        <!--<option value="groupaaa">组1</option>-->
+                                        <!--<option value="groupbbb">组2</option>-->
+                                        <!--<option value="groupccc">组3</option>-->
+                                    </select>
+                                    <input id="jobgroupname"  name="groupname" value="" style="width:0;height: 0;border: 0;"><!--显示的任务组名-->
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="jobname" class="col-sm-2 control-label radio-inline"><span class="span_required">*</span>任务名</label>
+                                <div class="col-sm-5" id="form_jobname">
+                                    <select id= "jobname" name="jobname" class="selectpicker" data-live-search="true">
+                                        <!--<option value="com.zkzy.zyportal.system.provider.quartz_jobs.Minute2Job" jobype="class">任务Minute2Job</option>-->
+                                        <!--<option value="quartzServiceImpl" jobype="bean" jobmethod="testBeanJob">任务Bean</option>-->
+                                    </select>
+                                    <input id="jobshowname"  name="showname" value="" style="width:0;height: 0;border: 0;"><!--显示的任务名称-->
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="form_cron" class="col-sm-2 control-label"><span class="span_required">*</span>Cron表达式</label>
+                                <div class="col-sm-5">
+                                    <div class="fg-line">
+                                        <input name="cron" type="text" class="form-control input-sm" id="form_cron" placeholder="Cron表达式">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-5">
+                                    <button id="btn_cronget" class="btn bgm-lightblue waves-effect">Cron表达式生成器</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="form_description" class="col-sm-2 control-label">任务描述</label>
+                                <div class="col-sm-5">
+                                    <div class="fg-line">
+                                        <input name="description" type="text" class="form-control input-sm" id="form_description" placeholder="任务描述">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!--额外信息-->
+                    <input id="jobid" type="hidden" name="id"  >
+                    <input id="jobtype" type="hidden" name="classorbean" value="bean"  ><!--调度的类型,bean或者class包-->
+
+
+                    <input id="jobcreatetime" type="hidden" name="createtime">
+                    <input id="jobmodifytime" type="hidden" name="modifytime">
+                    <input id="jobusemethod" type="hidden" name="usemethod" value="testBeanJob"><!--bean类型时调用的方法-->
+
+                    <input id="jobstatus" type="hidden" name="status"><!--启闭状态-->
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="background/quartz/addOrUpdate.js"></script>
+
+
+

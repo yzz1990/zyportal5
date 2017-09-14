@@ -1,0 +1,55 @@
+
+<style>
+    .modal-dialog{
+        width: 50%;
+    }
+</style>
+<div id="div_container" class="row div_father">
+    <div class="pm-body clearfix">
+        <div class="tab-content">
+            <div class="pmb-block tab-pane active" id="basicInfo_div">
+                <form id="form_addOrUpdate" class="form-horizontal">
+                    <div class="card">
+                        <div class="card-body card-padding">
+                            <!--<div class="form-group">
+                                <label for="form_name" class="col-sm-2 control-label">角色名称</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <input name="name" type="text" class="form-control input-sm" id="form_name" placeholder="角色名称">
+                                    </div>
+                                </div>
+                                <label for="form_identification" class="col-sm-2 control-label">标识</label>
+                                <div class="col-sm-3">
+                                    <div class="fg-line">
+                                        <input name="identification" type="text" class="form-control input-sm" id="form_identification" placeholder="标识">
+                                    </div>
+                                </div>
+                            </div>-->
+                            <div class="form-group">
+                                <label  class="col-sm-2 control-label" style="color: red;">权限勾选</label>
+                                <div class="col-sm-8">
+                                    <div class="fg-line">
+                                        <ul id="permissionSave" class="ztree" ></ul>
+                                        <input type="hidden" id="permissionSave_id">
+                                        <!--<table id="tb" class="table table-striped">-->
+                                        <!--</table>-->
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--<script src="background/role/treegrid.js"></script>-->
+<script src="background/role/permission.js"></script>

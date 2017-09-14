@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>主题活动</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!-- head 中 -->
+    <link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">
+    <style>
+        .swiper-container {
+            background-color: black;
+            width: 100%;
+        }
+        .swiper-container img {
+            display: block;
+            width: 100%;
+        }
+        .title{
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .titlebott{
+            margin-right: 20px;
+            padding-right: 20px;
+            text-align:right;
+            color:#999;
+        }
+        .read{
+            margin-left: 20px;
+            margin-right: 20px;
+
+            background:#e3e3e3 ;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .read span{
+            font-size: 14px;
+            font-weight: normal;
+        }
+
+    </style>
+</head>
+<body ontouchstart>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <!--D:\X-20170428-YL-0001 老人能力评估系统\03研发文件\10、源代码\webclient\zyportal5\img\headers\sm-->
+        <div class="swiper-slide"><img src="../images/zthd1.png" /></div>
+        <div class="swiper-slide"><img src="../images/zthd2.png" /></div>
+        <div class="swiper-slide"><img src="../images/zthd3.jpg" /></div>
+        <div class="swiper-slide"><img src="../images/zthd4.jpg" /></div>
+
+    </div>
+    <div class="swiper-pagination"></div>
+</div>
+
+<div id="list" class="demos-content-padded">
+    <div class="title">“河长制、河长治”主题活动</div><br/>
+    <div class="titlebott">
+        <span>2017年08月08日</span>
+        <span>作者：xxx</span>
+    </div>
+    <div class="read">
+        导读:<span>中国绵阳新闻网讯（张俊 记者 安峥 文/图）22日至28日，是第30届“中国水周”宣传周。在此期间，安州区水务局以“落实绿色发展理念、
+                    全面推进河长制”为主题，全民参与为主线，组织局机关党员50余人，佩戴党徽和绶带，积极开展街头宣传活动。</span>
+    </div>
+    <div class="weui-media-box">
+        <p class="weui-media-box">
+            “河长制”，即由中国各级党政主要负责人担任“河长”，负责组织领导相应河湖的管理和保护工作。“河长制”工作的主要任务包括六个方面。
+            2016年10月11日，中共中央总书记、国家主席、中央军委主席、中央全面深化改革领导小组组长习近平主持召开中央全面深化改革领导小组第28次会议，
+            审议通过了《关于全面推行河长制的意见》。[1] 2016年12月，中国中共中央办公厅、国务院办公厅印发了《关于全面推行河长制的意见》，
+            并发出通知，要求各地区各部门结合实际认真贯彻落实。[2]
+        </p>
+        <p class="weui-media-box">
+            活动现场，党员同志们纷纷走上街头，通过宣传讲解、散发传单形式，开展《水法》、《水土保持法》、《防洪法》等法律法规宣传，
+            引导全社会加深对我区水情的认知，积极推进河长制，增强公众水生态、水安全、水忧患、水道德意识。
+            号召全社会形成“爱水、惜水、节水”的共识，共同保护好美丽安州。
+        </p>
+    </div>
+</div>
+<div class="weui-footer">
+    <p class="weui-footer__links">
+        <a href="javascript:void(0);" class="weui-footer__link">河长制活动</a>
+        <a href="javascript:void(0);" class="weui-footer__link">河长制</a>
+    </p>
+    <p class="weui-footer__text">Copyright © 2008-2016 </p>
+</div>
+</body>
+
+<script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+<!-- 如果使用了某些拓展插件还需要额外的JS -->
+<script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/city-picker.min.js"></script>
+<script src="../js/swiper.js"></script>
+<script>
+    $(".swiper-container").swiper({
+        loop: true,
+        autoplay: 3000
+    });
+</script>
+</html>

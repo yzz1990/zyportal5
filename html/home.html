@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<!--[if IE 9 ]>
+<html class="ie9"><![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>V5</title>
+    <!-- CSS -->
+    <link href="../css/app.min.1.css" rel="stylesheet">
+
+    <!-- Vendor CSS -->
+    <link href="../vendors/bower_components/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet">
+    <link href="../vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
+    <link href="../vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.css" rel="stylesheet">
+    <link href="../vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css"
+          rel="stylesheet">
+    <link href="../vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css"
+          rel="stylesheet">
+    <link href="../vendors/bower_components/lightgallery/light-gallery/css/lightGallery.css" rel="stylesheet">
+
+    <link href="../vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.css" rel="stylesheet">
+    <link href="../vendors/bower_components/nouislider/distribute/jquery.nouislider.min.css" rel="stylesheet">
+    <link href="../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css"
+          rel="stylesheet">
+    <link href="../vendors/farbtastic/farbtastic.css" rel="stylesheet">
+    <link href="../vendors/bower_components/chosen/chosen.min.css" rel="stylesheet">
+    <link href="../vendors/summernote/dist/summernote.css" rel="stylesheet">
+
+    <!-- 引入bootstrap-table -->
+    <link href="../vendors/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <!--<link href="../vendors/bootgrid/jquery.bootgrid.min.css" rel="stylesheet">-->
+
+    <!-- 引入jedate时间控件 -->
+    <link href="../vendors/jedate-3.5/jedate.css" type="text/css" rel="stylesheet">
+
+    <!-- 引入bootstrap-dialog -->
+    <link href="../vendors/bootstrap-dialog/bootstrap-dialog.min.css" rel="stylesheet">
+
+    <link href="../css/app.min.2.css" rel="stylesheet">
+    <link href="../css/bootstrap-editable.css" rel="stylesheet">
+
+    <link href="../css/system-public.css" rel="stylesheet">
+
+
+</head>
+<body>
+<header id="header" class="clearfix zyheader" data-current-skin="blue">
+    <ul class="header-inner">
+        <li id="menu-trigger" data-trigger="#sidebar">
+            <div class="line-wrap">
+                <div class="line top"></div>
+                <div class="line center"></div>
+                <div class="line bottom"></div>
+            </div>
+        </li>
+
+        <li class="logo hidden-xs" id="title">
+            <!-- <a href="home.html">锡山区老年人能力评估系统</a>-->
+        </li>
+
+        <li class="pull-right">
+            <ul class="top-menu">
+                <li id="toggle-width">
+                    <div class="toggle-switch">
+                        <input id="tw-switch" type="checkbox" hidden="hidden">
+                        <label for="tw-switch" class="ts-helper"></label>
+                    </div>
+                </li>
+                <li class="hidden-xs" >
+                    <a href="index.html" ><i class="tm-icon zmdi zmdi-assignment-return"></i></a>
+                </li>
+                <li class="dropdown">
+                    <a data-toggle="dropdown" href="">
+                        <i class="tm-icon zmdi zmdi-notifications"></i>
+                        <i class="tmn-counts">9</i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg pull-right">
+                        <div class="listview" id="notifications">
+                            <div class="lv-header">
+                                系统通知
+                                <ul class="actions">
+                                    <li class="dropdown">
+                                        <a href="" data-clear="notification">
+                                            <i class="zmdi zmdi-check-all"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="lv-body">
+                                <a class="lv-item" href="">
+                                    <div class="media">
+                                        <div class="pull-left">
+                                            <img class="lv-img-sm" src="../img/profile-pics/1.jpg" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="lv-title">评估员A</div>
+                                            <small class="lv-small">老人信息已更新</small>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <a class="lv-footer" href="">查看全部</a>
+                        </div>
+
+                    </div>
+                </li>
+                <li class="dropdown hidden-xs">
+                    <a data-toggle="dropdown" href="">
+                        <i class="tm-icon zmdi zmdi-view-list-alt"></i>
+                        <i class="tmn-counts">2</i>
+                    </a>
+                    <div class="dropdown-menu pull-right dropdown-menu-lg">
+                        <div class="listview">
+                            <div class="lv-header">
+                                Tasks
+                            </div>
+                            <div class="lv-body">
+                                <div class="lv-item">
+                                    <div class="lv-title m-b-5">老人A评估进度</div>
+
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="95"
+                                             aria-valuemin="0" aria-valuemax="100" style="width: 95%">
+                                            <span class="sr-only">95%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a class="lv-footer" href="">查看全部</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a data-toggle="dropdown" href=""><i class="tm-icon zmdi zmdi-more-vert"></i></a>
+                    <ul class="dropdown-menu dm-icon pull-right">
+                        <li class="skin-switch hidden-xs">
+                            <span class="ss-skin bgm-lightblue" data-skin="lightblue"></span>
+                            <span class="ss-skin bgm-bluegray" data-skin="bluegray"></span>
+                            <span class="ss-skin bgm-cyan" data-skin="cyan"></span>
+                            <span class="ss-skin bgm-teal" data-skin="teal"></span>
+                            <span class="ss-skin bgm-orange" data-skin="orange"></span>
+                        </li>
+                        <li class="divider hidden-xs"></li>
+                        <li class="hidden-xs">
+                            <a data-action="fullscreen" href=""><i class="zmdi zmdi-fullscreen"></i> 全屏</a>
+                        </li>
+                        <li>
+                            <a data-action="clear-localstorage" href=""><i class="zmdi zmdi-delete"></i> 清除Storage</a>
+                        </li>
+                        <li>
+                            <a data-action="clear-loginout" href=""><i class="zmdi zmdi-power"></i> 退出系统</a>
+                        </li>
+                    </ul>
+                </li>
+                <!---------chat-trigger----->
+                <li class="hidden-xs" id="chat-trigger" data-trigger="#chat">
+                    <a href=""><i class="tm-icon zmdi zmdi-comment-alt-text"></i>
+                        <i class="tmn-counts" id="mesage-counts">0</i></a>
+                </li>
+                <!------------------------->
+            </ul>
+        </li>
+    </ul>
+</header>
+
+<section id="main" data-layout="layout-1">
+    <!----------------------------------------------------通讯录---------------------------------------------------------->
+    <aside id="chat" class="sidebar c-overflow">
+        <div class="chat-search">
+            <div class="fg-line">
+                <input type="text" class="form-control seachpeople" placeholder="搜索联系人" oninput="seachpeople()">
+            </div>
+        </div>
+        <div class="char-message" id="char-message"
+             style="display:none;margin-top: 0px;background-color: rgba(255,160,0,0.18)"></div>
+        <div class="listview" id="contacts">
+
+        </div>
+    </aside>
+    <!----------------------------------------------------------------------------------------------------->
+    <aside id="sidebar" class="sidebar my-overflow  zyleftmenu">
+        <div class="profile-menu">
+            <a href="">
+                <div class="profile-pic">
+                    <img src="../img/profile-pics/1.jpg" alt="">
+                </div>
+
+                <div class="profile-info" id="localuser">
+
+                </div>
+            </a>
+
+            <ul class="main-menu">
+                <li>
+                    <a href=""><i class="zmdi zmdi-settings"></i> 权限</a>
+                </li>
+                <li>
+                    <a href=""><i class="zmdi zmdi-time-restore"></i> 退出</a>
+                </li>
+            </ul>
+        </div>
+
+        <ul class="main-menu" id="menu">
+
+        </ul>
+    </aside>
+
+    <section id="content">
+        <div class="container">
+        </div>
+    </section>
+</section>
+
+<!-- Page Loader -->
+<div class="page-loader">
+    <div class="preloader pls-blue">
+        <svg class="pl-circular" viewBox="25 25 50 50">
+            <circle class="plc-path" cx="50" cy="50" r="20"/>
+        </svg>
+
+        <p>加载中...</p>
+    </div>
+</div>
+<div class="zyfooter" id="zyfooter">
+</div>
+<!-- Older IE warning message -->
+<!--[if lt IE 9]>
+<div class="ie-warning">
+    <p>系统只支持360急速、chrome44版本浏览器</p>
+    <div class="iew-container">
+        <ul class="iew-download">
+            <li>
+                <a href="http://www.google.com/chrome/">
+                    <img src="../img/browsers/chrome.png" alt="">
+                    <div>Chrome</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.mozilla.org/en-US/firefox/new/">
+                    <img src="../img/browsers/firefox.png" alt="">
+                    <div>Firefox</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.opera.com">
+                    <img src="../img/browsers/opera.png" alt="">
+                    <div>Opera</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.apple.com/safari/">
+                    <img src="../img/browsers/safari.png" alt="">
+                    <div>Safari</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                    <img src="../img/browsers/ie.png" alt="">
+                    <div>IE (New)</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<![endif]-->
+
+<!-- Javascript Libraries -->
+<script type="text/javascript" src="../vendors/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="../vendors/bower_components/spa/vipspa-0.1.0.min.js"
+        type="text/javascript"></script>
+<script type="text/javascript" src="../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="../vendors/sparklines/jquery.sparkline.min.js"></script>
+
+<script type="text/javascript" src="../vendors/bower_components/moment/min/moment.min.js"></script>
+<script type="text/javascript" src="../vendors/bower_components/fullcalendar/dist/fullcalendar.min.js "></script>
+<script type="text/javascript" src="../vendors/bower_components/Waves/dist/waves.min.js"></script>
+<script type="text/javascript" src="../vendors/bootstrap-growl/bootstrap-growl.min.js"></script>
+<script type="text/javascript" src="../vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.min.js"></script>
+<script type="text/javascript"
+        src="../vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+
+<script type="text/javascript" src="../vendors/bower_components/moment/min/moment.min.js"></script>
+<script type="text/javascript" src="../vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
+<script type="text/javascript"
+        src="../vendors/bower_components/nouislider/distribute/jquery.nouislider.all.min.js"></script>
+<script type="text/javascript"
+        src="../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="../vendors/bower_components/typeahead.js/dist/typeahead.bundle.min.js"></script>
+<script type="text/javascript" src="../vendors/summernote/dist/summernote-updated.min.js"></script>
+<script type="text/javascript" src="../vendors/bower_components/chosen/chosen.jquery.min.js"></script>
+<!-- 引入bootstrap-table -->
+<!--<script src="../vendors/bootgrid/jquery.bootgrid.updated.js"></script>-->
+<script src="../js/bootstrap-editable.js"></script>
+<script type="text/javascript" src="../vendors/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../vendors/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+<script src="../js/bootstrap-table-editable.js"></script>
+<script type="text/javascript" src="../vendors/bootstrap-table/bootstrap-paginator.min.js"></script>
+<!--bootstrap-table的扩展，可导出格式-->
+<!--<script type="text/javascript" src="../vendors/bootstrap-table/tableExport.js"></script>-->
+<!--<script type="text/javascript" src="../vendors/bootstrap-table/bootstrap-table-export.js"></script>-->
+
+<!-- 引入bootstrap-dialog -->
+<script type="text/javascript" src="../vendors/bootstrap-dialog/bootstrap-dialog.min.js"></script>
+
+<!-- 引入jedate时间控件 -->
+<script type="text/javascript" src="../vendors/jedate-3.5/jquery.jedate.min.js"></script>
+
+<!-- 引入表单验证控件 -->
+<script type="text/javascript" src="../vendors/validate/jquery.validate.min.js"></script>
+<script type="text/javascript" src="../vendors/validate/messages_cn.js"></script>
+<script type="text/javascript" src="../vendors/validate/jquery.metadata.js"></script>
+<script type="text/javascript" src="../vendors/validate/additional-methods.js"></script>
+<!-- Placeholder for IE9 -->
+<!--[if IE 9 ]>
+<script type="text/javascript" src="../vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="../js/functions.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/getRealVal.js"></script>
+
+
+<script src="../js/cityjs/Popt.js"></script>
+<script src="../js/cityjs/cityJson.js"></script>
+<script src="../js/cityjs/citySet.js"></script>
+<!--BootstrapFileInput文件上插件-->
+<link href="../vendors/bootstrap-fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="../vendors/bootstrap-fileinput/themes/explorer/theme.css" media="all" rel="stylesheet" type="text/css"/>
+<script src="../vendors/bootstrap-fileinput/js/plugins/sortable.js" type="text/javascript"></script>
+<script src="../vendors/bootstrap-fileinput/js/fileinput.js" type="text/javascript"></script>
+<script src="../vendors/bootstrap-fileinput/js/locales/zh.js" type="text/javascript"></script>
+<script src="../vendors/bootstrap-fileinput/themes/explorer/theme.js" type="text/javascript"></script>
+<!--打印-->
+<script src="../vendors/PrintArea/demo/jquery.PrintArea.js" type="text/JavaScript" language="javascript"></script>
+
+<!--zTree-->
+<!--<link rel="stylesheet" href="../vendors/zTree_v3-master/css/demo.css" type="text/css">-->
+<!--<link href="../vendors/zTree_v3-master/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css">-->
+<link href="../vendors/zTree_v3-master/css/metroStyle/metroStyle.css" rel="stylesheet" type="text/css">
+
+<script src="../vendors/zTree_v3-master/js/jquery.ztree.core.js" type="text/javascript"></script>
+<script src="../vendors/zTree_v3-master/js/jquery.ztree.excheck.js" type="text/javascript"></script>
+
+
+<!--    jquery-treegtid      -->
+<link href="../vendors/jquery-treegrid/css/jquery.treegrid.css" rel="stylesheet">
+<script src="../vendors/jquery-treegrid/js/jquery.treegrid.js" type="text/javascript"></script>
+<script src="../vendors/jquery-treegrid/js/jquery.treegrid.bootstrap3.js" type="text/javascript"></script>
+<script src="../vendors/jquery-treegrid/js/jquery.treegrid.extension.js" type="text/javascript"></script>
+<!--文件系统-->
+<script src="../vendors/inspinia/metisMenu/jquery.metisMenu.js" type="text/javascript"></script>
+<script src="../vendors/inspinia/slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+
+
+<!-- IM -->
+<script src="../js/socialIM.js"></script>
+<!--<script src="https://app.cloopen.com/im50/ytx-web-im-min-new.js"></script>-->
+<script src="http://app.cloopen.com/im50/ytx-web-im-min-new.js"></script>
+<script src="../js/dist/justdo.js"></script>
+<script src="../js/dist/emoji.js"></script>
+<script src="../js/dist/pako.js"></script>
+
+
+<!--------EChart---------->
+<script src="../vendors/echarts/echarts.min-3.6.2.js"></script>
+<script src="../vendors/echarts/china.js"></script>
+
+<script>
+    var loalMyUser;
+    var objectJson = {};
+    $(function () {
+        loalMyUser=getUserInfo();
+        getLocalUser();
+        getMenuByParam("project");
+        systemView();
+        getLocation();
+        vipspa.start({
+            view: '#content .container',// 装载视图的dom
+            router: objectJson,
+            errorTemplateId: '#error'
+        });
+
+        $('.sub-menu.toggled').each(function () {
+            $(this).find('ul').show();
+        });
+    });
+
+    function systemView() {
+        var mysystemLogo=getParameterValueByCode('systemLogo');
+        var mytitle = getParameterValueByCode("SystemTitle");
+        if (mytitle == undefined) {
+            $("#title").html('<img src="' + urlPathPre + mysystemLogo + '" alt="" style="width: 50px;height:50px;float: left"><a href="home.html" style="float: left">系统标题未启用</a>');
+        } else {
+            $("#title").html('<img src="' + urlPathPre + mysystemLogo + '" alt="" style="width: 50px;height:50px;float: left"><a href="home.html" style="float: left"> ' + mytitle + '</a>');
+        }
+        var mycop = getParameterValueByCode("systemCop");
+        if (mycop == undefined) {
+            $(".zyfooter").html("");
+        } else {
+            $(".zyfooter").html(" 版权所有：" + mycop);
+        }
+       var myLogo=loalMyUser.photourl;
+        if (myLogo == "") {
+            $(".profile-pic").html('<img src="../img/profile-pics/1.jpg" alt="">');
+        } else {
+            $(".profile-pic").html('<img src="' + urlPathPre + myLogo + '" alt="">');
+
+        }
+    }
+    function getMenuByParam(permission) {
+        var myJson = {};
+        var num = 1;
+        getData_async(
+            'post',
+            '/system/menu/findParamByUserId',
+            {"permission": permission},
+            'json',
+            function (value) {//success
+                var data = value.data;
+                for (var key in data) {
+                    var myhtml = "";
+                    var myownhtml = "";
+                    for (var i = 0; i < data[key].length; i++) {
+                        myownhtml = myownhtml + " <li><a href='#/" + data[key][i].permission + "'>" + data[key][i].name + "</a></li>";
+                        var a = "/" + data[key][i].permission;
+                        myJson[a] = {
+                            templateUrl: data[key][i].url,
+                            controller: data[key][i].description
+                        };
+                    }
+                    myhtml = '<li class="sub-menu">'
+                        + '<a href="">'
+                        + '<i class="zmdi zmdi-view-compact"></i>' + key + '</a>'
+                        + '<ul id="mymenu' + num + '">'
+                        + '</ul>'
+                        + '</li>';
+                    $("#menu").append(myhtml);
+                    $("#mymenu" + num + "").html(myownhtml);
+                    num = num + 1;
+                }
+                myJson.defaults = '/userIp';
+                objectJson = myJson;
+            }, function (obj) {//error
+                showtoastr("inverse", '信息加载异常');
+            }
+        );
+    }
+    function getLocalUser() {
+  var obj=loalMyUser;
+                if (obj.realname!="") {
+                    olUser = obj.realname;
+                    $("#localuser").html(obj.roleName + "&nbsp;" + obj.realname + '<i class="zmdi zmdi-caret-down"></i>');
+                } else {
+                    $("#localuser").html('<i class="zmdi zmdi-caret-down"></i>');
+                }
+
+    }
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(subLocation, showError);
+        }
+        else {
+        }
+    }
+    function subLocation(position) {
+        var longitude = position.coords.longitude;
+        var latitude = position.coords.latitude;
+        getData(
+            'post',
+            '/system/user/updateLocation',
+            {
+                latitude: latitude,
+                longitude: longitude
+            },
+            'json',
+            function (obj) {
+                console.log('上传坐标'+obj.desc);
+            }
+        )
+    }
+    function showError(error) {
+        switch (error.code) {
+            //被用户拒绝获取坐标
+            case error.PERMISSION_DENIED:
+                getLocation();
+                break;
+            //不可用或者浏览器不支持
+            case error.POSITION_UNAVAILABLE:
+                break;
+            case error.TIMEOUT:
+                getLocation();
+                break;
+            case error.UNKNOWN_ERROR:
+                getLocation();
+                break;
+        }
+    }
+
+</script>
+
+</body>
+</html>

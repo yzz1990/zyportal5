@@ -1,0 +1,35 @@
+<div class="card">
+    <div class="card-body card-padding">
+        <div class="rows">
+            <div class="form-group col-sm-2" >
+                <div class="fg-line">
+                    <input type="text" class="input-sm form-control fg-input" id="name" placeholder="姓名">
+                </div>
+            </div>
+            <div class="form-group col-sm-2 ">
+                <div class="fg-line">
+                    <input type="text"  class="input-sm form-control fg-input" readonly
+                           style="background-color: white"
+                           id="search_bookName" placeholder="所属通讯录">
+                    <div id="menuContent_search_bookName" class="menuContent ztree_selectInput">
+                        <ul id="tree_searchBook" class="ztree" style="margin-top:0; width:200px;"></ul>
+                    </div>
+                    <input type="hidden" id="search_bookId"><!--通讯录隐藏的值域-->
+                </div>
+            </div>
+            <div class="form-group col-sm-2">
+                <button class="btn bgm-lightblue btn-icon-text waves-effect" onclick="serachInfo()"><i class="zmdi zmdi-search zmdi-hc-fw"></i>查询</button>
+            </div>
+            <div class="form-group col-sm-6">
+                <button id="btn_add" class="btn bgm-amber btn-icon-text waves-effect pull-right"><i class="zmdi zmdi-plus zmdi-hc-fw" ></i>新增</button>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row">
+            <table id="main_table1" class="table table-striped">
+            </table>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="background/smsman/main.js"></script>

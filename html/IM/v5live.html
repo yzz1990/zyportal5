@@ -1,0 +1,142 @@
+<div class="card m-b-0" id="messages-main">
+
+    <!-----边侧栏---->
+    <div class="ms-menu">
+        <!--个人信息栏-->
+        <div class="ms-block">
+            <div class="ms-user">
+                <img src="../img/profile-pics/1.jpg" alt="">
+                <div>直播间 <br/> m-hollaway@gmail.com</div>
+            </div>
+        </div>
+
+        <div class="ms-block">
+            <div class="dropdown">
+                <a class="btn btn-primary btn-block" href="" data-toggle="dropdown">更多操作 <i
+                        class="caret m-l-5"></i></a>
+                <ul class="dropdown-menu dm-icon w-100">
+                    <li><a href=""><i class="zmdi zmdi-email"></i> 创建直播间</a></li>
+                    <li><a href=""><i class="zmdi zmdi-account"></i> Contacts</a></li>
+                    <li><a href=""><i class="zmdi zmdi-format-list-bulleted"> </i>Todo Lists</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!--直播间列表-->
+        <div class="livelistview lv-user m-t-20">
+            <div class="lv-item media">
+                <div class="lv-avatar pull-left">
+                    <img src="../img/profile-pics/6.jpg" alt="">
+                </div>
+                <div class="media-body">
+                    <div class="lv-title">直播1</div>
+                    <div class="lv-small">这里是直播间的简介，你可以看到</div>
+                </div>
+            </div>
+            <div class="lv-item media">
+                <div class="lv-avatar pull-left">
+                    <img src="../img/profile-pics/6.jpg" alt="">
+                </div>
+                <div class="media-body">
+                    <div class="lv-title">直播2</div>
+                    <div class="lv-small">这里是直播间的简介，你可以看到我比上一行多了许多字</div>
+                </div>
+            </div>
+            <div class="lv-item media">
+                <div class="lv-avatar pull-left">
+                    <img src="../img/profile-pics/6.jpg" alt="">
+                </div>
+                <div class="media-body">
+                    <div class="lv-title">直播3</div>
+                    <div class="lv-small">这里是直播间的简介，你可以看到我也不知道比上一行多没多字</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!------>
+    <div class="ms-body">
+        <div class="livelistview lv-message">
+            <div class="lv-header-alt clearfix">
+                <div id="ms-menu-trigger">
+                    <div class="line-wrap">
+                        <div class="line top"></div>
+                        <div class="line center"></div>
+                        <div class="line bottom"></div>
+                    </div>
+                </div>
+                <!--直播间标题和工具栏-->
+                <div class="lvh-label hidden-xs">
+                    <div class="lv-avatar pull-left">
+                        <img src="../img/profile-pics/1.jpg" alt="">
+                    </div>
+                    <span class="c-black">这里是你打开直播间的标题</span>
+                </div>
+
+                <ul class="lv-actions actions">
+                    <li>
+                        <a href="">
+                            <i class="zmdi zmdi-delete"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="zmdi zmdi-check"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="zmdi zmdi-time"></i>
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" data-toggle="dropdown" aria-expanded="true">
+                            <i class="zmdi zmdi-sort"></i>
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li>
+                                <a href="">Latest</a>
+                            </li>
+                            <li>
+                                <a href="">Oldest</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" data-toggle="dropdown" aria-expanded="true">
+                            <i class="zmdi zmdi-more-vert"></i>
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li>
+                                <a href="">Refresh</a>
+                            </li>
+                            <li>
+                                <a href="">Message Settings</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!---直播间----->
+            <div class="lv-body">
+
+                <video src="../media/big_buck_bunny.mp4" style="width: 100%;height: 100%" controls></video>
+
+
+            </div>
+
+            <div class="lv-footer ms-reply">
+                <textarea placeholder="说点什么吧..."></textarea>
+
+                <button><i class="zmdi zmdi-mail-send"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $(".card").height(clientHeight - 160);
+    })
+</script>

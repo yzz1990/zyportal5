@@ -1,0 +1,53 @@
+
+<div class="card">
+    <div class="card-body card-padding">
+       <div class="rows">
+           <div class="form-group col-sm-2" >
+               <div class="fg-line">
+                   <input type="text" class="input-sm form-control fg-input" id="serachName" placeholder="请输入名称">
+                   <!--<label class="fg-label">请输入所属省</label>-->
+               </div>
+           </div>
+           <div class="form-group col-sm-2 ">
+               <div class="fg-line">
+                   <input type="text" class="input-sm form-control fg-input" id="serachNote" placeholder="请输入简要">
+                  <!-- <label class="fg-label">请输入所属城市</label>-->
+               </div>
+           </div>
+           <div class="form-group col-sm-2 ">
+               <div class="fg-line">
+                   <input type="text" class="input-sm form-control fg-input" id="serachDes" placeholder="请输入附件描述">
+            <!--       <label class="fg-label">请输入所属区</label>-->
+               </div>
+           </div>
+        <!--   <div class="form-group col-sm-2 ">
+               <div class="fg-line">
+                   <input type="text" class="input-sm form-control fg-input" id="serachStreet" placeholder="请输入所属街道/社区">
+                &lt;!&ndash;   <label class="fg-label">请输入所属街道/社区</label>&ndash;&gt;
+               </div>
+           </div>-->
+           <div class="form-group col-sm-1">
+               <button class="btn bgm-lightblue btn-icon-text waves-effect" onclick="serachAreaInfo()"><i class="zmdi zmdi-search zmdi-hc-fw"></i> 查询</button>
+           </div>
+         <!--  <div class="form-group col-lg-2 ">
+           </div>
+            <div class="form-group fg-float col-lg-2 col-sm-2 col-xs-6">
+            </div>-->
+
+           <div class="form-group col-sm-4">
+               <button id="btn_GasHis" class="btn bgm-amber btn-icon-text waves-effect pull-right"><i class="zmdi zmdi-plus zmdi-hc-fw" ></i> 新增</button>
+           </div>
+           <i  data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="富文本编辑器的新增和查询" title="" data-original-title="提示" class="zmdi zmdi-help-outline zmdi-hc-fw pull-right tip-all-right" ></i>
+
+           <div class="clearfix"></div>
+
+       </div>
+        <div class="row">
+            <table id="main_table1" class="table table-striped">
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="editor/editor.js"></script>

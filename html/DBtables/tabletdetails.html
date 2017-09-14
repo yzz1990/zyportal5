@@ -1,0 +1,420 @@
+<head>
+    <style type="text/css">
+        .tab-content {
+            border-bottom: solid 1px #b6b6b6;
+        }
+
+        .btn-danger {
+            margin-left: 100px;
+        }
+
+        .modal-dialog {
+            width: 1000px;
+        }
+
+        h4 {
+            margin-left: 30px;
+        }
+
+        #cardshow {
+            /*height: 450px;*/
+        }
+
+        .btn-danger {
+            margin-left: 0px;
+        }
+
+        #btn_sub {
+            margin-left: 100px;
+        }
+
+        .innertd {
+            width: 110px;
+        }
+
+        #hoverdiv {
+            width: 160px;
+            height: 20px;
+            z-index: 100002;
+            display: none;
+            /*border: solid 1px grey;*/
+            border-radius: 5%;
+            background-color: white;
+            -webkit-box-shadow: 2px 5px 2px #d6d6d6;
+            -moz-box-shadow: 2px 5px 2px #d6d6d6;
+            box-shadow: 2px 5px 2px #d6d6d6;
+            text-align: center;
+        }
+
+        /*#hoverdiv a {*/
+        /*color: red;*/
+        /*}*/
+
+    </style>
+    <!--<script type="text/javascript" src="jquery1.7.js"></script>-->
+    <script type="text/javascript">
+        $(function () {
+            var show_count = 100;
+            var count = 1;
+            $("#add_row").click(function () {
+                var length = $("#tablePropertys").length;
+                if (totablepropertys() == undefined) {
+                    showtoastr("inverse", "字段名称和数据长度不能为空！");
+                } else {
+                    if (length < show_count) {
+                        $("#tab11 tbody tr").clone().appendTo("#dynamicTable tbody");   //在表格后面添加一行
+                        changeIndex();//更新行号
+                    }
+                }
+//                $("[data-toggle='popover']").popover();
+            });
+            $("[data-toggle='popover']").popover();
+//            $("[data-toggle='tooltip']").tooltip();
+//            var div = $("#hoverdiv"); //要浮动在这个元素旁边的层
+//            div.css("position", "absolute");//让这个层可以绝对定位
+//            var self = $('#hover1'); //当前对象
+//            $("#hover1").hover(function () {
+//                div.css("display", "block");
+//                var p = self.position(); //获取这个元素的left和top
+//                var x = p.left + self.width();//获取这个浮动层的left
+//                var docWidth = $(document).width();//获取网页的宽
+//                if (x > docWidth - div.width() - 20) {
+//                    x = p.left - div.width();
+//                }
+//                div.css("left", x - 90);
+//                div.css("top", p.top + 80);
+//                div.show();
+//            }, function () {
+//                div.css("display", "none");
+//            });
+        });
+        function changeIndex() {
+            var i = 1;
+            $("#dynamicTable tbody tr").each(function () {
+//                $(this).find("input[name='no']").val(i++);
+                $(this).find("td[ data-name='no']").html(i++);
+            });
+        }
+        var delist = '';
+        function deltr(opp) {
+            var gid = $(opp).parent().parent().parent().attr('id');
+            delist += $('#' + gid).find("input[name='sid']").val();
+            delist += ',';
+            var length = $("#dynamicTable tbody tr").length;
+            if (length <= 1) {
+                showtoastr('warning', '至少保留一行');
+            } else {
+                $(opp).parent().parent().parent().remove();//移除当前行
+                changeIndex();
+            }
+        }
+        function changestate(obj) {
+            var gid = $(obj).parent().parent().parent().attr('id');
+            var pid = $('#' + gid).find("input[name='sid']").val();
+            $.ajax({
+                url: cors + "/tables/administration/showInDataPage",
+                datatype: 'json',
+                data: {'propertyId': pid},
+                type: "Post",
+                success: function (data) {
+                    if (data.toShow == 1) {
+                        $(obj).attr('value', '否');
+                        $(obj).addClass('bgm-amber');
+                    } else {
+                        $(obj).attr('value', '是');
+                        $(obj).attr('class', 'btn btn-info waves-effect');
+                    }
+
+                }, headers: {
+                    "Authorization": "Bearer " + getLocalStorage('token'),
+                    "Accept": "application/json;charset=UTF-8"
+                }
+            });
+        }
+        function eachdata(data) {
+            var $tab1 = $("#dynamicTable tbody tr");
+            for (i = 0; i < data.length; i++) {
+                if (i == 0) {
+                    $('#d0').val(data[0].id);
+                    $('#d2').val(data[0].fieldname);
+                    $('#d3').val(data[0].fieldesc);
+                    $("#d4 option[value='" + data[i].datatype + "']").attr("selected", true);
+                    data[0].datalength == 0 ? $('#d5').val('') : $('#d5').val(data[0].datalength);
+                    if (data[0].isnull == 'N') {
+                        $('#d6').attr('checked', true);
+                    }
+                    data[0].pointlength == 0 ? $('#d7').val('') : $('#d7').val(data[0].pointlength);
+                    $('#d8').val(data[0].defaultvalue);
+                    if (data[0].pkey == 1) {
+                        $('#d9').attr('checked', true);
+                    }
+                    if (data[0].toShow == 1) {
+                        $('#d10').attr('value', '否');
+                        $('#d10').addClass('bgm-amber');
+                    }
+                } else {
+                    var obj = $("#tab11 tbody tr").clone();
+                    obj.prop('id', 'tr' + i);
+                    obj.appendTo("#dynamicTable tbody");   //在表格后面添加一行
+                    $('#tr' + i).find("input[name='sid']").val(data[i].id);
+                    $('#tr' + i).find("input[name='fieldname']").val(data[i].fieldname);
+                    $('#tr' + i).find("input[name='fieldesc']").val(data[i].fieldesc);
+                    $('#tr' + i).find("select[name='datatype'] option[value='" + data[i].datatype + "']").attr("selected", true);
+                    data[i].datalength == 0 ? $('#tr' + i).find("input[name='datalength']").val('') : $('#tr' + i).find("input[name='datalength']").val(data[i].datalength);
+                    if (data[i].isnull == 'N') {
+                        $('#tr' + i).find("input[name='isnull']").attr('checked', true);
+                    }
+                    data[i].pointlength == 0 ? $('#tr' + i).find("input[name='pointlength']").val('') : $('#tr' + i).find("input[name='pointlength']").val(data[i].pointlength);
+                    $('#tr' + i).find("input[name='defaultvalue']").val(data[i].defaultvalue);
+                    if (data[i].pkey == 1) {
+                        $('#tr' + i).find("input[name='pkey']").attr('checked', true);
+                    }
+                    if (data[i].toShow == 1) {
+                        $('#tr' + i).find("input[name='toshow']").attr('value', '否');
+                        $('#tr' + i).find("input[name='toshow']").addClass('bgm-amber');
+                    }
+                    changeIndex();//更新行号
+                }
+            }
+        }
+
+        function totablepropertys() {
+            var table = $("#dynamicTable").find("tr");
+            var tablepropertys = '[';
+            for (var i = 0; i < table.length; i++) {
+                if (i > 0) {
+                    var sid = table.eq(i).find("input[name='sid']").val();
+                    var fieldname = table.eq(i).find("input[name='fieldname']").val();
+                    if (fieldname == '' || fieldname == undefined) {
+                        return undefined;
+                    }
+                    var fieldesc = table.eq(i).find("input[name='fieldesc']").val();
+                    var datatype = table.eq(i).find("select[name='datatype'] option:selected").val();
+                    var datalength = table.eq(i).find("input[name='datalength']").val();
+                    if (datalength == '' || datalength == undefined) {
+                        return undefined;
+                    }
+                    var isnull = table.eq(i).find("input[name='isnull']:checked").val() == 1 ? 'N' : 'Y';
+                    var pointlength = table.eq(i).find("input[name='pointlength']").val();
+                    var defaultvalue = table.eq(i).find("input[name='defaultvalue']").val();
+                    var pkey = table.eq(i).find("input[name='pkey']:checked").val() == 1 ? 1 : 0;
+                    tablepropertys += '{'
+                        + '\'id\':' + '\'' + sid + '\'' + ','
+                        + '\'fieldname\':' + '\'' + fieldname + '\'' + ','
+                        + '\'fieldesc\':' + '\'' + fieldesc + '\'' + ','
+                        + '\'datatype\':' + '\'' + datatype + '\'' + ','
+                        + '\'datalength\':' + '\'' + datalength + '\'' + ','
+                        + '\'isnull\':' + '\'' + isnull + '\'' + ','
+                        + '\'pointlength\':' + '\'' + pointlength + '\'' + ','
+                        + '\'defaultvalue\':' + '\'' + defaultvalue + '\'' + ','
+                        + '\'pkey\':' + '\'' + pkey + '\'' + "}";
+                    if (i != table.length - 1) {
+                        tablepropertys += ',';
+                    }
+                }
+            }
+            tablepropertys += ']';
+            return tablepropertys;
+        }
+
+    </script>
+</head>
+<!--<div id="hoverdiv">-->
+<!--<a> 是否在数据页显示此列</a>-->
+<!--</div>-->
+<div id="div_container" class="row div_father">
+    <form id="form_Table" class="form-horizontal">
+        <div class="tab-content">
+            <div class="form-group">
+                <label for="tablename" class="col-sm-3 control-label"><span class="span_required"><a style="color: red">* </a></span>表名</label>
+                <div class="col-sm-3">
+                    <div class="fg-line">
+                        <input name="tablename" type="text" class="form-control input-sm" id="tablename"
+                               onchange="checkTableName(this.id)"
+                               placeholder="表名">
+                    </div>
+                </div>
+                <label for="tabledesc" class="col-sm-2 control-label"><span class="span_required"></span>表描述</label>
+                <div class="col-sm-3">
+                    <div class="fg-line">
+                        <input name="tabledesc" type="text" class="form-control input-sm" id="tabledesc"
+                               placeholder="表描述">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card" id="cardshow">
+            <h4>数据库结构
+                <i class="zmdi zmdi-help-outline zmdi-hc-fw tip-all-right"
+                   data-trigger="hover" data-toggle="popover" data-placement="right"
+                   data-content="表名不能修改、字段名称\数据长度不能为空"
+                   title="提示"
+                ></i></h4>
+            <div class="card-body card-padding">
+
+                <div class="rowssss">
+                    <div class="col-sm-2">
+                        <!--<button class="btn bgm-lightblue btn-icon-text waves-effect" onclick="addrow()"><i class="zmdi zmdi-plus zmdi-hc-fw"></i>新增字段</button>-->
+                        <input type="button" id="add_row" value="新增字段"
+                               class="btn bgm-lightblue btn-icon-text waves-effect">
+                    </div>
+                    <!--<div class="col-sm-2">-->
+                    <!--<button id="btn_sub" class="btn bgm-lightblue btn-icon-text waves-effect">生成表</button>-->
+                    <!--</div>-->
+                </div>
+                <div class="row">
+
+                    <table id="tab11" style="display: none">
+                        <tbody>
+                        <tr>
+                            <!--<td align="center"><input type="text" class="form-control input-sm" name="no" size="2"-->
+                            <!--value="1"/></td>-->
+                            <td align="center" data-name="no"></td>
+                            <td align="center"><input type="text" class="form-control input-sm" name="fieldname"/></td>
+                            <td align="center"><input type="text" class="form-control input-sm" name="fieldesc"/></td>
+                            <td align="center">
+                                <select name="datatype">
+                                    <option value="VARCHAR2">VARCHAR2</option>
+                                    <option value="VARCHAR">VARCHAR</option>
+                                    <option value="NUMBER">NUMBER</option>
+                                    <option value="CHAR">CHAR</option>
+                                    <option value="BLOB">BLOB</option>
+                                    <option value="NVARCHAR2">NVARCHAR2</option>
+                                    <option value="DATE">DATE</option>
+                                    <option value="LONG">LONG</option>
+                                    <option value="FLOAT">FLOAT</option>
+                                </select></td>
+                            <td align="center"><input type="text" class="form-control input-sm" name="datalength"
+                                                      onkeydown="return onlynum(event)"/></td>
+                            <td align="center"><input type="checkbox" name="isnull" value="1"/>
+                            </td>
+                            <td align="center"><input type="text" class="form-control input-sm" name="pointlength"
+                                                      onkeydown="return onlynum(event)"/>
+                            </td>
+                            <td align="center"><input type="text" class="form-control input-sm" name="defaultvalue"/>
+                            </td>
+                            <td align="center"><input type="checkbox" name="pkey" value="1"/>
+                            </td>
+                            <td><input type="text" name="sid" hidden/></td>
+                            <td>
+                                <div class="innertd"><input type="button" onClick="deltr(this)" value="删除"
+                                                            class="btn btn-danger waves-effect">
+                                    <input type="button" class="btn btn-info waves-effect" name="toshow" value="是"
+                                           onclick="changestate(this)"></div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <table id="dynamicTable" class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th><a style="color: red">* </a>字段名称</th>
+                            <th>字段描述</th>
+                            <th>数据类型</th>
+                            <th><a style="color: red">* </a>数据长度</th>
+                            <th>非空</th>
+                            <th>小数位数</th>
+                            <th>默认值</th>
+                            <th>主键</th>
+                            <th></th>
+                            <th>操作
+                                <i class="zmdi zmdi-help-outline zmdi-hc-fw" style="color: red"
+                                   data-trigger="hover" data-toggle="popover" data-placement="top"
+                                   title="是否在数据页显示此列"></i>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr id="tr0">
+
+                            <!--<td align="center"><input type="text" id="d1" class="form-control input-sm" name="no"-->
+                            <!--size="2" value="1"/></td>-->
+                            <td align="center">1</td>
+                            <td align="center"><input type="text" id="d2" class="form-control input-sm"
+                                                      name="fieldname"/></td>
+                            <td align="center"><input type="text" id="d3" class="form-control input-sm"
+                                                      name="fieldesc"/></td>
+                            <td align="center"><select name="datatype" id="d4">
+                                <option value="VARCHAR2">VARCHAR2</option>
+                                <option value="VARCHAR">VARCHAR</option>
+                                <option value="NUMBER">NUMBER</option>
+                                <option value="CHAR">CHAR</option>
+                                <option value="BLOB">BLOB</option>
+                                <option value="NVARCHAR2">NVARCHAR2</option>
+                                <option value="DATE">DATE</option>
+                                <option value="LONG">LONG</option>
+                                <option value="FLOAT">FLOAT</option>
+                            </select></td>
+                            <td align="center"><input type="text" id="d5" class="form-control input-sm"
+                                                      onkeydown="return onlynum(event)"
+                                                      name="datalength"/></td>
+                            <td align="center"><input type="checkbox" id="d6" name="isnull" value="1"/>
+                            </td>
+                            <td align="center"><input type="text" id="d7" class="form-control input-sm"
+                                                      onkeydown="return onlynum(event)"
+                                                      name="pointlength"/></td>
+                            <td align="center"><input type="text" id="d8" class="form-control input-sm"
+                                                      name="defaultvalue"/></td>
+                            <td align="center"><input type="checkbox" id="d9" name="pkey" value="1"/>
+                            </td>
+                            <td><input type="text" id="d0" name="sid" hidden/></td>
+                            <td>
+                                <div class="innertd"><input type="button" id="del_row" onClick="deltr(this)" value="删除"
+                                                            class="btn btn-danger waves-effect">
+                                    <input type="button" class="btn btn-info waves-effect" name="toshow" id="d10"
+                                           value="是" onclick="changestate(this)"></div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<script type="text/javascript">
+    function checkTableName(name) {
+        var tablename = document.getElementById(name).value;
+        $.ajax({
+            url: cors + "/tables/administration/checkTableName",
+            datatype: 'json',
+            data: {'tablename': tablename},
+            type: "Get",
+            success: function (data) {
+                if (data.code != 0) {
+                    showtoastr('warning', '已存在的表名，请重新输入');
+                    $('#cardshow').hide();
+                } else {
+                    $('#cardshow').show();
+                }
+            }, headers: {
+                "Authorization": "Bearer " + getLocalStorage('token'),
+                "Accept": "application/json;charset=UTF-8"
+            },
+        });
+    }
+    function onlynum(e) {
+        var keynum;
+        var keychar;
+        var numcheck;
+        if (window.event) // IE
+        {
+            keynum = e.keyCode;
+        }
+        else if (e.which) // Netscape/Firefox/Opera
+        {
+            keynum = e.which
+        }
+        if ((keynum > 47 && keynum < 58) || keynum == 8 || keynum == 46 || (keynum > 95 && keynum < 106)) {
+            e.returnValue = true;
+        } else {
+            e.returnValue = false;
+        }
+
+    }
+</script>

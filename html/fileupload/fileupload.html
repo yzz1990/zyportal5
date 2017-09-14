@@ -1,0 +1,529 @@
+<style>
+.pv-main{
+    border-radius: 50%;
+    width: 130px;
+    position: absolute;
+    height: 130px;
+    bottom: -50px;
+    left: 50%;
+    margin-left: -65px;
+    -webkit-transition: all;
+    -o-transition: all;
+    transition: all;
+    -webkit-transition-duration: 300ms;
+    transition-duration: 300ms;
+}
+.file-box {
+    float: left;
+    width: 24.5%;
+    height: 31%;
+    margin-top: 0.5%;
+}
+.file {
+    height: 100%;
+    border: 2px solid #e7eaec;
+    padding: 0;
+    background-color: #ffffff;
+    position: relative;
+    margin-bottom: 2%;
+    margin-left: 5%;
+}
+
+.file .icon, .file .image {
+    height: 59.5%;
+    overflow: hidden;
+}
+.file .file-name {
+    height: 40.3%;
+    padding: 5%;
+    background-color: #f8f8f8;
+    border-top: 1px solid #e7eaec;
+}
+.file-name small {
+    color: #676a6c;
+}
+.file .icon {
+    padding: 7.7% 5%;
+    text-align: center;
+}
+.file .icon i {
+    font-size: 70px;
+    color: #dadada;
+}
+</style>
+<div class="card">
+    <div class="card-body card-padding" style="overflow: hidden;">
+
+           <div class="col-sm-13 upload"  style="border: 1px solid #d8d4d4;width: 22%;float: left;display: inline-block;border-radius: 3px;">
+               <div  style="height: 100%;">
+                   <div class="card-header ch-alt" style="border-radius: 3px;border-bottom:1px solid #d8d4d4; ">
+                       <h2 style="font-weight: bold">文件夹</h2>
+                       <ul class="actions">
+                           <li class="dropdown">
+                               <a href="" data-toggle="dropdown" aria-expanded="false">
+                                   <i class="zmdi zmdi-more-vert"></i>
+                               </a>
+                               <ul class="dropdown-menu dropdown-menu-right">
+                                   <li>
+                                       <a href="javascript:void(0);"><i class="zmdi zmdi-refresh zmdi-hc-fw"></i>目录刷新</a>
+                                   </li>
+                                   <li>
+                                       <a href="javascript:void(0);"><i class="zmdi zmdi-delete zmdi-hc-fw"></i>删除目录</a>
+                                   </li>
+                                   <li>
+                                       <a href="javascript:void(0);"><i class="zmdi zmdi-edit zmdi-hc-fw"></i>编辑目录</a>
+                                   </li>
+                               </ul>
+                           </li>
+                       </ul>
+                   </div>
+                   <div  style="height: 90%;overflow: auto;">
+                       <ul id="fileTree" class="ztree"></ul>
+                                    </div>
+               </div>
+           </div>
+        <div  style="width: 77%;float: right;" class="upload">
+            <div style="width: 100%;height: 10%;padding-top: 2%;float: left">
+                <div style="float: left">
+                    <button  class="btn btn-default btn-icon-text waves-effect pull-right" ><i class="zmdi zmdi-settings zmdi-hc-fw"></i>新建目录</button>
+                              </div>
+
+                <div style="float: left;margin-left:1%;">
+                    <button  class="btn btn-default btn-icon-text waves-effect pull-right" ><i class="zmdi zmdi-upload zmdi-hc-fw"></i>文件上传</button>
+                                    </div>
+
+         <div style="float: left;margin-left: 1%;">
+             <button  class="btn btn-default btn-icon-text waves-effect pull-right" ><i class="zmdi zmdi-refresh zmdi-hc-fw"></i>文件刷新</button>
+         </div>
+            </div>
+            <div style="width: 100%;height: 90%;border-radius: 3px;float: left;border: 3px solid #d8d4d4;overflow:auto">
+<div class="row" style="width: 100%;height: 100%;margin: 0;">
+    <div class="file-box ">
+        <div class="file">
+   <div style="position: absolute;left: 82%;top: 5%;">
+            <ul class="actions  pull-right" >
+                <li class="dropdown">
+                    <a href="" data-toggle="dropdown" aria-expanded="false">
+                        <i class="zmdi zmdi-more-vert"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li>
+                            <a href="javascript:void(0);"><i class="zmdi zmdi-delete"></i>  删除</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);"><i class="zmdi zmdi-search zmdi-hc-fw"></i>  预览</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);"><i class="zmdi zmdi-download zmdi-hc-fw"></i> 下载</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+   </div>
+            <a href="javascript:void(0);">
+                <div class="image">
+                    <img alt="image" class="img-responsive" src="../img/profile-menu.png">
+                </div>
+                <div class="file-name">
+                    Italy street.jpg
+                    <br>
+                    <small>Added: Jan 6, 2014</small>
+                </div>
+            </a>
+
+        </div>
+    </div>
+    <div class="file-box ">
+        <div class="file">
+            <div style="position: absolute;left: 82%;top: 5%;">
+                <ul class="actions  pull-right" >
+                    <li class="dropdown">
+                        <a href="" data-toggle="dropdown" aria-expanded="false">
+                            <i class="zmdi zmdi-more-vert"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li>
+                                <a href="javascript:void(0);"><i class="zmdi zmdi-delete"></i>  删除</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);"><i class="zmdi zmdi-search zmdi-hc-fw"></i>  预览</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);"><i class="zmdi zmdi-download zmdi-hc-fw"></i> 下载</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <a href="javascript:void(0);">
+                <div class="image">
+                    <img alt="image" class="img-responsive" src="../img/p1.jpg">
+                </div>
+                <div class="file-name">
+                    Italy street.jpg
+                    <br>
+                    <small>Added: Jan 6, 2014</small>
+                </div>
+            </a>
+
+        </div>
+    </div>
+    <div class="file-box ">
+        <div class="file">
+            <div style="position: absolute;left: 82%;top: 5%;">
+                <ul class="actions  pull-right" >
+                    <li class="dropdown">
+                        <a href="" data-toggle="dropdown" aria-expanded="false">
+                            <i class="zmdi zmdi-more-vert"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li>
+                                <a href="javascript:void(0);"><i class="zmdi zmdi-delete"></i>  删除</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);"><i class="zmdi zmdi-search zmdi-hc-fw"></i>  预览</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);"><i class="zmdi zmdi-download zmdi-hc-fw"></i> 下载</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <a href="javascript:void(0);">
+                <div class="icon">
+                    <i class="zmdi zmdi-file zmdi-hc-fw"></i>
+                </div>
+                <div class="file-name">
+                    Italy street.jpg
+                    <br>
+                    <small>Added: Jan 6, 2014</small>
+                </div>
+            </a>
+
+        </div>
+    </div>
+    <div class="file-box ">
+        <div class="file">
+            <div style="position: absolute;left: 82%;top: 5%;">
+                <ul class="actions  pull-right" >
+                    <li class="dropdown">
+                        <a href="" data-toggle="dropdown" aria-expanded="false">
+                            <i class="zmdi zmdi-more-vert"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li>
+                                <a href="javascript:void(0);"><i class="zmdi zmdi-delete"></i>  删除</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);"><i class="zmdi zmdi-search zmdi-hc-fw"></i>  预览</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);"><i class="zmdi zmdi-download zmdi-hc-fw"></i> 下载</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <a href="javascript:void(0);">
+                <div class="icon">
+                    <i class="zmdi zmdi-videocam zmdi-hc-fw"></i>
+                </div>
+                <div class="file-name">
+                    Italy street.jpg
+                    <br>
+                    <small>Added: Jan 6, 2014</small>
+                </div>
+            </a>
+
+        </div>
+    </div>
+    <div class="file-box ">
+        <div class="file">
+            <div style="position: absolute;left: 82%;top: 5%;">
+                <ul class="actions  pull-right" >
+                    <li class="dropdown">
+                        <a href="" data-toggle="dropdown" aria-expanded="false">
+                            <i class="zmdi zmdi-more-vert"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li>
+                                <a href="javascript:void(0);"><i class="zmdi zmdi-delete"></i>  删除</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);"><i class="zmdi zmdi-search zmdi-hc-fw"></i>  预览</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);"><i class="zmdi zmdi-download zmdi-hc-fw"></i> 下载</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <a href="javascript:void(0);">
+                <div class="icon">
+                    <i class="zmdi zmdi-collection-music zmdi-hc-fw"></i>
+                </div>
+                <div class="file-name">
+                    Italy street.jpg
+                    <br>
+                    <small>Added: Jan 6, 2014</small>
+                </div>
+            </a>
+
+        </div>
+    </div>
+    <div class="file-box ">
+        <div class="file">
+            <div style="position: absolute;left: 82%;top: 5%;">
+                <ul class="actions  pull-right" >
+                    <li class="dropdown">
+                        <a href="" data-toggle="dropdown" aria-expanded="false">
+                            <i class="zmdi zmdi-more-vert"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li>
+                                <a href="javascript:void(0);"><i class="zmdi zmdi-delete"></i>  删除</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);"><i class="zmdi zmdi-search zmdi-hc-fw"></i>  预览</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);"><i class="zmdi zmdi-download zmdi-hc-fw"></i> 下载</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <a href="javascript:void(0);">
+                <div class="icon">
+                    <i class="zmdi zmdi-chart zmdi-hc-fw"></i>
+                </div>
+                <div class="file-name">
+                    Italy street.jpg
+                    <br>
+                    <small>Added: Jan 6, 2014</small>
+                </div>
+            </a>
+
+        </div>
+    </div>
+    <div class="file-box ">
+        <div class="file">
+            <div style="position: absolute;left: 82%;top: 5%;">
+                <ul class="actions  pull-right" >
+                    <li class="dropdown">
+                        <a href="" data-toggle="dropdown" aria-expanded="false">
+                            <i class="zmdi zmdi-more-vert"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li>
+                                <a href="javascript:void(0);"><i class="zmdi zmdi-delete"></i>  删除</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);"><i class="zmdi zmdi-search zmdi-hc-fw"></i>  预览</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);"><i class="zmdi zmdi-download zmdi-hc-fw"></i> 下载</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <a href="javascript:void(0);">
+                <div class="image">
+                    <img alt="image" class="img-responsive" src="../img/下载.jpg">
+                </div>
+                <div class="file-name">
+                    Italy street.jpg
+                    <br>
+                    <small>Added: Jan 6, 2014</small>
+                </div>
+            </a>
+
+        </div>
+    </div>
+    <div class="file-box ">
+        <div class="file">
+            <div style="position: absolute;left: 82%;top: 5%;">
+                <ul class="actions  pull-right" >
+                    <li class="dropdown">
+                        <a href="" data-toggle="dropdown" aria-expanded="false">
+                            <i class="zmdi zmdi-more-vert"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li>
+                                <a href="javascript:void(0);"><i class="zmdi zmdi-delete"></i>  删除</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);"><i class="zmdi zmdi-search zmdi-hc-fw"></i>  预览</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);"><i class="zmdi zmdi-download zmdi-hc-fw"></i> 下载</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <a href="javascript:void(0);">
+                <div class="image">
+                    <img alt="image" class="img-responsive" src="../img/thumbs-up.png">
+                </div>
+                <div class="file-name">
+                    Italy street.jpg
+                    <br>
+                    <small>Added: Jan 6, 2014</small>
+                </div>
+            </a>
+
+        </div>
+    </div>
+    <div class="file-box ">
+        <div class="file">
+            <div style="position: absolute;left: 82%;top: 5%;">
+                <ul class="actions  pull-right" >
+                    <li class="dropdown">
+                        <a href="" data-toggle="dropdown" aria-expanded="false">
+                            <i class="zmdi zmdi-more-vert"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li>
+                                <a href="javascript:void(0);"><i class="zmdi zmdi-delete"></i>  删除</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);"><i class="zmdi zmdi-search zmdi-hc-fw"></i>  预览</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);"><i class="zmdi zmdi-download zmdi-hc-fw"></i> 下载</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <a href="javascript:void(0);">
+                <div class="image">
+                    <img alt="image" class="img-responsive" src="../img/p1.jpg">
+                </div>
+                <div class="file-name">
+                    Italy street.jpg
+                    <br>
+                    <small>Added: Jan 6, 2014</small>
+                </div>
+            </a>
+
+        </div>
+    </div>
+    <div class="file-box ">
+        <div class="file">
+            <div style="position: absolute;left: 82%;top: 5%;">
+                <ul class="actions  pull-right" >
+                    <li class="dropdown">
+                        <a href="" data-toggle="dropdown" aria-expanded="false">
+                            <i class="zmdi zmdi-more-vert"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li>
+                                <a href="javascript:void(0);"><i class="zmdi zmdi-delete"></i>  删除</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);"><i class="zmdi zmdi-search zmdi-hc-fw"></i>  预览</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);"><i class="zmdi zmdi-download zmdi-hc-fw"></i> 下载</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <a href="javascript:void(0);">
+                <div class="image">
+                    <img alt="image" class="img-responsive" src="../img/p1.jpg">
+                </div>
+                <div class="file-name">
+                    Italy street.jpg
+                    <br>
+                    <small>Added: Jan 6, 2014</small>
+                </div>
+            </a>
+
+        </div>
+    </div>
+    <div class="file-box ">
+        <div class="file">
+            <div style="position: absolute;left: 82%;top: 5%;">
+                <ul class="actions  pull-right" >
+                    <li class="dropdown">
+                        <a href="" data-toggle="dropdown" aria-expanded="false">
+                            <i class="zmdi zmdi-more-vert"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li>
+                                <a href="javascript:void(0);"><i class="zmdi zmdi-delete"></i>  删除</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);"><i class="zmdi zmdi-search zmdi-hc-fw"></i>  预览</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);"><i class="zmdi zmdi-download zmdi-hc-fw"></i> 下载</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <a href="javascript:void(0);">
+                <div class="image">
+                    <img alt="image" class="img-responsive" src="../img/p1.jpg">
+                </div>
+                <div class="file-name">
+                    Italy street.jpg
+                    <br>
+                    <small>Added: Jan 6, 2014</small>
+                </div>
+            </a>
+
+        </div>
+    </div>
+    <div class="file-box ">
+        <div class="file">
+            <div style="position: absolute;left: 82%;top: 5%;">
+                <ul class="actions  pull-right" >
+                    <li class="dropdown">
+                        <a href="" data-toggle="dropdown" aria-expanded="false">
+                            <i class="zmdi zmdi-more-vert"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li>
+                                <a href="javascript:void(0);"><i class="zmdi zmdi-delete"></i>  删除</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);"><i class="zmdi zmdi-search zmdi-hc-fw"></i>  预览</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);"><i class="zmdi zmdi-download zmdi-hc-fw"></i> 下载</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <a href="javascript:void(0);">
+                <div class="image">
+                    <img alt="image" class="img-responsive" src="../img/p1.jpg">
+                </div>
+                <div class="file-name">
+                    Italy street.jpg
+                    <br>
+                    <small>Added: Jan 6, 2014</small>
+                </div>
+            </a>
+
+        </div>
+    </div>
+</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="fileupload/fileupload.js"></script>

@@ -1,0 +1,26 @@
+<style>
+    .modal {
+        display: none;
+        overflow: hidden;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 9999;
+        -webkit-overflow-scrolling: touch;
+        outline: 0;
+    }
+    .file-input{
+        height: 90%;
+    }
+</style>
+<input  id="excelFile" name="excelFile"
+       type="file" multiple accept="'.jpg','.gif','.jpeg','.png','.bmp','.doc','.docx','.xls','.xlsx','.txt','.pdf','mkv','mp4','avi','rm','rmvb'" data-min-file-count="1"
+       data-show-preview="true">
+<script>
+    $(function () {
+       jsonstr=[];
+   fileUpload("#excelFile");
+    })
+</script>

@@ -1,0 +1,39 @@
+
+<div class="card">
+    <div class="card-body card-padding">
+       <div class="rows">
+           <div class="form-group col-sm-2" >
+               <div class="fg-line">
+                   <input type="text" class="input-sm form-control fg-input" id="serachtable" placeholder="输入表名或描述查询" oninput="serachtable()">
+               </div>
+           </div>
+           <div class="form-group col-sm-1">
+               <button class="btn bgm-lightblue btn-icon-text waves-effect" onclick="serachtable()"><i class="zmdi zmdi-search zmdi-hc-fw"></i> 查询</button>
+           </div>
+            <div class="form-group col-sm-2">
+                <button id="btn_addnew" class="btn bgm-lightblue btn-icon-text waves-effect pull-right"><i class="zmdi zmdi-plus zmdi-hc-fw" ></i> 新增</button>
+            </div>
+           <div class="form-group col-sm-2">
+               <button id="btn_2" class="btn bgm-amber btn-icon-text waves-effect pull-right" onclick="synchronousTable()">
+                   <i class="zmdi zmdi-download zmdi-hc-fw"></i>DB→FORM</button>
+           </div>
+           <div class="form-group col-sm-2">
+               <button id="btn_3" class="btn bgm-orange btn-icon-text waves-effect pull-right" onclick="createTable()"><i class="zmdi zmdi-upload zmdi-hc-fw"></i> FORM→DB</button>
+           </div>
+           <div class="form-group col-sm-2">
+               <button id="btn_4" class="btn bgm-orange btn-icon-text waves-effect pull-right" onclick="datapage(this)"><i class="zmdi zmdi-view-list-alt zmdi-hc-fw"></i> 数据</button>
+           </div>
+               <i class="zmdi zmdi-help-outline zmdi-hc-fw tip-all-right"
+                  data-trigger="hover" data-toggle="popover" data-placement="bottom"
+                  data-content="DB→FORM ： 将数据库内的所有表同步至页面 ;
+                  FORM→DB ： 将选中的行在数据库中创建表 ;
+                  数据 ： 在新页面显示选中表中的数据"
+                  title="提示" data-original-title="提示"></i>
+       </div>
+        <div class="row">
+            <table id="main_table1" class="table table-striped">
+            </table>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="DBtables/DBtables.js"></script>

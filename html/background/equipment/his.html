@@ -1,0 +1,38 @@
+<style>
+    .modal-dialog {
+        width: 60%;
+    }
+</style>
+
+<div class="card">
+    <div class="card-body card-padding">
+        <div class="rows">
+            <div class="form-group col-sm-3">
+                <div class="fg-line">
+                    <input id="starttime" class="datainp wicon" type="text" readonly>
+                </div>
+            </div>
+            <div class="form-group col-sm-3">
+                <div class="fg-line">
+                    <input id="endtime" class="datainp wicon" type="text" readonly>
+                </div>
+            </div>
+        </div>
+        <div class="form-group col-sm-6">
+            <button class="btn bgm-lightblue btn-icon-text waves-effect" onclick="serachHis()"><i
+                    class="zmdi zmdi-search zmdi-hc-fw"></i>查询
+            </button>
+        </div>
+        <!--<div class="form-group col-sm-7">-->
+        <!--<button id="btn_add" class="btn bgm-amber btn-icon-text waves-effect pull-right"><i class="zmdi zmdi-plus zmdi-hc-fw" ></i>新增</button>-->
+        <!--</div>-->
+        <div class="clearfix"></div>
+    </div>
+    <div class="row">
+        <table id="his_table1" class="table table-striped mytable">
+        </table>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="background/equipment/his.js"></script>

@@ -1,0 +1,27 @@
+
+<div class="card">
+    <div class="card-body card-padding">
+       <div class="rows">
+
+           <div class="form-group col-sm-1">
+               <button  class="btn bgm-amber btn-icon-text waves-effect pull-right" onclick="addCode();"><i class="zmdi zmdi-plus zmdi-hc-fw" ></i> 新增</button>
+              </div>
+
+                     <div class="form-group col-sm-1">
+               <button  class="btn bgm-blue  btn-icon-text waves-effect pull-right" onclick="editCode();"><i class="zmdi zmdi-edit zmdi-hc-fw" ></i> 编辑</button>
+           </div>
+            <div class="form-group col-sm-1">
+                <button  class="btn btn-danger btn-icon-text waves-effect pull-right" onclick="delCode();"><i class="zmdi zmdi-delete zmdi-hc-fw" ></i> 删除</button>
+            </div>
+           <i  data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="为当前选中模块新增下级或修改删除当前模块" title="" data-original-title="提示" class="zmdi zmdi-help-outline zmdi-hc-fw tip-all-right"></i>
+           <div class="clearfix"></div>
+        </div>
+        <div class="row" id="treegridrow" style="overflow: auto">
+            <table id="treegrid_table" style="border: 1px solid rgb(240, 240, 240);">
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="code/codetables.js"></script>

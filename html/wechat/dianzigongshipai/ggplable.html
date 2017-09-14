@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>电子公示牌</title>
+
+        <link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+        <link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">
+    </head>
+    <style>
+        .hdmc{
+            width: 80%;
+        }
+        .zzy-search{
+            float: right;
+            margin-right: 3%;
+        }
+        .zzy-level{
+            float: left;
+            margin-top: 2%;
+        }
+        .zzy-level2{
+            margin-top: 2%;
+        }
+        .zzy-textleft{
+            text-align: left;
+        }
+        .zzy-riverimg {
+            margin-right: .8em;
+            width: 80px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+        }
+        .zzy-imghe{
+            height: 100%;
+        }
+        .weui-msg {
+            padding-top: 0px;
+            text-align: center;
+        }
+    </style>
+    <body>
+    <div class="weui-search-bar" id="searchBar">
+        <form class="weui-search-bar__form">
+            <div class="weui-search-bar__box">
+                <i class="weui-icon-search"></i>
+                <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="请输入河道名称" required="">
+                <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+            </div>
+            <label class="weui-search-bar__label" id="searchText" style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);">
+                <i class="weui-icon-search"></i>
+                <span>搜索</span>
+            </label>
+        </form>
+        <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+    </div>
+        <div class="weui-msg">
+            <div class="weui-panel__bd" id="rtable">
+            <!--    <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" onclick="xq()">
+
+                    <div class="weui-media-box__bd">
+                        <p class="weui-media-box__desc zzy-textleft" >河道名称：长江</p>
+                        <p class="weui-media-box__desc zzy-level">等&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级：县级</p>
+                        <p class="weui-media-box__desc zzy-level2">河长：吴杰</p>
+                    </div>
+                    <div class=" zzy-riverimg ">
+                        <img class="weui-media-box__thumb zzy-imghe " src="../images/river.jpg" alt="">
+                    </div>
+                </a>
+                <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" onclick="xq()">
+
+                    <div class="weui-media-box__bd">
+                        <p class="weui-media-box__desc zzy-textleft" >河道名称：长江</p>
+                        <p class="weui-media-box__desc zzy-level">等&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级：县级</p>
+                        <p class="weui-media-box__desc zzy-level2">河长：吴杰</p>
+                    </div>
+                    <div class=" zzy-riverimg ">
+                        <img class="weui-media-box__thumb zzy-imghe " src="../images/river.jpg" alt="">
+                    </div>
+                </a>
+                <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" onclick="xq()">
+
+                    <div class="weui-media-box__bd">
+                        <p class="weui-media-box__desc zzy-textleft" >河道名称：长江</p>
+                        <p class="weui-media-box__desc zzy-level">等&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级：县级</p>
+                        <p class="weui-media-box__desc zzy-level2">河长：吴杰</p>
+                    </div>
+                    <div class=" zzy-riverimg ">
+                        <img class="weui-media-box__thumb zzy-imghe " src="../images/river.jpg" alt="">
+                    </div>
+                </a>
+                <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" onclick="xq()">
+
+                    <div class="weui-media-box__bd">
+                        <p class="weui-media-box__desc zzy-textleft" >河道名称：长江</p>
+                        <p class="weui-media-box__desc zzy-level">等&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级：县级</p>
+                        <p class="weui-media-box__desc zzy-level2">河长：吴杰</p>
+                    </div>
+                    <div class=" zzy-riverimg ">
+                        <img class="weui-media-box__thumb zzy-imghe " src="../images/river.jpg" alt="">
+                    </div>
+                </a>
+                <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" onclick="xq()">
+
+                    <div class="weui-media-box__bd">
+                        <p class="weui-media-box__desc zzy-textleft" >河道名称：长江</p>
+                        <p class="weui-media-box__desc zzy-level">等&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级：县级</p>
+                        <p class="weui-media-box__desc zzy-level2">河长：吴杰</p>
+                    </div>
+                    <div class=" zzy-riverimg ">
+                        <img class="weui-media-box__thumb zzy-imghe " src="../images/river.jpg" alt="">
+                    </div>
+                </a>
+                <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" onclick="xq()">
+
+                    <div class="weui-media-box__bd">
+                        <p class="weui-media-box__desc zzy-textleft" >河道名称：长江</p>
+                        <p class="weui-media-box__desc zzy-level">等&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级：县级</p>
+                        <p class="weui-media-box__desc zzy-level2">河长：吴杰</p>
+                    </div>
+                    <div class=" zzy-riverimg ">
+                        <img class="weui-media-box__thumb zzy-imghe " src="../images/river.jpg" alt="">
+                    </div>
+                </a>-->
+            </div>
+            <div class="weui-panel__ft" id="loadmore" style="display: none">
+                <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+                    <div class="weui-cell__bd">查看更多</div>
+                    <span class="weui-cell__ft"></span>
+                </a>
+            </div>
+        </div>
+
+        <script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+        <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+        <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/swiper.min.js"></script>
+        <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/city-picker.min.js"></script>
+    <script>
+        $(function () {
+           var rjson=[{id:'1',name:'江南运河',level:'县级',riverManager:'张三',riverImg:'../images/river.jpg'},
+               {id:'2',name:'武宜运河',level:'县级',riverManager:'李四',riverImg:'../images/river.jpg'},
+               {id:'3',name:'太滆运河',level:'县级',riverManager:'王五',riverImg:'../images/river.jpg'},
+               {id:'4',name:'扁担河',level:'县级',riverManager:'赵六',riverImg:'../images/river.jpg'},
+               {id:'6',name:'漕桥河',level:'县级',riverManager:'孙七',riverImg:'../images/river.jpg'},
+               {id:'7',name:'孟津河',level:'县级',riverManager:'周八',riverImg:'../images/river.jpg'},
+           ]
+var rhtml="";
+            $.showLoading();
+            setTimeout(function() {
+                $.hideLoading();
+            }, 3000);
+           for (var i=0;i<rjson.length;i++){
+               rhtml=rhtml+'<a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" onclick="xq(\''+rjson[i].id+'\')">'+
+                  '<div class="weui-media-box__bd">'+
+                   '<p class="weui-media-box__desc zzy-textleft" >河道名称：'+rjson[i].name+'</p>'+
+               ' <p class="weui-media-box__desc zzy-level">等&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级：'+rjson[i].level+'</p>'+
+               '<p class="weui-media-box__desc zzy-level2">河长：'+rjson[i].riverManager+'</p>'+
+               '</div>'+
+               '<div class=" zzy-riverimg ">'+
+               '<img class="weui-media-box__thumb zzy-imghe " src="'+rjson[i].riverImg+'" alt="">'+
+               '</div>'+
+               ' </a>';
+           }
+            $("#rtable").html("");
+            $("#rtable").html(rhtml);
+            $("#loadmore").show();
+        })
+        function xq() {
+            window.location.href="ggpxq.html";
+        }
+    </script>
+    </body>
+</html>

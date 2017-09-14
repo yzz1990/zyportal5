@@ -1,0 +1,208 @@
+<style>
+    .img{
+        width: 150px;
+        height: 200px;
+        margin-bottom: 5px;
+        border: 1px dashed #E6E6FA;
+    }
+    #send_button{
+        margin-bottom: 20px;
+    }
+    #send_obj{
+        margin-left:20px;
+        margin-top:20px;
+    }
+    .red{
+        color:red;
+    }
+</style>
+
+<div class="card">
+    <div class="pm-body clearfix">
+        <div class="rows">
+            <div id="send_obj">
+                <div class="col-sm-2">
+                    <select id="wxgzh" class="selectpicker show-tick" data-live-search="true" onchange="getWeChatId()">
+                    </select>
+                </div>
+            </div>
+            <div id="user" class="col-sm-2" hidden>
+                <select id="touser" class="selectpicker show-tick" onchange="getUser()">
+                    <option value="">请选择发送对象</option>
+                </select>
+            </div>
+        </div>
+        <ul class="tab-nav tn-justified" id="tab-nav">
+            <li class="active waves-effect" index="0"><a href="#text" data-toggle="tab" onclick="setType('text')">文本消息</a></li>
+            <li class="waves-effect" index="1"><a href="#image" data-toggle="tab" onclick="setType('image')">图片消息</a></li>
+            <li class="waves-effect" index="3"><a href="#mpnews" data-toggle="tab" onclick="setType('mpnews')">图文消息</a></li>
+            <li class="waves-effect" index="2"><a href="#voice" data-toggle="tab" onclick="setType('voice')">语音消息</a></li>
+            <li class="waves-effect" index="4"><a href="#video" data-toggle="tab" onclick="setType('video')">视频消息</a></li>
+            <li class="waves-effect" index="5"><a href="#music" data-toggle="tab" onclick="setType('music')">音乐消息</a></li>
+        </ul>
+
+        <div class="tab-content" id="c-tab-content">
+            <div class="pmb-block tab-pane active" id="text">
+                <form class="form-horizontal" style="margin-left:50px" id="textForm">
+                    <lable for="text_editor" class="col-sm-2 control-label">
+                        <h5><span class="red">*</span>内容：</h5>
+                    </lable>
+                    <div class="form-group col-sm-8">
+                        <div class="fg-line">
+                            <div id="text_editor">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="pmb-block tab-pane" id="image">
+                <form class="form-horizontal" style="margin-left:50px" id="imageForm" enctype="multipart/form-data">
+                    <label for="image_pic" class="col-sm-1 control-label"><span class="red">*</span>图片：</label>
+                    <div class="col-sm-4">
+                        <div class="fg-line">
+                            <img id="image_image" class="img" src="">
+                            <input id="image_pic" type="file" class="file">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="pmb-block tab-pane" id="voice">
+                <form class="form-horizontal" style="margin-left:50px" id="voiceForm" enctype="multipart/form-data">
+                    <label for="voice_file" class="col-sm-1 control-label"><span class="red">*</span>语音：</label>
+                    <div class="col-sm-4">
+                        <div class="fg-line">
+                            <div></div>
+                            <input id="voice_file" type="file" class="file">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="pmb-block tab-pane" id="mpnews">
+                <form class="form-horizontal" style="margin-left:50px" id="mpnewsForm" enctype="multipart/form-data">
+                    <div class="rows">
+                        <div class="col-sm-6">
+                            <label for="mpnews_title" class="col-sm-2 control-label"><span class="red">*</span>标题：</label>
+                            <div class="col-sm-10">
+                                <div class="fg-line">
+                                    <input name="mpnews_title" type="text" class="form-control input-sm" id="mpnews_title" placeholder="标题">
+                                </div>
+                            </div>
+                            <div class="col-sm-12">&nbsp;</div>
+                            <label for="mpnews_author" class="col-sm-2 control-label"><span class="red">*</span>作者：</label>
+                            <div class="col-sm-10">
+                                <div class="fg-line">
+                                    <input name="mpnews_author" type="text" class="form-control input-sm" id="mpnews_author" placeholder="作者">
+                                </div>
+                            </div>
+                            <div class="col-sm-12">&nbsp;</div>
+                            <label for="mpnews_digest" class="col-sm-2 control-label"><span class="red">*</span>描述：</label>
+                            <div class="col-sm-10">
+                                <div class="fg-line">
+                                    <input name="mpnews_digest" type="text" class="form-control input-sm" id="mpnews_digest" placeholder="描述">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="mpnews_pic" class="col-sm-3 control-label"><span class="red">*</span>封面图片：</label>
+                            <div class="col-sm-8">
+                                <div class="fg-line">
+                                    <img id="mpnews_image" class="img" src="" style="width: 150px;height:200px">
+                                    <input id="mpnews_pic" type="file" class="file">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rows">
+                        <label for="mpnews_editor" class="col-sm-1 control-label"><span class="red">*</span>内容：</label>
+                        <div class="form-group col-sm-8">
+                            <div class="fg-line">
+                                <div class="fg-line">
+                                    <div id="mpnews_editor">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="pmb-block tab-pane" id="video">
+                <form class="form-horizontal" style="margin-left:50px" id="videoForm" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="video_title" class="col-sm-1 control-label"><span class="red">*</span>标题：</label>
+                        <div class="col-sm-4">
+                            <div class="fg-line">
+                                <input name="video_title" type="text" class="form-control input-sm" id="video_title" placeholder="标题">
+                            </div>
+                        </div>
+                        <label for="video_video" class="col-sm-2 control-label"><span class="red">*</span>视频：</label>
+                        <div class="col-sm-4">
+                            <div class="fg-line">
+                                <input id="video_video" type="file" class="file">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="video_description" class="col-sm-1 control-label"><span class="red">*</span>描述：</label>
+                        <div class="col-sm-4">
+                            <div class="fg-line">
+                                <input name="video_description" type="text" class="form-control input-sm" id="video_description" placeholder="描述">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="pmb-block tab-pane" id="music">
+                <form class="form-horizontal" style="margin-left:50px" id="musicForm" enctype="multipart/form-data">
+                    <div class="rows">
+                        <div class="col-sm-6">
+                            <label for="music_title" class="col-sm-2 control-label"><span class="red">*</span>标题：</label>
+                            <div class="col-sm-10">
+                                <div class="fg-line">
+                                    <input name="music_title" type="text" class="form-control input-sm" id="music_title" placeholder="标题">
+                                </div>
+                            </div>
+                            <div class="col-sm-12">&nbsp;</div>
+                            <label for="music_description" class="col-sm-2 control-label"><span class="red">*</span>描述：</label>
+                            <div class="col-sm-10" >
+                                <div class="fg-line">
+                                    <input name="music_description" type="text" class="form-control input-sm" id="music_description" placeholder="描述">
+                                </div>
+                            </div>
+                            <div class="col-sm-12">&nbsp;</div>
+                            <label for="music_music" class="col-sm-2 control-label"><span class="red">*</span>音乐：</label>
+                            <div class="col-sm-10">
+                                <div class="fg-line">
+                                    <input id="music_music" type="file" class="file">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="music_pic" class="col-sm-2 control-label"><span class="red">*</span>图片：</label>
+                            <div class="col-sm-8">
+                                <div class="fg-line">
+                                    <img id="music_image" class="img" src="">
+                                    <input id="music_pic" type="file" class="file">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="rows">
+            <div class="col-sm-offset-1 col-sm-10" id="send_button">
+                <button id="send" class="btn btn-warning btn-icon-text waves-effect">确认发送</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="../vendors/wangEditor-3.0.8/release/wangEditor.js"></script>
+<script src="WeChatPlatform/sendMessage.js"></script>
+<script src="WeChatPlatform/serverMessage/sendServerMessage.js"></script>

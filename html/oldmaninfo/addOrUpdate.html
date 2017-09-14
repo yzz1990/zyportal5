@@ -1,0 +1,235 @@
+
+<style>
+    .photo{
+        position: absolute;
+        top:10px;
+        right:30px;
+        width: 240px;
+        height: 320px;
+    }
+    #evaluation_m>ul{
+        width:1000px;
+        margin: 0 auto;
+    }
+    #card td{
+        text-align: center;
+    }
+    .signature p{
+        padding-bottom:70px;
+    }
+    .modal-dialog{
+        width: 80%;
+    }
+    /*单选多选换行对齐开始*/
+    .checkbox-inline + .checkbox-inline {
+        margin-left: 0;
+    }
+    .radio-inline + .radio-inline, .checkbox-inline + .checkbox-inline {
+        margin-left: 0;
+    }
+    /*单选多选换行对齐结束*/
+    .div_father{
+        height: 580px;
+    }
+    #form_headPhoto{
+        /*width: 100px;
+        height: 150px;*/
+        margin-bottom: 5px;
+        /*margin-left: 25px;*/
+        border: 1px dashed #E6E6FA;
+    }
+
+</style>
+<div id="div_container" class="row div_father" style="">
+    <div class="pm-body clearfix">
+        <div class="tab-content">
+            <div class="pmb-block tab-pane active" id="basicInfo_div">
+                <form id="form_addOrUpdate" class="form-horizontal">
+                    <div class="block-header">
+                        <h3 class="text-center"><strong>老&nbsp;人&nbsp;基&nbsp;本&nbsp;信&nbsp;息&nbsp;填&nbsp;写</strong></h3>
+                    </div>
+                    <div class="card">
+                        <div class="card-body card-padding">
+                            <div class="form-group">
+                                <label for="form_name" class="col-sm-2 control-label"><span class="span_required">*</span>姓名</label>
+                                <div class="col-sm-4">
+                                    <div class="fg-line">
+                                        <input name="name" type="text" class="form-control input-sm" id="form_name" placeholder="姓名">
+                                    </div>
+                                </div>
+                                <div class="photo">
+                                    <img id="form_headPhoto" src="">
+                                    <!--<a href="javascript:;" class="file">选择文件
+                                        <input id="imageUpload" type="file" accept="image/jpeg,image/png" name="file" onchange="headPhotoChanged(this)" >
+                                    </a>-->
+                                    <input id="imageUpload" type="file" accept="image/jpeg,image/jpg,image/png" >
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="form_sex" class="col-sm-2 control-label radio-inline"><span class="span_required">*</span>性别</label>
+                                <div class="col-sm-2" id="form_sex">
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="form_haszjxy" class="col-sm-2 control-label radio-inline">宗教信仰</label>
+                                <div class="col-sm-2" id="form_haszjxy">
+
+                                </div>
+                                <div id="div_form_zjxy" class="col-sm-2" style="display: none;"><!--clas属性religion控制显示与隐藏 -->
+                                    <div class="fg-line">
+                                        <select id= "form_zjxy" name="religion" class="selectpicker" data-live-search="true">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="form_sfzbh" class="col-sm-2 control-label"><span class="span_required">*</span>身份证号</label>
+                                <div class="col-sm-4">
+                                    <div class="fg-line">
+                                        <input id="form_sfzbh" name="pcardid" type="text" class="form-control input-sm"placeholder="身份证号">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="form_whcd" class="col-sm-2 control-label radio-inline"><span class="span_required">*</span>文化程度</label>
+                                <div class="col-sm-10" id="form_whcd">
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="form_hjdz" class="col-sm-2 control-label"><span class="span_required">*</span>户籍地址</label>
+                                <div class="col-sm-6">
+                                    <div class="fg-line">
+                                        <input id="form_hjdz" name="registeraddress" type="text" class="form-control input-sm"placeholder="户籍地址">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group" id="div_residentaddress">
+                                <label for="form_czdz" class="col-sm-2 control-label"><span class="span_required">*</span>常住地址</label>
+                                <div class="col-sm-6">
+                                    <div class="fg-line">
+                                        <input id="form_czdz" name="residentaddress" type="text" class="form-control input-sm inputfilter" placeholder="常住地址">
+                                    </div>
+                                </div>
+                                <div class="col-sm-1" id="div_residentaddress_btn">
+                                    <button onclick="return addform_czdz(this)"  class="btn bgm-lightblue btn-icon-text waves-effect">
+                                        <i class="zmdi zmdi-plus zmdi-hc-fw"></i>添加
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="form_jzzk" class="col-sm-2 control-label radio-inline"><span class="span_required">*</span>居住状况</label>
+                                <div class="col-sm-8" id="form_jzzk">
+
+                                </div>
+                                <div id="div_form_yly" class="col-sm-2" style="display: none;"><!--clas属性religion控制显示与隐藏 -->
+                                    <div class="fg-line">
+                                        <select id= "form_yly" name="nursinghomeid" class="selectpicker" data-live-search="true">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="form_jjly" class="col-sm-2 control-label radio-inline"><span class="span_required">*</span>经济来源</label>
+                                <div class="col-sm-10" id="form_jjly">
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="form_ylzffs" class="col-sm-2 control-label radio-inline">医疗费用支付方式</label>
+                                <div class="col-sm-10" id="form_ylzffs">
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="form_hyzk" class="col-sm-2 control-label radio-inline"><span class="span_required">*</span>婚姻状况</label>
+                                <div class="col-sm-10" id="form_hyzk">
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="form_birth" class="col-sm-2 control-label"><span class="span_required">*</span>出生日期</label>
+                                <div class="col-sm-10">
+                                    <div class="fg-line">
+                                        <input id="form_birth" name="birth" class="datainp wicon" type="text"  readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="form_sbkh" class="col-sm-2 control-label"><span class="span_required">*</span>社保卡号</label>
+                                <div class="col-sm-4">
+                                    <div class="fg-line">
+                                        <input id="form_sbkh" name="socialcardid" type="text" class="form-control input-sm" placeholder="社保卡号">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="form_mzxz" class="col-sm-2 control-label"><span class="span_required">*</span>民族</label>
+                                <div class="col-sm-3">
+                                    <select id= "form_mzxz" name="famousfamily" class="selectpicker" data-live-search="true"></select>
+                                </div>
+                            </div>
+                            <div class="form-group" id="div_lx">
+                                <label for="form_lxrxm" class="col-sm-2 control-label">联系人姓名</label>
+                                <div class="col-sm-2">
+                                    <div class="fg-line">
+                                        <input id="form_lxrxm" name="contactperson" type="text" class="form-control input-sm inputfilter" placeholder="联系人姓名">
+                                    </div>
+                                </div>
+                                <label for="form_lxrdh" class="col-sm-2 control-label">联系人电话</label>
+                                <div class="col-sm-2">
+                                    <div class="fg-line">
+                                        <input id="form_lxrdh" name="contacttel" type="text" class="form-control input-sm inputfilter" placeholder="联系人电话">
+                                    </div>
+                                </div>
+                                <div class="col-sm-1" id="div_lx_btn">
+                                    <button onclick="return addform_lx(this)"  class="btn bgm-lightblue btn-icon-text waves-effect">
+                                        <i class="zmdi zmdi-plus zmdi-hc-fw"></i>添加
+                                    </button>
+                                </div>
+                            </div>
+                            <!--<div class="form-group">
+                                <label for="form_lxrxm" class="col-sm-2 control-label">联系人姓名</label>
+                                <div class="col-sm-4">
+                                    <div class="fg-line">
+                                        <input id="form_lxrxm" name="contactperson" type="text" class="form-control input-sm" placeholder="联系人姓名">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="form_lxrdh" class="col-sm-2 control-label">联系人电话</label>
+                                <div class="col-sm-4">
+                                    <div class="fg-line">
+                                        <input id="form_lxrdh" name="contacttel" type="text" class="form-control input-sm" placeholder="联系人电话">
+                                    </div>
+                                </div>
+                            </div>-->
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!--隐藏的数据-->
+                    <input name="id" type="hidden"><!--存放id-->
+                    <input id="form_photoUrl" name="photourl" type="hidden"><!--上传图片路径-->
+                    <input name="recentrating" type="hidden"><!--最近评估等级-->
+                    <input name="evaluationcount" type="hidden"><!--评估次数-->
+                    <input name="ylyName" type="hidden"><!--养老院名称-->
+                    <input name="ylyid" type="hidden"><!--养老院id-->
+                    <input name="createtime" type="hidden">
+                    <input name="modifytime" type="hidden">
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="oldmaninfo/addOrUpdate.js"></script>
+
+
+

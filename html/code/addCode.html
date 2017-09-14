@@ -1,0 +1,207 @@
+
+<style>
+    .modal-dialog {
+        width: 60%;
+        margin: 30px auto;
+    }
+</style>
+
+<div class="row" style="width: 100%;">
+    <form id="addCode">
+
+
+        <table style="margin: auto;width: 90%;">
+
+            <tr>
+                <td>
+                    <span style="color: red">*</span>
+                    <span style="font-weight: bold">词典名称</span>
+
+                </td>
+                <td style="padding-right: 5%;">
+                    <div class="form-group col-sm-2 ">
+                        <div class="fg-line" style="width:200px;">
+                            <input type="text"  name="name" id="name"   class="input-sm form-control fg-input" placeholder="词典中文名称" >
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <span style="color: red">*</span>
+                    <span style="font-weight: bold">
+                   父项模块
+                </span>
+
+                </td>
+                <td>
+                    <div class="form-group col-sm-2 ">
+                        <div class="fg-line" style="width:200px;">
+                            <select name="permissionId" id="permissionId"   class="selectpicker" data-live-search="true" disabled>
+                            </select>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span style="color: red">*</span>
+                    <span style="font-weight: bold">父词典名称</span>
+
+                </td>
+                <td style="padding-right: 5%;">
+                    <div class="form-group col-sm-2 ">
+                        <div class="fg-line" style="width:200px;">
+                            <select name="parentId" id="parentId"    class="selectpicker" data-live-search="true" disabled>
+                            </select>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <span style="color: red">*</span>
+                    <span style="font-weight: bold">
+                   词典编码
+                </span>
+
+                </td>
+                <td>
+                    <div class="form-group col-sm-2 ">
+                        <div class="fg-line" style="width:200px;">
+                            <input type="text"  name="codeMyid" id="codeMyid"    class="input-sm form-control fg-input"  placeholder="词典唯一编码">
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span style="color: red">&nbsp;</span>
+                    <span style="font-weight: bold">
+                 词典图标
+                </span>
+
+                </td>
+                <td style="padding-right: 5%;">
+                    <div class="form-group col-lg-2 " style="width:230px;">
+                        <select id="iconcls" name="iconCls"   class="selectpicker" data-live-search="true" >
+                            <option value="zmdi zmdi-file-text zmdi-hc-fw"  data-icon="zmdi zmdi-file-text zmdi-hc-fw">file</option>
+                            <option value="zmdi zmdi-folder-outline zmdi-hc-fw"  data-icon="zmdi zmdi-folder-outline zmdi-hc-fw">folder</option>
+                            <option value="zmdi zmdi-city zmdi-hc-fw"  data-icon="zmdi zmdi-city zmdi-hc-fw">city</option>
+                            <option value="zmdi zmdi-menu zmdi-hc-fw"  data-icon="zmdi zmdi-menu zmdi-hc-fw">menu</option>
+                            <option value="zmdi zmdi-bug zmdi-hc-fw"  data-icon="zmdi zmdi-bug zmdi-hc-fw">bug</option>
+                            <option value="zmdi zmdi-alert-circle zmdi-hc-fw"  data-icon="zmdi zmdi-alert-circle zmdi-hc-fw">alert-circle</option>
+                            <option value="zmdi zmdi-help zmdi-hc-fw"  data-icon="zmdi zmdi-help zmdi-hc-fw">help</option>
+                        </select>
+                    </div>
+                </td>
+                <td>
+                    <span style="color: red">&nbsp;</span>
+                    <span style="font-weight: bold">
+                  排序编码
+                </span>
+                </td>
+                <td >
+                    <div class="form-group col-sm-2 ">
+                        <div class="fg-line" style="width:200px;">
+                            <input type="text"  id="sort" name="sort"   class="input-sm form-control fg-input" placeholder="词典排序编码" >
+                        </div>
+                    </div>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <span style="color:black">&nbsp;</span>
+                    <span style="font-weight: bold">
+                  参数描述
+                </span>
+                </td>
+
+                <td colspan="4">
+                    <div class="fg-line">
+                    <textarea type="text" class="form-control input-sm"  id="description" name="description"  style="width: 98%;height: 70px;resize: none"></textarea>
+                    </div>
+                </td>
+                </td>
+
+            </tr>
+        </table>
+    </form>
+</div>
+
+</div>
+
+<script>
+$(function(){
+    $("#iconcls").selectpicker({});
+    validateElement($("#addCode"));
+})
+    function  relodPermissionId(curRow) {
+        var permissionId=curRow.permissionid;
+        var parentId=curRow.codeId;
+        if(permissionId==""){
+            permissionId=curRow.codeId;
+        }
+        getData(
+            'post',
+            '/Code/SystemCode/selectPemisson',
+            {"permissionid":permissionId},
+            'json',
+            function (value) {//success
+                var data=value.data;
+                if(data.length>0){
+                    for(var i=0;i<data.length;i++){
+
+                        $("#permissionId").append('<option value="'+data[i].codeId+'">'+data[i].name+'</option>');
+                    }
+                }
+                $("#permissionId").selectpicker({});  //初始化
+
+
+                /*initTable(); // 调用函数，初始化表格*/
+            },function(obj){//error
+                showtoastr("inverse", '区域加载异常');
+            }
+        );
+    }
+function  relodParentId(curRow) {
+    var permissionId=curRow.permissionid;
+    var parentId=curRow.codeId;
+    if(permissionId==""){
+        permissionId=curRow.codeId;
+    }
+    getData(
+        'post',
+        '/Code/SystemCode/selectParentid',
+        {"parentId":parentId},
+        'json',
+        function (value) {//success
+            var data=value.data;
+            if(data.length>0){
+                for(var i=0;i<data.length;i++){
+
+                    $("#parentId").append('<option value="'+data[i].codeId+'">'+data[i].name+'</option>');
+                }
+            }
+            $("#parentId").selectpicker({});  //初始化
+
+
+            /*initTable(); // 调用函数，初始化表格*/
+        },function(obj){//error
+            showtoastr("inverse", '区域加载异常');
+        }
+    );
+}
+function validateElement($form_obj){
+    newCodeJqueryValidate=MyDiyJqueryValidate($form_obj);
+    newCodeJqueryValidate.jqueryValidateOption.rules={
+        name:{
+            required:true
+        },
+        codeMyid:{
+            required:true
+        },
+        sort:{
+            isPositiveInteger:true
+        }
+    };
+    newCodeJqueryValidate.jqueryValidate();
+}
+</script>

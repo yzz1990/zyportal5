@@ -1,0 +1,50 @@
+body{
+    margin: 0;
+    height: 100%;
+    padding: 0;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    color: #5e5e5e;
+}
+.gerenal_body{
+    background: url(../img/bk.png);
+    padding-top: 20px;
+}
+.gerenal_body table{
+    background-color: transparent;
+}
+.gerenal_body p{
+    margin: 0 0 ;
+}
+
+.mpanel{border:#5da3c2 solid 1px; moz-box-shadow:0 0 9px #5ac3f1 inset; -webkit-box-shadow:0 0 9px #5ac3f1 inset; box-shadow:0 0 9px #5ac3f1 inset; margin:0 20px 20px 0; background:url(../img/bk_mpanel.png)}
+.mpanel .mstitle{font-size:14px; font-weight:bold; color:#FFF; height:35px; line-height:32px; background:url(../img/bk_mpanel.png); padding-left:10px}
+.mpanel .mstitle_blue,.mpanel .mstitle_orange,.mpanel .mstitle_green,.mpanel .mstitle_yellow{font-size:14px; font-weight:bold; color:#FFF; height:35px; line-height:32px; padding:0 0 0 2px; width:100%; margin:-1px 0 0 -1px}
+.mpanel .mstitle_blue span,.mpanel .mstitle_orange span,.mpanel .mstitle_green span,.mpanel .mstitle_yellow span{margin-left:10px}
+.mpanel .mstitle_blue{background:#2c8cdd}
+.mpanel .mstitle_orange{background:#e64a19}
+.mpanel .mstitle_green{background:#4caf50}
+.mpanel .mstitle_yellow{background:#ffa000}
+.mpanel .scontent{padding:5px 15px 15px 15px}
+.mpanel .mmap{text-align:center; margin:10px 0 15px 0}
+.mpanel .map_pic{margin:0 auto}
+
+.gtable{font-size:13px; color:#FFF; width:100%; border-collapse:collapse}
+.gtable tr th{font-weight:bold; text-align:left; padding:7px 0 8px 10px}
+.gtable tr td{padding:7px 0 8px 10px}
+.gtable .rowa td{background:url(../img/gtable_rowa.png) bottom}
+.gtable .rowb td{background:url(../img/gtable_rowb.png) bottom}
+
+.rtable{font-size:13px; color:#FFF; width:100%; border-collapse:collapse; margin:5px 0 0 0}
+.rtable tr td{background:url(../img/gtable_rowb.png) bottom; padding:7px 0 8px 3px}
+.rtable tr .bst{font-size:14px; line-height:0px; padding:10px 0 0 0}
+.rtable tr .bst p{font-size:12px; line-height:12px}
+.rtable tr .date{font-size:12px; color:#c1d4e7}
+
+.ftable{font-size:13px; color:#FFF; width:100%; border-collapse:collapse; border-top:#7f97ac solid 1px; border-left:#7f97ac solid 1px; border-right:#7f97ac solid 1px}
+.ftable tr th{font-weight:bold; text-align:left; padding:7px 0 8px 10px; background:url(../img/gtable_rowa.png) bottom}
+.ftable tr td{padding:7px 0 8px 10px; border-bottom:#7f97ac solid 1px}
+
+.dtable{font-size:13px; color:#FFF; width:100%; border-collapse:collapse}
+.dtable tr th{font-weight:bold; text-align:right; padding:7px 8px 8px 2px; background:url(../img/bk_dth.png)}
+.dtable tr td{padding:7px 0 8px 7px}

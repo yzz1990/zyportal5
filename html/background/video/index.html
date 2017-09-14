@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Video在线预览</title>
+	<link href="../../../vendors/bower_components/video5.18.4.js/css/video-js.css" rel="stylesheet">
+	<!-- If you'd like to support IE8 -->
+	<script src="../../../vendors/bower_components/video5.18.4.js/js/videojs-ie8.min.js"></script>
+	<script src="../../../vendors/bower_components/jquery/jquery-2.1.1.js"></script>
+	<style>
+		body{
+			margin:0 0;
+			background-color: #eee;
+		}
+		.m {
+			text-align: center;
+		}
+		/*自定义样式，暂停时显示播放按钮*/
+		.vjs-paused .vjs-big-play-button,
+		.vjs-paused.vjs-has-started .vjs-big-play-button {
+			display: block;
+		}
+
+		/*播放按钮变圆形*/
+		.video-js .vjs-big-play-button{
+			font-size: 2.5em;
+			line-height: 2.3em;
+			height: 2.5em;
+			width: 2.5em;
+			-webkit-border-radius: 2.5em;
+			-moz-border-radius: 2.5em;
+			border-radius: 2.5em;
+			background-color: #73859f;
+			background-color: rgba(115,133,159,.5);
+			border-width: 0.15em;
+			margin-top: -1.25em;
+			margin-left: -1.75em;
+		}
+		/* 中间的播放箭头 */
+		.vjs-big-play-button .vjs-icon-placeholder {
+			font-size: 1.63em;
+		}
+		/* 加载圆圈 */
+		.vjs-loading-spinner {
+			font-size: 2.5em;
+			width: 2em;
+			height: 2em;
+			border-radius: 1em;
+			margin-top: -1em;
+			margin-left: -1.5em;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="m">
+		<!--vjs-fluid,.vjs-4-3,.vjs-16-9 第一种它会自动计算，后面两种指定比率。 样式也需要设置起始宽高才能显示图片-->
+		<video id="my-video" class="video-js vjs-default-skin vjs-big-play-centered"  controls preload="auto" data-setup='{ "techOrder": ["html5", "flash", "other supported tech"],"playbackRates": [1, 2, 3] }'>
+			<p class="vjs-no-js">
+				浏览器不支持播放视频
+			  <a href="http://videojs.com/html5-video-support/" target="_blank">请选择支持h5的浏览器</a>
+			</p>
+		  </video>
+	</div>
+	<script src="../../../vendors/bower_components/video5.18.4.js/js/video.min.js"></script>
+	<script type="text/javascript">
+//		flv格式是加入关联扩展名：.flv，内容类型：application/octet-stream
+//        f4v格式是扩展名：.f4v，内容类型：application/octet-stream
+//        mp4格式是扩展名：.mp4，内容类型：video/mp4
+//        ogv格式是扩展名：.ogv ，内容类型：video/ogg
+//        webm格式是扩展名：.webm，内容类型：video/webm
+		//是否自动播放
+		var isAutoPlay=0;
+		//封面图片
+		var poster="../../../img/cal-header.jpg";
+		//播放器宽高
+		var width=500;
+		var height=400;
+		var cWidth = $(window).width();
+		var cHeight = $(window).height();
+		//视频url
+		var videourl="1.mp4";
+
+		//http://localhost:63342/zyportal5/html/background/video/index.html?&isAutoPlay=false&poster=33&videourl=90&width=0&height=0
+		var parms=window.location.href.split("&");
+		isAutoPlay=parms[1].split("=")[1];
+		poster=parms[2].split("=")[1];
+		videourl=parms[3].split("=")[1];
+		width=parms[4].split("=")[1]==0?cWidth:width;
+		height=parms[5].split("=")[1]==0?cHeight:height;
+
+        var myPlayer = videojs('my-video');
+        var player=videojs("my-video", {}, function() {
+            window.myPlayer = this;
+            $("#my-video source").attr("src", videourl);
+            myPlayer.src(videourl);
+            myPlayer.load(videourl);
+            if(isAutoPlay=="1"){
+                myPlayer.play();
+            }
+        });
+        player.width(width);
+        player.height(height);
+		player.poster(poster);
+        player.on('play', function () {
+            console.log('开始/恢复播放');
+        });
+        player.on('pause', function () {
+            console.log('暂停播放');
+        });
+        player.on('ended', function () {
+            console.log('结束播放');
+        });
+        player.on('timeupdate', function () {
+            //可以通过判断当前时间和总时间是否相等来判断视频是否结束：
+            // 如果 currentTime() === duration()，则视频已播放完毕
+            if (player.duration() != 0 && player.currentTime() === player.duration()) {
+                // 播放结束
+                console.log('自动播放结束');
+            }
+        });
+	</script>
+</body>
+</html>

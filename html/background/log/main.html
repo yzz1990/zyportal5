@@ -1,0 +1,208 @@
+
+<div class="card">
+    <div class="card-body card-padding">
+        <div class="rows">
+            <div class="form-group col-sm-3">
+                <div id="div_container" class="row div_father">
+                    <div class="pm-body clearfix">
+                            <div class="pmb-block tab-pane active" id="basicInfo_div">
+                                <form id="form_addOrUpdate" class="form-horizontal">
+                                    <div class="card" id="card">
+                                        <div class="card-body card-padding">
+                                            <div class="form-group">
+                                                <div class="col-sm-8">
+                                                    <div class="fg-line">
+                                                        <ul id="permissionSave" class="ztree"></ul>
+                                                        <input type="hidden" id="permissionSave_id">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-sm-9">
+                <div class="row">
+                    <div class="form-group col-sm-3">
+                        <input id="startDate" class="datainp wicon" type="text"  name="starttime" placeholder="开始日期" readonly>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <input id="endDate" class="datainp wicon" type="text"  name="endtime" placeholder="结束时间" readonly>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <button class="btn bgm-lightblue btn-icon-text waves-effect" id="seach"><i class="zmdi zmdi-search zmdi-hc-fw"></i>查询</button>
+                    </div>
+                </div>
+                <div class="row"id="treegridrow">
+                    <div id="container" style="width:100%;height:484px;margin-top: 40px;"></div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+
+        </div>
+    </div>
+</div>
+
+<script src="background/role/permission.js"></script>
+<script>
+    $("#card").css('height',clientHeight - 240)
+    $("#card").css('overflow-y','auto')
+    var pam = {'roleId': 'aaa'};
+    newPermissionTree=MyDiyZTreeInputSelect('permissionSave',null,$('#permissionSave_id'),null,'/system/menu/zTree',pam,null);
+    newPermissionTree.setting_SelectInput.check={enable: true,chkStyle: "radio",chkboxType: { "Y":"s","N":"s"},radioType: "all"};
+    newPermissionTree.setting_SelectInput.filter=function(data){
+        if(data.data){
+            for(var i=0;i<data.data.length;i++){
+                data.data[i].open=false;
+                if(data.data[i].value=='project'||data.data[i].value=='sysc'){
+                    data.data[i].open=true;
+                }
+            }
+        }
+        return data;
+    }
+    newPermissionTree.setting_SelectInput.callback.onCheck=function(e, treeId, treeNode){
+        var $treeObjName='permissionSave';
+        var $showInputObj=null;
+        var $hideValueObj=$('#permissionSave_id');
+        var zTree = $.fn.zTree.getZTreeObj($treeObjName),
+            nodes = zTree.getCheckedNodes(true),
+            v = "",
+            vId="";
+        for (var i=0, l=nodes.length; i<l; i++) {
+            if($treeObjName == "smsbookTree"){
+                v += nodes[i].value + ",";
+                if(nodes[i].name!="" && nodes[i].value!=""){
+                    vId += nodes[i].name + ":" + nodes[i].value + ";";
+                }
+            }else{
+                v += nodes[i].name + ",";
+                vId += nodes[i].value + ",";
+            }
+        }
+        if (vId.length>0 ) {
+            if($treeObjName == "smsbookTree"){
+
+            }else{
+                v = v.substring(0, v.length-1);
+                vId = vId.substring(0, vId.length-1);
+            }
+        }
+        if($showInputObj){
+            $showInputObj.val(v);
+        }
+        if($hideValueObj){
+            $hideValueObj.val(vId);
+        }
+    }
+    newPermissionTree.initZtree_SelectInput();
+
+    $("#startDate").jeDate({
+        format:"YYYY-MM-DD",
+        isinitVal:true
+    })
+    $("#endDate").jeDate({
+        format:"YYYY-MM-DD",
+        isinitVal:true
+    })
+
+    var myChart = echarts.init(document.getElementById('container'));
+    var url='/system/log/queryLogGroupByDate';
+
+
+    function loadData(){
+        var permissionSave_id= $('#permissionSave_id').val();
+        getData(
+            'post',
+            url,
+            {
+                permission:$('#permissionSave_id').val(),
+                startDate:$('#startDate').val(),
+                endDate:$('#endDate').val()
+            } ,
+            'json',
+            function (data) {
+                if(data.code=='0'){
+                    var arr=data.data;
+                    if(arr.length==0){
+                        if(permissionSave_id){
+                            showtoastr("inverse", '暂无数据');
+                        }
+                    }
+                    var ser=[];
+                    for(var i=0;i<arr.length;i++){
+                        var obj={};
+                        obj.name=arr[i].time;
+                        var a=[];
+                        a.push(arr[i].time);
+                        a.push(arr[i].count);
+                        obj.value=a;
+                        ser.push(obj);
+                    }
+                    option = {
+                        title: {
+                            text: '菜单日访问量统计'
+                        },
+                        tooltip: {
+                            trigger: 'axis',
+                            formatter: function (params) {
+                                params = params[0];
+                                return params.name;
+                            },
+                            axisPointer: {
+                                animation: false
+                            }
+                        },
+                        xAxis: {
+                            type: 'time',
+                            splitLine: {
+                                show: false
+                            }
+                        },
+                        yAxis: {
+                            type: 'value',
+                            boundaryGap: [0, '100%'],
+                            splitLine: {
+                                show: false
+                            }
+                        },
+                        series: [{
+                            name: '模拟数据',
+                            type: 'line',
+                            showSymbol: false,
+                            hoverAnimation: false,
+                            data: ser,
+                            itemStyle:{
+                                normal:{
+                                    label:{
+                                        show:true
+                                    }
+                                }
+                            }
+                        }]
+                    };
+                    myChart.setOption(option);
+                }
+                return true;
+            },function(obj){
+                showtoastr("inverse", '未知错误');
+                return false;
+            }
+        );
+    }
+    loadData();
+    $('#seach').click(function(){
+        if(!$('#permissionSave_id').val()){
+            showtoastr("inverse", '请选择菜单');
+            return false;
+        }
+        if($('#startDate').val()==''||$('#endDate').val()==''){
+            showtoastr("inverse", '请选择时间');
+            return false;
+        }
+        loadData();
+    });
+</script>
